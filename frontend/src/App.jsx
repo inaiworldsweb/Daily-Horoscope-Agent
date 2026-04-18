@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 
 // Production Backend URL (Render)
-const API_URL = 'https://daily-horoscope-agent-1.onrender.com'
+const API_URL = 'https://daily-horoscope-agent-backend.onrender.com'
 
 function App() {
   const [messages, setMessages] = useState([
