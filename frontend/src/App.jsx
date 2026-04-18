@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 
-// API URL from .env file (VITE_API_URL)
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+// Production Backend URL (Render)
+const API_URL = 'https://daily-horoscope-agent-1.onrender.com'
 
 function App() {
   const [messages, setMessages] = useState([
@@ -37,7 +37,7 @@ function App() {
       setMessages(prev => [...prev, { sender: 'bot', text: data.reply }])
       if (data.sign) setUserSign(data.sign)
     } catch (err) {
-      setMessages(prev => [...prev, { sender: 'bot', text: `⚠️ Error connecting to backend at ${API_URL}` }])
+      setMessages(prev => [...prev, { sender: 'bot', text: '⚠️ Error connecting to backend. Please try again later.' }])
     }
     setIsLoading(false)
   }

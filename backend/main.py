@@ -4,19 +4,15 @@ from pydantic import BaseModel
 from typing import Optional
 import json
 import os
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
-
+# Production Configuration for Render
 # Import our Daily Horoscope Agent
 from agent import DailyHoroscopeAgent, ChatInterface
 
-# Environment variables
-PORT = int(os.getenv("PORT", 8000))
-HOST = os.getenv("HOST", "0.0.0.0")
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173")
-DEBUG = os.getenv("DEBUG", "True").lower() == "true"
+# Production URLs
+PORT = 10000  # Render requires this port
+HOST = "0.0.0.0"
+FRONTEND_URL = "https://daily-horoscope-agent-fronted.onrender.com"
+DEBUG = False
 
 app = FastAPI(
     title="Daily Horoscope Agent API",
@@ -24,10 +20,15 @@ app = FastAPI(
     debug=DEBUG
 )
 
-# CORS - Allow frontend URL from environment
+# CORS - Allow production frontend and localhost for testing
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[FRONTEND_URL, "http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=[
+        FRONTEND_URL,
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://daily-horoscope-agent-fronted.onrender.com"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
