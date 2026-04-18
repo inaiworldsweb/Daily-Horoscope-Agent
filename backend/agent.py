@@ -44,17 +44,25 @@ ZODIAC_DATES = {
     "pisces": ((2, 19), (3, 20))
 }
 
-PLANETS = {
-    "Sun": swe.SUN,
-    "Moon": swe.MOON,
-    "Mercury": swe.MERCURY,
-    "Venus": swe.VENUS,
-    "Mars": swe.MARS,
-    "Jupiter": swe.JUPITER,
-    "Saturn": swe.SATURN,
-    "Rahu": swe.MEAN_NODE,  # North Node
-    "Ketu": swe.MEAN_NODE   # South Node calculated separately
-}
+# Define PLANETS only if swisseph is available
+if SWISSEPH_AVAILABLE:
+    PLANETS = {
+        "Sun": swe.SUN,
+        "Moon": swe.MOON,
+        "Mercury": swe.MERCURY,
+        "Venus": swe.VENUS,
+        "Mars": swe.MARS,
+        "Jupiter": swe.JUPITER,
+        "Saturn": swe.SATURN,
+        "Rahu": swe.MEAN_NODE,  # North Node
+        "Ketu": swe.MEAN_NODE   # South Node calculated separately
+    }
+else:
+    # Mock planet IDs for when swisseph is not available
+    PLANETS = {
+        "Sun": 0, "Moon": 1, "Mercury": 2, "Venus": 3, "Mars": 4,
+        "Jupiter": 5, "Saturn": 6, "Rahu": 10, "Ketu": 10
+    }
 
 ASPECTS = {
     "conjunction": 0,
