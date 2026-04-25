@@ -1,0 +1,1942 @@
+{
+  "rag_dataset": {
+    "version": "1.0",
+    "agent": "Daily Horoscope Agent",
+    "total_documents": 107,
+    "documents": [
+      {
+        "id": "zs_001",
+        "category": "zodiac_sign",
+        "number": 1,
+        "sign": "Aries",
+        "date_range": "March 21 - April 19",
+        "element": "Fire",
+        "ruling_planet": "Mars",
+        "symbol": "Ram",
+        "traits": [
+          "Energetic",
+          "Bold",
+          "Confident",
+          "Impulsive"
+        ],
+        "strengths": [
+          "Leadership",
+          "Courage",
+          "Determination"
+        ],
+        "weaknesses": [
+          "Impatience",
+          "Aggression"
+        ],
+        "love": "Passionate and intense, values honesty and excitement in relationships.",
+        "career": "Best in leadership roles, startups, and competitive high-energy fields.",
+        "health": "Needs stress control, proper rest, and management of head and facial tension.",
+        "lucky": {
+          "color": "Red",
+          "number": 9,
+          "day": "Tuesday",
+          "direction": "East",
+          "gemstone": "Red Coral"
+        },
+        "compatibility": [
+          "Leo",
+          "Sagittarius",
+          "Gemini"
+        ],
+        "text": "Aries is the first sign of the zodiac, born March 21 to April 19. A Fire sign ruled by Mars, symbolised by the Ram. Traits: Energetic, Bold, Confident, Impulsive. Strengths: Leadership, Courage, Determination. Weaknesses: Impatience, Aggression. In love: Passionate and intense, values honesty and excitement. Career: Best in leadership, startups, competitive fields. Health: Needs stress control and proper rest. Lucky color Red, lucky number 9, lucky day Tuesday. Most compatible with Leo, Sagittarius, Gemini."
+      },
+      {
+        "id": "zs_002",
+        "category": "zodiac_sign",
+        "number": 2,
+        "sign": "Taurus",
+        "date_range": "April 20 - May 20",
+        "element": "Earth",
+        "ruling_planet": "Venus",
+        "symbol": "Bull",
+        "traits": [
+          "Stable",
+          "Patient",
+          "Reliable",
+          "Stubborn"
+        ],
+        "strengths": [
+          "Loyalty",
+          "Persistence"
+        ],
+        "weaknesses": [
+          "Stubbornness",
+          "Possessiveness"
+        ],
+        "love": "Loyal and deeply romantic, seeks long-term stability and physical comfort.",
+        "career": "Strong in finance, real estate, design, and luxury industries.",
+        "health": "Needs balanced diet, regular exercise, and attention to throat and neck.",
+        "lucky": {
+          "color": "Green",
+          "number": 6,
+          "day": "Friday",
+          "direction": "South",
+          "gemstone": "Diamond"
+        },
+        "compatibility": [
+          "Virgo",
+          "Capricorn",
+          "Cancer"
+        ],
+        "text": "Taurus is the second sign of the zodiac, born April 20 to May 20. An Earth sign ruled by Venus, symbolised by the Bull. Traits: Stable, Patient, Reliable, Stubborn. Strengths: Loyalty, Persistence. Weaknesses: Stubbornness, Possessiveness. In love: Loyal and romantic, seeks long-term stability. Career: Strong in finance, real estate, design. Health: Needs balanced diet and exercise. Lucky color Green, lucky number 6, lucky day Friday. Most compatible with Virgo, Capricorn, Cancer."
+      },
+      {
+        "id": "zs_003",
+        "category": "zodiac_sign",
+        "number": 3,
+        "sign": "Gemini",
+        "date_range": "May 21 - June 20",
+        "element": "Air",
+        "ruling_planet": "Mercury",
+        "symbol": "Twins",
+        "traits": [
+          "Communicative",
+          "Curious",
+          "Adaptable",
+          "Witty"
+        ],
+        "strengths": [
+          "Intelligence",
+          "Versatility",
+          "Quick thinking"
+        ],
+        "weaknesses": [
+          "Inconsistency",
+          "Indecision"
+        ],
+        "love": "Needs constant communication, mental stimulation, and fresh excitement.",
+        "career": "Excellent in media, marketing, writing, sales, and communication.",
+        "health": "Should avoid anxiety, overthinking, and respiratory issues.",
+        "lucky": {
+          "color": "Yellow",
+          "number": 5,
+          "day": "Wednesday",
+          "direction": "West",
+          "gemstone": "Emerald"
+        },
+        "compatibility": [
+          "Libra",
+          "Aquarius",
+          "Aries"
+        ],
+        "text": "Gemini is the third sign of the zodiac, born May 21 to June 20. An Air sign ruled by Mercury, symbolised by the Twins. Traits: Communicative, Curious, Adaptable, Witty. Strengths: Intelligence, Versatility. Weaknesses: Inconsistency, Indecision. In love: Needs communication and excitement. Career: Excellent in media, marketing, writing. Health: Avoid anxiety and overthinking. Lucky color Yellow, lucky number 5, lucky day Wednesday. Most compatible with Libra, Aquarius, Aries."
+      },
+      {
+        "id": "zs_004",
+        "category": "zodiac_sign",
+        "number": 4,
+        "sign": "Cancer",
+        "date_range": "June 21 - July 22",
+        "element": "Water",
+        "ruling_planet": "Moon",
+        "symbol": "Crab",
+        "traits": [
+          "Emotional",
+          "Caring",
+          "Intuitive",
+          "Protective"
+        ],
+        "strengths": [
+          "Empathy",
+          "Loyalty",
+          "Nurturing"
+        ],
+        "weaknesses": [
+          "Mood swings",
+          "Over-sensitivity"
+        ],
+        "love": "Deeply emotional and fiercely protective partner who craves security.",
+        "career": "Excellent in caregiving, HR, hospitality, food industry, management.",
+        "health": "Needs strong emotional balance and attention to stomach and digestion.",
+        "lucky": {
+          "color": "White",
+          "number": 2,
+          "day": "Monday",
+          "direction": "North",
+          "gemstone": "Pearl"
+        },
+        "compatibility": [
+          "Scorpio",
+          "Pisces",
+          "Taurus"
+        ],
+        "text": "Cancer is the fourth sign of the zodiac, born June 21 to July 22. A Water sign ruled by the Moon, symbolised by the Crab. Traits: Emotional, Caring, Intuitive, Protective. Strengths: Empathy, Loyalty, Nurturing. Weaknesses: Mood swings, Over-sensitivity. In love: Deeply emotional and protective. Career: Excellent in caregiving, HR, management. Health: Needs emotional balance. Lucky color White, lucky number 2, lucky day Monday. Most compatible with Scorpio, Pisces, Taurus."
+      },
+      {
+        "id": "zs_005",
+        "category": "zodiac_sign",
+        "number": 5,
+        "sign": "Leo",
+        "date_range": "July 23 - August 22",
+        "element": "Fire",
+        "ruling_planet": "Sun",
+        "symbol": "Lion",
+        "traits": [
+          "Confident",
+          "Creative",
+          "Charismatic",
+          "Generous"
+        ],
+        "strengths": [
+          "Leadership",
+          "Generosity",
+          "Warmth"
+        ],
+        "weaknesses": [
+          "Ego",
+          "Stubbornness",
+          "Need for attention"
+        ],
+        "love": "Loyal and passionately romantic, loves grand gestures and deep admiration.",
+        "career": "Best in leadership, acting, public roles, entertainment, and creative arts.",
+        "health": "Must take careful care of heart health and manage energy levels.",
+        "lucky": {
+          "color": "Gold",
+          "number": 1,
+          "day": "Sunday",
+          "direction": "East",
+          "gemstone": "Ruby"
+        },
+        "compatibility": [
+          "Aries",
+          "Sagittarius",
+          "Libra"
+        ],
+        "text": "Leo is the fifth sign of the zodiac, born July 23 to August 22. A Fire sign ruled by the Sun, symbolised by the Lion. Traits: Confident, Creative, Charismatic, Generous. Strengths: Leadership, Generosity, Warmth. Weaknesses: Ego, Stubbornness. In love: Loyal and passionate, loves grand gestures. Career: Best in leadership, acting, public roles. Health: Take care of heart health. Lucky color Gold, lucky number 1, lucky day Sunday. Most compatible with Aries, Sagittarius, Libra."
+      },
+      {
+        "id": "zs_006",
+        "category": "zodiac_sign",
+        "number": 6,
+        "sign": "Virgo",
+        "date_range": "August 23 - September 22",
+        "element": "Earth",
+        "ruling_planet": "Mercury",
+        "symbol": "Maiden",
+        "traits": [
+          "Analytical",
+          "Practical",
+          "Detail-oriented",
+          "Hardworking"
+        ],
+        "strengths": [
+          "Precision",
+          "Reliability",
+          "Problem-solving"
+        ],
+        "weaknesses": [
+          "Overthinking",
+          "Over-critical",
+          "Perfectionism"
+        ],
+        "love": "Supportive and deeply caring partner who shows love through acts of service.",
+        "career": "Exceptional in analytics, healthcare, accounting, editing, and research.",
+        "health": "Must focus on digestion, stress management, and nervous system health.",
+        "lucky": {
+          "color": "Brown",
+          "number": 4,
+          "day": "Wednesday",
+          "direction": "South",
+          "gemstone": "Emerald"
+        },
+        "compatibility": [
+          "Taurus",
+          "Capricorn",
+          "Cancer"
+        ],
+        "text": "Virgo is the sixth sign of the zodiac, born August 23 to September 22. An Earth sign ruled by Mercury, symbolised by the Maiden. Traits: Analytical, Practical, Detail-oriented, Hardworking. Strengths: Precision, Reliability. Weaknesses: Overthinking, Over-critical. In love: Supportive and caring. Career: Great in analytics, healthcare. Health: Focus on digestion and stress. Lucky color Brown, lucky number 4, lucky day Wednesday. Most compatible with Taurus, Capricorn, Cancer."
+      },
+      {
+        "id": "zs_007",
+        "category": "zodiac_sign",
+        "number": 7,
+        "sign": "Libra",
+        "date_range": "September 23 - October 22",
+        "element": "Air",
+        "ruling_planet": "Venus",
+        "symbol": "Scales",
+        "traits": [
+          "Balanced",
+          "Diplomatic",
+          "Charming",
+          "Fair"
+        ],
+        "strengths": [
+          "Fairness",
+          "Social skills",
+          "Harmony-seeking"
+        ],
+        "weaknesses": [
+          "Indecision",
+          "People-pleasing"
+        ],
+        "love": "Deeply romantic and harmony-seeking, avoids conflict in relationships.",
+        "career": "Excellent in law, design, diplomacy, partnerships, and creative fields.",
+        "health": "Must maintain lifestyle balance and take care of kidneys and lower back.",
+        "lucky": {
+          "color": "Pink",
+          "number": 7,
+          "day": "Friday",
+          "direction": "West",
+          "gemstone": "Diamond"
+        },
+        "compatibility": [
+          "Gemini",
+          "Aquarius",
+          "Leo"
+        ],
+        "text": "Libra is the seventh sign of the zodiac, born September 23 to October 22. An Air sign ruled by Venus, symbolised by the Scales. Traits: Balanced, Diplomatic, Charming, Fair. Strengths: Fairness, Social skills. Weaknesses: Indecision. In love: Romantic and harmony-seeking. Career: Excellent in law, design, diplomacy. Health: Maintain lifestyle balance. Lucky color Pink, lucky number 7, lucky day Friday. Most compatible with Gemini, Aquarius, Leo."
+      },
+      {
+        "id": "zs_008",
+        "category": "zodiac_sign",
+        "number": 8,
+        "sign": "Scorpio",
+        "date_range": "October 23 - November 21",
+        "element": "Water",
+        "ruling_planet": "Mars/Pluto",
+        "symbol": "Scorpion",
+        "traits": [
+          "Intense",
+          "Passionate",
+          "Mysterious",
+          "Determined"
+        ],
+        "strengths": [
+          "Focus",
+          "Determination",
+          "Depth"
+        ],
+        "weaknesses": [
+          "Jealousy",
+          "Secretive",
+          "Obsessive"
+        ],
+        "love": "Seeks deep intense emotional connection and absolute loyalty from partner.",
+        "career": "Exceptionally strong in research, strategy, investigation, and finance.",
+        "health": "Must manage emotional stress and pay attention to reproductive health.",
+        "lucky": {
+          "color": "Black",
+          "number": 8,
+          "day": "Tuesday",
+          "direction": "North",
+          "gemstone": "Red Coral"
+        },
+        "compatibility": [
+          "Cancer",
+          "Pisces",
+          "Virgo"
+        ],
+        "text": "Scorpio is the eighth sign of the zodiac, born October 23 to November 21. A Water sign ruled by Mars and Pluto, symbolised by the Scorpion. Traits: Intense, Passionate, Mysterious, Determined. Strengths: Focus, Determination. Weaknesses: Jealousy, Secretive. In love: Deep emotional connection and loyalty. Career: Strong in research, strategy. Health: Manage emotional stress. Lucky color Black, lucky number 8, lucky day Tuesday. Most compatible with Cancer, Pisces, Virgo."
+      },
+      {
+        "id": "zs_009",
+        "category": "zodiac_sign",
+        "number": 9,
+        "sign": "Sagittarius",
+        "date_range": "November 22 - December 21",
+        "element": "Fire",
+        "ruling_planet": "Jupiter",
+        "symbol": "Archer",
+        "traits": [
+          "Adventurous",
+          "Optimistic",
+          "Independent",
+          "Honest"
+        ],
+        "strengths": [
+          "Honesty",
+          "Freedom-loving",
+          "Enthusiasm"
+        ],
+        "weaknesses": [
+          "Carelessness",
+          "Tactlessness",
+          "Restlessness"
+        ],
+        "love": "Needs absolute freedom and complete honesty in all romantic partnerships.",
+        "career": "Thrives in travel, teaching, publishing, law, and international business.",
+        "health": "Should avoid overexertion and pay attention to hips and liver health.",
+        "lucky": {
+          "color": "Purple",
+          "number": 3,
+          "day": "Thursday",
+          "direction": "East",
+          "gemstone": "Yellow Sapphire"
+        },
+        "compatibility": [
+          "Aries",
+          "Leo",
+          "Aquarius"
+        ],
+        "text": "Sagittarius is the ninth sign of the zodiac, born November 22 to December 21. A Fire sign ruled by Jupiter, symbolised by the Archer. Traits: Adventurous, Optimistic, Independent, Honest. Strengths: Honesty, Freedom, Enthusiasm. Weaknesses: Carelessness, Restlessness. In love: Needs freedom and honesty. Career: Thrives in travel, teaching, law. Health: Avoid overexertion. Lucky color Purple, lucky number 3, lucky day Thursday. Most compatible with Aries, Leo, Aquarius."
+      },
+      {
+        "id": "zs_010",
+        "category": "zodiac_sign",
+        "number": 10,
+        "sign": "Capricorn",
+        "date_range": "December 22 - January 19",
+        "element": "Earth",
+        "ruling_planet": "Saturn",
+        "symbol": "Goat",
+        "traits": [
+          "Disciplined",
+          "Responsible",
+          "Practical",
+          "Ambitious"
+        ],
+        "strengths": [
+          "Hardworking",
+          "Patience",
+          "Reliability"
+        ],
+        "weaknesses": [
+          "Pessimistic",
+          "Rigid",
+          "Workaholic"
+        ],
+        "love": "Serious, deeply loyal, and committed partner who takes relationships very seriously.",
+        "career": "Best in management, finance, government, engineering, and corporate leadership.",
+        "health": "Must care for joints, bones, and effectively manage chronic stress levels.",
+        "lucky": {
+          "color": "Grey",
+          "number": 10,
+          "day": "Saturday",
+          "direction": "South",
+          "gemstone": "Blue Sapphire"
+        },
+        "compatibility": [
+          "Taurus",
+          "Virgo",
+          "Pisces"
+        ],
+        "text": "Capricorn is the tenth sign of the zodiac, born December 22 to January 19. An Earth sign ruled by Saturn, symbolised by the Goat. Traits: Disciplined, Responsible, Practical, Ambitious. Strengths: Hardworking, Patience. Weaknesses: Pessimistic, Rigid. In love: Serious and loyal. Career: Best in management, finance, government. Health: Care for bones and stress. Lucky color Grey, lucky number 10, lucky day Saturday. Most compatible with Taurus, Virgo, Pisces."
+      },
+      {
+        "id": "zs_011",
+        "category": "zodiac_sign",
+        "number": 11,
+        "sign": "Aquarius",
+        "date_range": "January 20 - February 18",
+        "element": "Air",
+        "ruling_planet": "Saturn/Uranus",
+        "symbol": "Water Bearer",
+        "traits": [
+          "Innovative",
+          "Independent",
+          "Humanitarian",
+          "Intellectual"
+        ],
+        "strengths": [
+          "Creativity",
+          "Original thinking",
+          "Humanitarian ideals"
+        ],
+        "weaknesses": [
+          "Detached",
+          "Unpredictable",
+          "Emotionally distant"
+        ],
+        "love": "Values deep friendship, intellectual freedom, and shared progressive ideals.",
+        "career": "Exceptional in technology, innovation, social enterprise, and science.",
+        "health": "Must manage stress levels and maintain good circulation and ankle health.",
+        "lucky": {
+          "color": "Cyan",
+          "number": 11,
+          "day": "Saturday",
+          "direction": "West",
+          "gemstone": "Blue Sapphire"
+        },
+        "compatibility": [
+          "Gemini",
+          "Libra",
+          "Sagittarius"
+        ],
+        "text": "Aquarius is the eleventh sign of the zodiac, born January 20 to February 18. An Air sign ruled by Saturn and Uranus, symbolised by the Water Bearer. Traits: Innovative, Independent, Humanitarian, Intellectual. Strengths: Creativity, Original thinking. Weaknesses: Detached, Unpredictable. In love: Values freedom and friendship. Career: Great in tech and innovation. Health: Manage stress and circulation. Lucky color Cyan, lucky number 11, lucky day Saturday. Most compatible with Gemini, Libra, Sagittarius."
+      },
+      {
+        "id": "zs_012",
+        "category": "zodiac_sign",
+        "number": 12,
+        "sign": "Pisces",
+        "date_range": "February 19 - March 20",
+        "element": "Water",
+        "ruling_planet": "Jupiter/Neptune",
+        "symbol": "Fish",
+        "traits": [
+          "Creative",
+          "Emotional",
+          "Intuitive",
+          "Compassionate"
+        ],
+        "strengths": [
+          "Empathy",
+          "Imagination",
+          "Spiritual depth"
+        ],
+        "weaknesses": [
+          "Escapism",
+          "Over-idealism",
+          "Indecisiveness"
+        ],
+        "love": "Deeply romantic, emotionally giving, and spiritually connected to partner.",
+        "career": "Naturally gifted in art, music, healing, spiritual guidance, and film.",
+        "health": "Should avoid emotional overload and pay attention to feet and lymphatic health.",
+        "lucky": {
+          "color": "Sea Green",
+          "number": 12,
+          "day": "Thursday",
+          "direction": "North",
+          "gemstone": "Yellow Sapphire"
+        },
+        "compatibility": [
+          "Cancer",
+          "Scorpio",
+          "Capricorn"
+        ],
+        "text": "Pisces is the twelfth sign of the zodiac, born February 19 to March 20. A Water sign ruled by Jupiter and Neptune, symbolised by the Fish. Traits: Creative, Emotional, Intuitive, Compassionate. Strengths: Empathy, Imagination. Weaknesses: Escapism. In love: Romantic and deeply emotional. Career: Good in art, healing. Health: Avoid emotional overload. Lucky color Sea Green, lucky number 12, lucky day Thursday. Most compatible with Cancer, Scorpio, Capricorn."
+      },
+      {
+        "id": "psm_001",
+        "category": "planet_sign_meaning",
+        "planet": "Sun",
+        "sign": "Aries",
+        "keywords": [
+          "bold",
+          "confident",
+          "pioneering",
+          "initiative",
+          "direct"
+        ],
+        "life_areas": [
+          "career",
+          "health",
+          "love"
+        ],
+        "intensity": "High",
+        "text": "Sun in Aries brings bold, pioneering energy. You feel a surge of confidence, initiative, and desire to start new ventures. This is one of the most energetic placements for career ambitions. Relationships may feel direct and honest. Health vitality is high."
+      },
+      {
+        "id": "psm_002",
+        "category": "planet_sign_meaning",
+        "planet": "Sun",
+        "sign": "Taurus",
+        "keywords": [
+          "stable",
+          "practical",
+          "financial",
+          "sensory",
+          "loyalty"
+        ],
+        "life_areas": [
+          "money",
+          "career",
+          "love"
+        ],
+        "intensity": "Medium",
+        "text": "Sun in Taurus grounds your energy in practicality, stability, and sensory pleasure. Financial matters come to the forefront. Career decisions are steady and well-thought-out. Love is warm and loyal but moves slowly."
+      },
+      {
+        "id": "psm_003",
+        "category": "planet_sign_meaning",
+        "planet": "Sun",
+        "sign": "Gemini",
+        "keywords": [
+          "communication",
+          "curious",
+          "social",
+          "networking",
+          "adaptable"
+        ],
+        "life_areas": [
+          "career",
+          "love"
+        ],
+        "intensity": "Medium",
+        "text": "Sun in Gemini sharpens communication, curiosity, and social energy. Expect busy days with many conversations and short trips. Career benefits from networking. Love is light and playful."
+      },
+      {
+        "id": "psm_004",
+        "category": "planet_sign_meaning",
+        "planet": "Sun",
+        "sign": "Cancer",
+        "keywords": [
+          "nurturing",
+          "emotional",
+          "home",
+          "family",
+          "intuitive"
+        ],
+        "life_areas": [
+          "love",
+          "health"
+        ],
+        "intensity": "Medium",
+        "text": "Sun in Cancer heightens emotional sensitivity and nurturing instincts. Home and family take priority. Career linked to care-giving or intuitive fields flourishes. Love deepens emotionally."
+      },
+      {
+        "id": "psm_005",
+        "category": "planet_sign_meaning",
+        "planet": "Sun",
+        "sign": "Leo",
+        "keywords": [
+          "charismatic",
+          "creative",
+          "generous",
+          "leadership",
+          "vibrant"
+        ],
+        "life_areas": [
+          "career",
+          "love",
+          "health"
+        ],
+        "intensity": "Very High",
+        "text": "Sun in Leo is its own sign — energy is at its most vibrant, creative, and charismatic. Career achievements shine. Love is dramatic and generous. Health is robust with good vitality."
+      },
+      {
+        "id": "psm_006",
+        "category": "planet_sign_meaning",
+        "planet": "Sun",
+        "sign": "Virgo",
+        "keywords": [
+          "analytical",
+          "precise",
+          "service",
+          "health-focused",
+          "detail"
+        ],
+        "life_areas": [
+          "career",
+          "health"
+        ],
+        "intensity": "Medium",
+        "text": "Sun in Virgo brings precision, analytical thinking, and a focus on health and service. Work productivity is excellent. Details matter. Love may feel reserved but sincere."
+      },
+      {
+        "id": "psm_007",
+        "category": "planet_sign_meaning",
+        "planet": "Sun",
+        "sign": "Libra",
+        "keywords": [
+          "balance",
+          "partnership",
+          "beauty",
+          "diplomatic",
+          "harmonious"
+        ],
+        "life_areas": [
+          "love",
+          "career"
+        ],
+        "intensity": "Medium",
+        "text": "Sun in Libra highlights partnerships, beauty, and balance. Love life becomes very active. Negotiations and collaborations succeed. Career in arts, law, or diplomacy gets a boost."
+      },
+      {
+        "id": "psm_008",
+        "category": "planet_sign_meaning",
+        "planet": "Sun",
+        "sign": "Scorpio",
+        "keywords": [
+          "intense",
+          "transformative",
+          "secretive",
+          "passionate",
+          "powerful"
+        ],
+        "life_areas": [
+          "love",
+          "money"
+        ],
+        "intensity": "High",
+        "text": "Sun in Scorpio intensifies all areas of life. Deep transformation, financial inheritance, secrets, and power dynamics come into focus. Love is passionate and all-or-nothing."
+      },
+      {
+        "id": "psm_009",
+        "category": "planet_sign_meaning",
+        "planet": "Sun",
+        "sign": "Sagittarius",
+        "keywords": [
+          "expansive",
+          "adventurous",
+          "philosophical",
+          "optimistic",
+          "free"
+        ],
+        "life_areas": [
+          "career",
+          "love"
+        ],
+        "intensity": "High",
+        "text": "Sun in Sagittarius expands your horizons through travel, philosophy, and higher learning. Career in education, law, or travel flourishes. Love is adventurous and free-spirited."
+      },
+      {
+        "id": "psm_010",
+        "category": "planet_sign_meaning",
+        "planet": "Sun",
+        "sign": "Capricorn",
+        "keywords": [
+          "ambitious",
+          "disciplined",
+          "structured",
+          "responsible",
+          "goal-driven"
+        ],
+        "life_areas": [
+          "career",
+          "money"
+        ],
+        "intensity": "Medium",
+        "text": "Sun in Capricorn sharpens ambition, discipline, and long-term career planning. Financial planning is favored. Love is serious and commitment-oriented. Health requires rest."
+      },
+      {
+        "id": "psm_011",
+        "category": "planet_sign_meaning",
+        "planet": "Sun",
+        "sign": "Aquarius",
+        "keywords": [
+          "innovative",
+          "humanitarian",
+          "intellectual",
+          "unconventional",
+          "social"
+        ],
+        "life_areas": [
+          "career",
+          "love"
+        ],
+        "intensity": "Medium",
+        "text": "Sun in Aquarius awakens innovation, humanitarian ideals, and group activities. Unconventional career paths thrive. Love is friendly and intellectual rather than emotional."
+      },
+      {
+        "id": "psm_012",
+        "category": "planet_sign_meaning",
+        "planet": "Sun",
+        "sign": "Pisces",
+        "keywords": [
+          "spiritual",
+          "compassionate",
+          "creative",
+          "dreamy",
+          "intuitive"
+        ],
+        "life_areas": [
+          "love",
+          "health"
+        ],
+        "intensity": "Low",
+        "text": "Sun in Pisces deepens spiritual sensitivity, creativity, and compassion. Artistic and healing careers are favored. Love is dreamy and selfless. Health needs careful attention."
+      },
+      {
+        "id": "psm_013",
+        "category": "planet_sign_meaning",
+        "planet": "Moon",
+        "sign": "Aries",
+        "keywords": [
+          "impulsive",
+          "restless",
+          "energetic",
+          "reactive",
+          "passionate"
+        ],
+        "life_areas": [
+          "health",
+          "love"
+        ],
+        "intensity": "High",
+        "text": "Moon in Aries creates emotional restlessness and impulsive reactions. You may feel irritable or impatient today. Energy for physical activity is high. Relationships may involve quick conflicts and equally quick make-ups."
+      },
+      {
+        "id": "psm_014",
+        "category": "planet_sign_meaning",
+        "planet": "Moon",
+        "sign": "Taurus",
+        "keywords": [
+          "stable",
+          "comfort",
+          "security",
+          "sensual",
+          "grounded"
+        ],
+        "life_areas": [
+          "money",
+          "love"
+        ],
+        "intensity": "High",
+        "text": "Moon in Taurus brings emotional stability, comfort-seeking, and a desire for security. Great day for financial decisions. Love feels warm and steady. You crave good food and physical comfort."
+      },
+      {
+        "id": "psm_015",
+        "category": "planet_sign_meaning",
+        "planet": "Moon",
+        "sign": "Gemini",
+        "keywords": [
+          "restless",
+          "communicative",
+          "versatile",
+          "curious",
+          "changeable"
+        ],
+        "life_areas": [
+          "career"
+        ],
+        "intensity": "Medium",
+        "text": "Moon in Gemini creates mental restlessness and a need for variety. Conversations are emotionally charged. Career benefits from sharp communication. Love may feel scattered and unfocused."
+      },
+      {
+        "id": "psm_016",
+        "category": "planet_sign_meaning",
+        "planet": "Moon",
+        "sign": "Cancer",
+        "keywords": [
+          "intuitive",
+          "nurturing",
+          "emotional",
+          "psychic",
+          "family"
+        ],
+        "life_areas": [
+          "love",
+          "health"
+        ],
+        "intensity": "Very High",
+        "text": "Moon in Cancer is its own sign — deeply intuitive, nurturing, and emotional. Family matters deeply today. Psychic sensitivity is at its peak. Love is deeply caring and protective."
+      },
+      {
+        "id": "psm_017",
+        "category": "planet_sign_meaning",
+        "planet": "Moon",
+        "sign": "Leo",
+        "keywords": [
+          "generous",
+          "dramatic",
+          "creative",
+          "recognition",
+          "warm"
+        ],
+        "life_areas": [
+          "love",
+          "career"
+        ],
+        "intensity": "High",
+        "text": "Moon in Leo brings warmth, generosity, and a desire for recognition. Creative expression is highlighted. Love is dramatic and affectionate. Career presentations go extremely well."
+      },
+      {
+        "id": "psm_018",
+        "category": "planet_sign_meaning",
+        "planet": "Moon",
+        "sign": "Virgo",
+        "keywords": [
+          "critical",
+          "detail-oriented",
+          "health",
+          "routine",
+          "analytical"
+        ],
+        "life_areas": [
+          "health",
+          "career"
+        ],
+        "intensity": "Medium",
+        "text": "Moon in Virgo heightens critical thinking and attention to detail. Health and diet routines are highlighted. Work productivity improves significantly. Emotional wellbeing depends on order and cleanliness."
+      },
+      {
+        "id": "psm_019",
+        "category": "planet_sign_meaning",
+        "planet": "Moon",
+        "sign": "Libra",
+        "keywords": [
+          "harmonious",
+          "fair",
+          "artistic",
+          "relationship-focused",
+          "balanced"
+        ],
+        "life_areas": [
+          "love"
+        ],
+        "intensity": "Medium",
+        "text": "Moon in Libra seeks emotional harmony, fairness, and beauty. Relationship conversations flow smoothly. Artistic endeavors are favored. Avoid making major solo decisions today."
+      },
+      {
+        "id": "psm_020",
+        "category": "planet_sign_meaning",
+        "planet": "Moon",
+        "sign": "Scorpio",
+        "keywords": [
+          "intense",
+          "psychological",
+          "secretive",
+          "transformative",
+          "sharp"
+        ],
+        "life_areas": [
+          "love",
+          "money"
+        ],
+        "intensity": "High",
+        "text": "Moon in Scorpio intensifies all emotions. Deep psychological insights are possible. Financial instincts are razor sharp. Love can feel obsessive or deeply transformative today."
+      },
+      {
+        "id": "psm_021",
+        "category": "planet_sign_meaning",
+        "planet": "Moon",
+        "sign": "Sagittarius",
+        "keywords": [
+          "optimistic",
+          "adventurous",
+          "philosophical",
+          "carefree",
+          "expansive"
+        ],
+        "life_areas": [
+          "career",
+          "love"
+        ],
+        "intensity": "Medium",
+        "text": "Moon in Sagittarius lifts your mood and expands your entire outlook. Travel, adventure, and optimism dominate completely. Career in education or philosophy gets a noticeable boost. Love is carefree."
+      },
+      {
+        "id": "psm_022",
+        "category": "planet_sign_meaning",
+        "planet": "Moon",
+        "sign": "Capricorn",
+        "keywords": [
+          "disciplined",
+          "serious",
+          "responsible",
+          "ambitious",
+          "cool"
+        ],
+        "life_areas": [
+          "career"
+        ],
+        "intensity": "Medium",
+        "text": "Moon in Capricorn creates emotional discipline and a serious focus on responsibilities. Career ambitions are emotionally driven today. Love may feel cool or duty-bound rather than spontaneous."
+      },
+      {
+        "id": "psm_023",
+        "category": "planet_sign_meaning",
+        "planet": "Moon",
+        "sign": "Aquarius",
+        "keywords": [
+          "detached",
+          "intellectual",
+          "humanitarian",
+          "innovative",
+          "loyal"
+        ],
+        "life_areas": [
+          "career"
+        ],
+        "intensity": "Low",
+        "text": "Moon in Aquarius detaches emotions and elevates intellectual and humanitarian concerns. Group activities are strongly favored. Love may feel emotionally distant but remains deeply loyal."
+      },
+      {
+        "id": "psm_024",
+        "category": "planet_sign_meaning",
+        "planet": "Moon",
+        "sign": "Pisces",
+        "keywords": [
+          "empathetic",
+          "dreamy",
+          "spiritual",
+          "artistic",
+          "compassionate"
+        ],
+        "life_areas": [
+          "love",
+          "health"
+        ],
+        "intensity": "Medium",
+        "text": "Moon in Pisces heightens empathy, dreams, and spiritual sensitivity. Artistic inspiration is exceptionally strong. Health requires adequate rest. Love is compassionate and boundless."
+      },
+      {
+        "id": "psm_025",
+        "category": "planet_sign_meaning",
+        "planet": "Venus",
+        "sign": "Aries",
+        "keywords": [
+          "bold love",
+          "direct",
+          "passionate",
+          "impulsive romance",
+          "desire"
+        ],
+        "life_areas": [
+          "love",
+          "money"
+        ],
+        "intensity": "High",
+        "text": "Venus in Aries sparks bold, direct expressions of love and desire. Romantic pursuit is intensely energetic. Spending on personal appearance is likely. Creative projects get an energetic dynamic push."
+      },
+      {
+        "id": "psm_026",
+        "category": "planet_sign_meaning",
+        "planet": "Venus",
+        "sign": "Taurus",
+        "keywords": [
+          "sensual",
+          "loyal",
+          "pleasure",
+          "financial",
+          "artistic"
+        ],
+        "life_areas": [
+          "love",
+          "money"
+        ],
+        "intensity": "Very High",
+        "text": "Venus in Taurus is its home sign — love is sensual, loyal, and deeply pleasurable. Financial gains through beauty or arts are possible. Relationships deepen beautifully with physical comfort and security."
+      },
+      {
+        "id": "psm_027",
+        "category": "planet_sign_meaning",
+        "planet": "Venus",
+        "sign": "Libra",
+        "keywords": [
+          "charming",
+          "diplomatic",
+          "harmonious",
+          "idealistic",
+          "artistic"
+        ],
+        "life_areas": [
+          "love",
+          "career"
+        ],
+        "intensity": "Very High",
+        "text": "Venus in Libra, its other home sign, brings perfect balance in relationships. Charm and diplomacy attract significant opportunities. Love is idealistic and harmonious. Artistic careers flourish beautifully."
+      },
+      {
+        "id": "psm_028",
+        "category": "planet_sign_meaning",
+        "planet": "Mars",
+        "sign": "Aries",
+        "keywords": [
+          "driven",
+          "competitive",
+          "energetic",
+          "aggressive",
+          "ambitious"
+        ],
+        "life_areas": [
+          "career",
+          "health"
+        ],
+        "intensity": "Very High",
+        "text": "Mars in Aries, its home sign, gives maximum drive, energy, and competitive spirit. Physical stamina is excellent. Career goals are pursued aggressively. Anger can flare quickly but also passes fast."
+      },
+      {
+        "id": "psm_029",
+        "category": "planet_sign_meaning",
+        "planet": "Mars",
+        "sign": "Capricorn",
+        "keywords": [
+          "strategic",
+          "disciplined",
+          "ambitious",
+          "endurance",
+          "powerful"
+        ],
+        "life_areas": [
+          "career",
+          "health"
+        ],
+        "intensity": "Very High",
+        "text": "Mars in Capricorn is exalted — disciplined, strategic, and powerfully ambitious. Career advancement through hard sustained effort is very likely. Physical endurance is at its absolute peak."
+      },
+      {
+        "id": "psm_030",
+        "category": "planet_sign_meaning",
+        "planet": "Jupiter",
+        "sign": "Sagittarius",
+        "keywords": [
+          "fortunate",
+          "expansive",
+          "wise",
+          "growth",
+          "luck"
+        ],
+        "life_areas": [
+          "career",
+          "money",
+          "love"
+        ],
+        "intensity": "Very High",
+        "text": "Jupiter in Sagittarius, its home sign, is the most expansive and fortunate placement possible. All areas of life benefit from growth, wisdom, and natural luck. Travel and education bring outstanding rewards."
+      },
+      {
+        "id": "psm_031",
+        "category": "planet_sign_meaning",
+        "planet": "Jupiter",
+        "sign": "Cancer",
+        "keywords": [
+          "nurturing",
+          "generous",
+          "family wealth",
+          "emotional",
+          "real estate"
+        ],
+        "life_areas": [
+          "money",
+          "love"
+        ],
+        "intensity": "Very High",
+        "text": "Jupiter in Cancer is exalted — deeply nurturing and emotionally generous. Family wealth and real estate matters are strongly favored. Emotional intelligence brings consistent financial gain."
+      },
+      {
+        "id": "psm_032",
+        "category": "planet_sign_meaning",
+        "planet": "Saturn",
+        "sign": "Capricorn",
+        "keywords": [
+          "disciplined",
+          "structured",
+          "long-term",
+          "responsible",
+          "hard work"
+        ],
+        "life_areas": [
+          "career",
+          "money"
+        ],
+        "intensity": "High",
+        "text": "Saturn in Capricorn, its own sign, rewards hard work, structure, and long-term planning above all. Career achievements come through sustained disciplined effort. Finances stabilize and grow steadily over time."
+      },
+      {
+        "id": "psm_033",
+        "category": "planet_sign_meaning",
+        "planet": "Mercury",
+        "sign": "Virgo",
+        "keywords": [
+          "analytical",
+          "precise",
+          "detail",
+          "service",
+          "communication"
+        ],
+        "life_areas": [
+          "career",
+          "health"
+        ],
+        "intensity": "Very High",
+        "text": "Mercury in Virgo, its home and exaltation sign, brings supreme analytical ability and precise communication. Work quality reaches its absolute highest peak. Health analysis and systematic problem-solving excel."
+      },
+      {
+        "id": "psm_034",
+        "category": "planet_sign_meaning",
+        "planet": "Mercury",
+        "sign": "Pisces",
+        "keywords": [
+          "dreamy",
+          "intuitive",
+          "unclear",
+          "creative",
+          "spiritual"
+        ],
+        "life_areas": [
+          "career"
+        ],
+        "intensity": "Low",
+        "text": "Mercury in Pisces creates dreamy, intuitive but sometimes unclear communication. Creative and artistic ideas flow beautifully but practical details may be missed. Double-check all written agreements carefully."
+      },
+      {
+        "id": "psm_035",
+        "category": "planet_sign_meaning",
+        "planet": "Rahu",
+        "sign": "Gemini",
+        "keywords": [
+          "information",
+          "foreign connections",
+          "multiple income",
+          "restless",
+          "communication"
+        ],
+        "life_areas": [
+          "career",
+          "money"
+        ],
+        "intensity": "High",
+        "text": "Rahu in Gemini intensifies the desire for information, communication, and valuable connections. Foreign contacts significantly benefit career. Multiple income sources are likely to emerge. Restlessness in love relationships."
+      },
+      {
+        "id": "psm_036",
+        "category": "planet_sign_meaning",
+        "planet": "Ketu",
+        "sign": "Sagittarius",
+        "keywords": [
+          "detachment",
+          "spiritual",
+          "mystical",
+          "research",
+          "unconventional"
+        ],
+        "life_areas": [
+          "career"
+        ],
+        "intensity": "Medium",
+        "text": "Ketu in Sagittarius creates detachment from conventional beliefs and long-distance travel. Spiritual seeking deepens naturally. Career in mystical, philosophical, or research fields is strongly favored."
+      },
+      {
+        "id": "asp_001",
+        "category": "aspect_interpretation",
+        "aspect_type": "Conjunction",
+        "angle_degrees": 0,
+        "planet_1": "Sun",
+        "planet_2": "Mars",
+        "score_effect": {
+          "career": 1.5,
+          "health": 1.0
+        },
+        "text": "Sun conjunct Mars supercharges physical energy, ambition, and courage. Excellent for career initiatives, sports, and any activity requiring bold decisive action. Aggression must be consciously channelled to avoid unnecessary conflict."
+      },
+      {
+        "id": "asp_002",
+        "category": "aspect_interpretation",
+        "aspect_type": "Conjunction",
+        "angle_degrees": 0,
+        "planet_1": "Venus",
+        "planet_2": "Jupiter",
+        "score_effect": {
+          "love": 2.0,
+          "money": 1.5
+        },
+        "text": "Venus conjunct Jupiter is one of the luckiest love and money aspects in all of astrology. Romantic opportunities appear unexpectedly. Financial gains through beauty, arts, or partnership are very likely. Generosity and abundance naturally overflow."
+      },
+      {
+        "id": "asp_003",
+        "category": "aspect_interpretation",
+        "aspect_type": "Conjunction",
+        "angle_degrees": 0,
+        "planet_1": "Moon",
+        "planet_2": "Saturn",
+        "score_effect": {
+          "love": -1.0,
+          "career": 0.5
+        },
+        "text": "Moon conjunct Saturn creates emotional heaviness, restriction, and a serious mood. Work duties may feel burdensome. Relationships feel cold or emotionally distant. However it is good for disciplined focused work requiring deep concentration."
+      },
+      {
+        "id": "asp_004",
+        "category": "aspect_interpretation",
+        "aspect_type": "Trine",
+        "angle_degrees": 120,
+        "planet_1": "Sun",
+        "planet_2": "Moon",
+        "score_effect": {
+          "love": 1.3,
+          "health": 1.2
+        },
+        "text": "Sun trine Moon creates beautiful inner harmony between will and emotion. Confidence flows naturally and easily. Relationships benefit from ease and genuine deep understanding. Physical vitality and emotional wellbeing align perfectly."
+      },
+      {
+        "id": "asp_005",
+        "category": "aspect_interpretation",
+        "aspect_type": "Trine",
+        "angle_degrees": 120,
+        "planet_1": "Venus",
+        "planet_2": "Mars",
+        "score_effect": {
+          "love": 1.5
+        },
+        "text": "Venus trine Mars is a powerfully positive love and attraction aspect. Sexual chemistry and romantic desire are both strong and natural. Creative partnerships flourish with ease. Physical energy combines with irresistible charm."
+      },
+      {
+        "id": "asp_006",
+        "category": "aspect_interpretation",
+        "aspect_type": "Trine",
+        "angle_degrees": 120,
+        "planet_1": "Jupiter",
+        "planet_2": "Sun",
+        "score_effect": {
+          "career": 1.3,
+          "money": 1.2
+        },
+        "text": "Jupiter trine Sun expands confidence, natural luck, and opportunities across all life areas. Career advancement happens with noticeably less effort. Financial gains come through generous and optimistic decisive actions."
+      },
+      {
+        "id": "asp_007",
+        "category": "aspect_interpretation",
+        "aspect_type": "Square",
+        "angle_degrees": 90,
+        "planet_1": "Mars",
+        "planet_2": "Saturn",
+        "score_effect": {
+          "career": -0.8,
+          "health": -0.5
+        },
+        "text": "Mars square Saturn creates frustrating friction between drive and restriction. Delays and blocked ambitions are very likely. Hard work is required but rewards may come slowly. Avoid all rash impulsive decisions today."
+      },
+      {
+        "id": "asp_008",
+        "category": "aspect_interpretation",
+        "aspect_type": "Square",
+        "angle_degrees": 90,
+        "planet_1": "Venus",
+        "planet_2": "Saturn",
+        "score_effect": {
+          "love": -1.0,
+          "money": -0.8
+        },
+        "text": "Venus square Saturn creates emotional distance, disappointment in love, and financial tightness. Existing relationships may feel dutiful rather than joyful. Avoid making any major financial commitments or romantic ultimatums today."
+      },
+      {
+        "id": "asp_009",
+        "category": "aspect_interpretation",
+        "aspect_type": "Square",
+        "angle_degrees": 90,
+        "planet_1": "Sun",
+        "planet_2": "Moon",
+        "score_effect": {
+          "love": -0.5,
+          "health": -0.4
+        },
+        "text": "Sun square Moon creates inner tension between ego and emotion. Decisions feel conflicted and difficult. Relationships face misunderstandings and crossed signals. Rest and careful reflection are recommended over bold action today."
+      },
+      {
+        "id": "asp_010",
+        "category": "aspect_interpretation",
+        "aspect_type": "Opposition",
+        "angle_degrees": 180,
+        "planet_1": "Sun",
+        "planet_2": "Saturn",
+        "score_effect": {
+          "career": -0.8
+        },
+        "text": "Sun opposite Saturn brings significant challenges to identity and authority. Career obstacles from superiors or institutions are likely to surface today. Discipline and patience are absolutely required. Long-term planning made today will ultimately pay off."
+      },
+      {
+        "id": "asp_011",
+        "category": "aspect_interpretation",
+        "aspect_type": "Sextile",
+        "angle_degrees": 60,
+        "planet_1": "Sun",
+        "planet_2": "Mercury",
+        "score_effect": {
+          "career": 1.1
+        },
+        "text": "Sun sextile Mercury sharpens communication, mental clarity, and quick intelligent thinking. Great for presentations, important negotiations, writing, and all intellectual pursuits. Learning new concepts comes easily and naturally today."
+      },
+      {
+        "id": "asp_012",
+        "category": "aspect_interpretation",
+        "aspect_type": "Sextile",
+        "angle_degrees": 60,
+        "planet_1": "Mars",
+        "planet_2": "Jupiter",
+        "score_effect": {
+          "career": 1.1,
+          "money": 1.0
+        },
+        "text": "Mars sextile Jupiter combines raw drive with natural luck and expansive energy. Mild but very reliable boost to career ambitions and financial opportunities. Enthusiasm and optimism open doors with noticeably less effort than usual."
+      },
+      {
+        "id": "asp_013",
+        "category": "aspect_interpretation",
+        "aspect_type": "Sextile",
+        "angle_degrees": 60,
+        "planet_1": "Moon",
+        "planet_2": "Venus",
+        "score_effect": {
+          "love": 1.1
+        },
+        "text": "Moon sextile Venus brings wonderful emotional warmth, affectionate relationships, and a genuine love of beauty. Social interactions are pleasant and deeply rewarding. Financial intuition is gently and reliably positive today."
+      },
+      {
+        "id": "asp_014",
+        "category": "aspect_interpretation",
+        "aspect_type": "Trine",
+        "angle_degrees": 120,
+        "planet_1": "Moon",
+        "planet_2": "Jupiter",
+        "score_effect": {
+          "love": 1.3,
+          "money": 1.2
+        },
+        "text": "Moon trine Jupiter brings beautiful emotional generosity, natural optimism, and a warm feeling of abundance. Family relationships feel wonderfully warm and fully supportive. Financial intuition is sharp and consistently reliable."
+      },
+      {
+        "id": "asp_015",
+        "category": "aspect_interpretation",
+        "aspect_type": "Opposition",
+        "angle_degrees": 180,
+        "planet_1": "Venus",
+        "planet_2": "Mars",
+        "score_effect": {
+          "love": 0.0
+        },
+        "text": "Venus opposite Mars creates powerful magnetic attraction mixed with noticeable tension and potential conflict in relationships. Power struggles in love are very possible. Creative energy is genuinely high but needs clear direction and conscious communication."
+      },
+      {
+        "id": "zdp_001",
+        "category": "zodiac_daily_profile",
+        "sign": "Aries",
+        "element": "Fire",
+        "ruling_planet": "Mars",
+        "best_time_window": "6:00 AM - 9:00 AM",
+        "avoid_time_window": "2:00 PM - 3:30 PM",
+        "love_tendency": "Direct, passionate, and impulsive. Attraction happens fast. Bold and spontaneous moves win hearts.",
+        "career_tendency": "Leadership, entrepreneurial decisions, and competitive environments thrive. Start new ventures. Avoid recklessness.",
+        "health_tendency": "Physical stamina is high. Great for intense workouts. Prone to headaches. Rest head and face area.",
+        "text": "Aries daily energy is high-intensity, action-packed, and competitive. Boldness and initiative define the tone. Impatience is the main downside. Best used for starting new projects, physical challenges, and direct honest confrontations. Best time 6 AM to 9 AM. Avoid 2 PM to 3:30 PM."
+      },
+      {
+        "id": "zdp_002",
+        "category": "zodiac_daily_profile",
+        "sign": "Taurus",
+        "element": "Earth",
+        "ruling_planet": "Venus",
+        "best_time_window": "10:00 AM - 12:00 PM",
+        "avoid_time_window": "5:00 PM - 6:30 PM",
+        "love_tendency": "Loyal, sensual, and slow-moving. Physical affection matters deeply. Best romance involves comfort and beauty.",
+        "career_tendency": "Banking, real estate, and luxury fields thrive. Patient consistent effort is rewarded. Avoid rushing financial decisions.",
+        "health_tendency": "Throat and neck need attention. Good day for nutrition focus. Comfort foods in moderation.",
+        "text": "Taurus daily energy is steady, sensual, and financially minded. Comfort, beauty, and security dominate the day. Stubbornness is the main challenge. Best for financial planning, enjoying nature, and long-term decisions. Best time 10 AM to noon. Avoid 5 PM to 6:30 PM."
+      },
+      {
+        "id": "zdp_003",
+        "category": "zodiac_daily_profile",
+        "sign": "Gemini",
+        "element": "Air",
+        "ruling_planet": "Mercury",
+        "best_time_window": "9:00 AM - 11:00 AM",
+        "avoid_time_window": "3:00 PM - 4:30 PM",
+        "love_tendency": "Playful, witty, needs mental stimulation. Boredom is the enemy. Multiple conversations keep love fresh.",
+        "career_tendency": "Media, writing, sales, teaching, and communication thrive. Multi-tasking is effective. Handle correspondence in the morning.",
+        "health_tendency": "Hands, arms, and lungs need attention. Mental restlessness disturbs sleep. Short walks calm the nervous system.",
+        "text": "Gemini daily energy is mentally active, communicative, and socially engaging. Variety and adaptability shine. Scattered thinking is the downside. Best for networking, learning, writing, and short productive trips. Best time 9 AM to 11 AM. Avoid 3 PM to 4:30 PM."
+      },
+      {
+        "id": "zdp_004",
+        "category": "zodiac_daily_profile",
+        "sign": "Cancer",
+        "element": "Water",
+        "ruling_planet": "Moon",
+        "best_time_window": "7:00 AM - 9:00 AM",
+        "avoid_time_window": "12:00 PM - 1:30 PM",
+        "love_tendency": "Deeply nurturing and emotionally intuitive. Home-based romance is ideal. Security must come before trust.",
+        "career_tendency": "Hospitality, real estate, food industry, and healing thrive. Working from home is most productive.",
+        "health_tendency": "Stomach and chest need care. Avoid comfort eating. Emotional wellbeing directly affects physical health.",
+        "text": "Cancer daily energy is emotionally rich, intuitive, and family-oriented. Nurturing and sensitivity are heightened. Moodiness is the challenge. Best for home matters, family bonding, and creative nurturing work. Best time 7 AM to 9 AM. Avoid noon to 1:30 PM."
+      },
+      {
+        "id": "zdp_005",
+        "category": "zodiac_daily_profile",
+        "sign": "Leo",
+        "element": "Fire",
+        "ruling_planet": "Sun",
+        "best_time_window": "11:00 AM - 1:00 PM",
+        "avoid_time_window": "4:00 PM - 5:30 PM",
+        "love_tendency": "Generous, dramatic, and deeply romantic. Grand gestures are natural. Loyalty is fierce once committed.",
+        "career_tendency": "Entertainment, leadership roles, and public platforms thrive. Recognition drives peak performance.",
+        "health_tendency": "Heart and spine need attention. Good posture is important. Cardiovascular exercise is highly beneficial.",
+        "text": "Leo daily energy is vibrant, creative, and charismatic. Self-expression and leadership dominate. Pride can be a downside. Best for presentations, creative projects, romance, and public appearances. Best time 11 AM to 1 PM. Avoid 4 PM to 5:30 PM."
+      },
+      {
+        "id": "zdp_006",
+        "category": "zodiac_daily_profile",
+        "sign": "Virgo",
+        "element": "Earth",
+        "ruling_planet": "Mercury",
+        "best_time_window": "8:00 AM - 10:00 AM",
+        "avoid_time_window": "1:00 PM - 2:30 PM",
+        "love_tendency": "Sincere but reserved. Love expressed through service and thoughtful detail. Criticism must be carefully managed.",
+        "career_tendency": "Healthcare, accounting, editing, research, and IT yield excellent results. Avoid perfectionism paralysis.",
+        "health_tendency": "Digestive system needs careful attention. Light clean foods support energy. Diet quality matters more today.",
+        "text": "Virgo daily energy is analytical, productive, and health-focused. Precision and service define the day. Over-criticism is the pitfall. Best for detailed work, health routines, thorough organising, and systematic problem-solving. Best time 8 AM to 10 AM. Avoid 1 PM to 2:30 PM."
+      },
+      {
+        "id": "zdp_007",
+        "category": "zodiac_daily_profile",
+        "sign": "Libra",
+        "element": "Air",
+        "ruling_planet": "Venus",
+        "best_time_window": "2:00 PM - 4:00 PM",
+        "avoid_time_window": "9:00 AM - 10:30 AM",
+        "love_tendency": "Romantic and harmony-seeking. Ideal dates are aesthetically beautiful. Avoids confrontation of any kind.",
+        "career_tendency": "Law, diplomacy, design, and partnerships thrive. Partnership-based work outperforms solo efforts.",
+        "health_tendency": "Kidneys and lower back need attention. Hydration is important. Avoid excess sugar and alcohol.",
+        "text": "Libra daily energy is harmonious, social, and relationship-focused. Beauty, fairness, and diplomacy shine. Indecision is the main challenge. Best for partnerships, negotiations, artistic projects, and meaningful social events. Best time 2 PM to 4 PM. Avoid 9 AM to 10:30 AM."
+      },
+      {
+        "id": "zdp_008",
+        "category": "zodiac_daily_profile",
+        "sign": "Scorpio",
+        "element": "Water",
+        "ruling_planet": "Mars/Pluto",
+        "best_time_window": "8:00 PM - 10:00 PM",
+        "avoid_time_window": "11:00 AM - 12:30 PM",
+        "love_tendency": "Passionate and all-or-nothing. Deep loyalty once trust is established. Emotional intensity defines all connections.",
+        "career_tendency": "Finance, investigation, psychology, research, and crisis management thrive. Follow gut instincts in high-stakes situations.",
+        "health_tendency": "Reproductive and elimination systems need attention. Regular detox supports wellbeing. Avoid emotional eating.",
+        "text": "Scorpio daily energy is intense, investigative, and transformative. Deep insight and power dynamics surface. Obsession must be managed. Best for research, financial strategy, and emotional healing. Best time 8 PM to 10 PM. Avoid 11 AM to 12:30 PM."
+      },
+      {
+        "id": "zdp_009",
+        "category": "zodiac_daily_profile",
+        "sign": "Sagittarius",
+        "element": "Fire",
+        "ruling_planet": "Jupiter",
+        "best_time_window": "10:00 AM - 12:00 PM",
+        "avoid_time_window": "6:00 PM - 7:30 PM",
+        "love_tendency": "Adventurous and freedom-loving. Honesty is essential. Long-distance love is possible. Freedom is non-negotiable.",
+        "career_tendency": "Education, travel, publishing, law, and international business thrive. Bold visions come together powerfully.",
+        "health_tendency": "Hips, thighs, and liver need care. Outdoor exercise like hiking is highly beneficial and energising.",
+        "text": "Sagittarius daily energy is adventurous, optimistic, and philosophical. Freedom and expansion dominate. Over-commitment is a pitfall. Best for travel, learning, spiritual growth, and long-term ambitious vision. Best time 10 AM to noon. Avoid 6 PM to 7:30 PM."
+      },
+      {
+        "id": "zdp_010",
+        "category": "zodiac_daily_profile",
+        "sign": "Capricorn",
+        "element": "Earth",
+        "ruling_planet": "Saturn",
+        "best_time_window": "9:00 AM - 11:00 AM",
+        "avoid_time_window": "3:00 PM - 4:30 PM",
+        "love_tendency": "Serious and loyal. Takes time to open emotionally. Stability and shared goals are romantic priorities.",
+        "career_tendency": "Corporate settings, government, finance, and management thrive. Strategic decisions have lasting impact.",
+        "health_tendency": "Knees and joints need care. Stretching and weight-bearing exercise support skeletal health.",
+        "text": "Capricorn daily energy is disciplined, ambitious, and structured. Long-term goals and professional achievement are in focus. Rigidity and overwork are risks. Best for planning, career strategy, and financial structuring. Best time 9 AM to 11 AM. Avoid 3 PM to 4:30 PM."
+      },
+      {
+        "id": "zdp_011",
+        "category": "zodiac_daily_profile",
+        "sign": "Aquarius",
+        "element": "Air",
+        "ruling_planet": "Saturn/Uranus",
+        "best_time_window": "3:00 PM - 5:00 PM",
+        "avoid_time_window": "8:00 AM - 9:30 AM",
+        "love_tendency": "Values intellectual connection and freedom. Unconventional gestures work best. Love through shared ideals.",
+        "career_tendency": "Technology, social enterprise, science, and community leadership thrive. Unconventional approaches yield breakthroughs.",
+        "health_tendency": "Calves, ankles, and circulation need care. Avoid prolonged sitting. Gentle movement improves circulation.",
+        "text": "Aquarius daily energy is innovative, humanitarian, and intellectually charged. Group activities and social causes thrive. Emotional detachment is a challenge. Best for technology, social reform, and bold creative problem-solving. Best time 3 PM to 5 PM. Avoid 8 AM to 9:30 AM."
+      },
+      {
+        "id": "zdp_012",
+        "category": "zodiac_daily_profile",
+        "sign": "Pisces",
+        "element": "Water",
+        "ruling_planet": "Jupiter/Neptune",
+        "best_time_window": "6:00 AM - 8:00 AM",
+        "avoid_time_window": "2:00 PM - 3:30 PM",
+        "love_tendency": "Selfless, romantic, and idealistic. Emotional merging comes naturally. Maintain boundaries to protect energy.",
+        "career_tendency": "Healing arts, music, film, spiritual counselling, and charity thrive. Intuition leads to best outcomes.",
+        "health_tendency": "Feet and lymphatic system need care. Swimming and gentle yoga are ideal. Rest restores more than stimulation.",
+        "text": "Pisces daily energy is dreamy, compassionate, and spiritually sensitive. Intuition and artistic inspiration are heightened. Boundaries must be consciously maintained. Best for creative work, meditation, and spiritual practice. Best time 6 AM to 8 AM. Avoid 2 PM to 3:30 PM."
+      },
+      {
+        "id": "mph_001",
+        "category": "moon_phase_impact",
+        "moon_phase": "New Moon",
+        "energy_level": "Low — inward",
+        "emotional_tone": "Reflective, quiet, seed-planting",
+        "day_rating_modifier": -0.5,
+        "best_activities": [
+          "Set intentions",
+          "Meditate",
+          "Plan new projects",
+          "Journaling",
+          "Rest"
+        ],
+        "avoid_activities": [
+          "Major launches",
+          "Confrontations",
+          "Signing contracts"
+        ],
+        "text": "New Moon energy is inward and reflective. Best time for setting intentions and planting seeds. Rest is more beneficial than action. Begin planning new ventures but do not launch them yet. Day rating modifier: -0.5."
+      },
+      {
+        "id": "mph_002",
+        "category": "moon_phase_impact",
+        "moon_phase": "Waxing Crescent",
+        "energy_level": "Building",
+        "emotional_tone": "Hopeful, motivated, curious",
+        "day_rating_modifier": 0.3,
+        "best_activities": [
+          "Begin new projects",
+          "Light networking",
+          "Start health routines"
+        ],
+        "avoid_activities": [
+          "Abandoning plans",
+          "Major arguments"
+        ],
+        "text": "Waxing Crescent Moon builds momentum toward goals. Hope and motivation increase daily. Take first concrete steps on New Moon intentions. Curiosity and learning are strongly favored. Day rating modifier: +0.3."
+      },
+      {
+        "id": "mph_003",
+        "category": "moon_phase_impact",
+        "moon_phase": "First Quarter",
+        "energy_level": "Moderate — active",
+        "emotional_tone": "Determined, slightly tense",
+        "day_rating_modifier": 0.5,
+        "best_activities": [
+          "Overcome obstacles",
+          "Make decisions",
+          "Take action on plans"
+        ],
+        "avoid_activities": [
+          "Passive waiting",
+          "Procrastination"
+        ],
+        "text": "First Quarter Moon demands decisive action and courage to push through obstacles. Tension is productive — use it as fuel. Decisions made now carry real power. Day rating modifier: +0.5."
+      },
+      {
+        "id": "mph_004",
+        "category": "moon_phase_impact",
+        "moon_phase": "Waxing Gibbous",
+        "energy_level": "High — building",
+        "emotional_tone": "Refining, perfectionist, detail-focused",
+        "day_rating_modifier": 0.7,
+        "best_activities": [
+          "Fine-tune projects",
+          "Analyse progress",
+          "Edit work",
+          "Health check-ups"
+        ],
+        "avoid_activities": [
+          "Rushing",
+          "Launching unfinished work"
+        ],
+        "text": "Waxing Gibbous Moon is ideal for refinement and careful improvement. Energy is high and detail-focused. Review work and make final adjustments before Full Moon. Day rating modifier: +0.7."
+      },
+      {
+        "id": "mph_005",
+        "category": "moon_phase_impact",
+        "moon_phase": "Full Moon",
+        "energy_level": "Peak — intense",
+        "emotional_tone": "Heightened emotions, revelations, clarity",
+        "day_rating_modifier": 1.0,
+        "best_activities": [
+          "Celebrations",
+          "Completions",
+          "Releasing old patterns",
+          "Romance",
+          "Social gatherings"
+        ],
+        "avoid_activities": [
+          "Sleep deprivation",
+          "Unresolved emotional confrontations"
+        ],
+        "text": "Full Moon is the peak of the lunar cycle. Maximum emotional intensity, revelations, and complete clarity on hidden matters. Romance and social connections are electric. Release anything holding you back. Day rating modifier: +1.0."
+      },
+      {
+        "id": "mph_006",
+        "category": "moon_phase_impact",
+        "moon_phase": "Waning Gibbous",
+        "energy_level": "High — releasing",
+        "emotional_tone": "Gratitude, reflection, generosity",
+        "day_rating_modifier": 0.5,
+        "best_activities": [
+          "Sharing knowledge",
+          "Teaching",
+          "Social causes",
+          "Creative expression"
+        ],
+        "avoid_activities": [
+          "Starting new projects",
+          "Impulsive spending"
+        ],
+        "text": "Waning Gibbous Moon is a time of gratitude, generosity, and sharing. Teaching, writing, and meaningful conversations are favored. Reflect deeply on what the cycle has taught you. Day rating modifier: +0.5."
+      },
+      {
+        "id": "mph_007",
+        "category": "moon_phase_impact",
+        "moon_phase": "Last Quarter",
+        "energy_level": "Moderate — clearing",
+        "emotional_tone": "Introspective, release-focused",
+        "day_rating_modifier": -0.3,
+        "best_activities": [
+          "Decluttering",
+          "Ending habits",
+          "Forgiveness",
+          "Finishing projects"
+        ],
+        "avoid_activities": [
+          "New beginnings",
+          "Major decisions",
+          "Starting relationships"
+        ],
+        "text": "Last Quarter Moon calls for conscious release and thorough clearing. Complete unfinished business and make space for the new cycle. Introspection and honest self-reflection are powerfully supported. Day rating modifier: -0.3."
+      },
+      {
+        "id": "mph_008",
+        "category": "moon_phase_impact",
+        "moon_phase": "Waning Crescent",
+        "energy_level": "Low — rest",
+        "emotional_tone": "Surrendering, spiritual, quiet",
+        "day_rating_modifier": -0.5,
+        "best_activities": [
+          "Deep rest",
+          "Meditation",
+          "Spiritual practice",
+          "Dream journaling"
+        ],
+        "avoid_activities": [
+          "Demanding obligations",
+          "High-pressure work",
+          "Conflict"
+        ],
+        "text": "Waning Crescent Moon is the most spiritual and restful phase. Surrender to natural rhythm of rest and deep renewal. Dreams carry important messages. Prepare for the New Moon rebirth approaching very soon. Day rating modifier: -0.5."
+      },
+      {
+        "id": "lky_001",
+        "category": "lucky_items",
+        "sign": "Aries",
+        "ruling_planet": "Mars",
+        "lucky_colours": [
+          "Red",
+          "Coral",
+          "Orange"
+        ],
+        "lucky_numbers": [
+          1,
+          8,
+          17
+        ],
+        "lucky_day": "Tuesday",
+        "lucky_direction": "East",
+        "lucky_gemstone": "Red Coral",
+        "lucky_metal": "Iron / Gold",
+        "text": "Aries lucky items ruled by Mars. Lucky colours Red, Coral, Orange. Lucky numbers 1, 8, 17. Lucky day Tuesday. Lucky direction East. Lucky gemstone Red Coral. Lucky metal Iron and Gold. Red Coral strengthens Mars energy and protects against negative influences."
+      },
+      {
+        "id": "lky_002",
+        "category": "lucky_items",
+        "sign": "Taurus",
+        "ruling_planet": "Venus",
+        "lucky_colours": [
+          "Green",
+          "Pink",
+          "White"
+        ],
+        "lucky_numbers": [
+          2,
+          6,
+          15
+        ],
+        "lucky_day": "Friday",
+        "lucky_direction": "South",
+        "lucky_gemstone": "Diamond / Opal",
+        "lucky_metal": "Silver / Copper",
+        "text": "Taurus lucky items ruled by Venus. Lucky colours Green, Pink, White. Lucky numbers 2, 6, 15. Lucky day Friday. Lucky direction South. Lucky gemstone Diamond or Opal. Lucky metal Silver and Copper. Diamond enhances Venus energy for wealth and romantic attraction."
+      },
+      {
+        "id": "lky_003",
+        "category": "lucky_items",
+        "sign": "Gemini",
+        "ruling_planet": "Mercury",
+        "lucky_colours": [
+          "Yellow",
+          "Green",
+          "Light Blue"
+        ],
+        "lucky_numbers": [
+          3,
+          5,
+          14
+        ],
+        "lucky_day": "Wednesday",
+        "lucky_direction": "West",
+        "lucky_gemstone": "Emerald",
+        "lucky_metal": "Gold",
+        "text": "Gemini lucky items ruled by Mercury. Lucky colours Yellow, Green, Light Blue. Lucky numbers 3, 5, 14. Lucky day Wednesday. Lucky direction West. Lucky gemstone Emerald. Lucky metal Gold. Emerald strengthens Mercury energy for clarity and quick thinking."
+      },
+      {
+        "id": "lky_004",
+        "category": "lucky_items",
+        "sign": "Cancer",
+        "ruling_planet": "Moon",
+        "lucky_colours": [
+          "Silver",
+          "White",
+          "Sea Green"
+        ],
+        "lucky_numbers": [
+          2,
+          7,
+          11
+        ],
+        "lucky_day": "Monday",
+        "lucky_direction": "North",
+        "lucky_gemstone": "Pearl / Moonstone",
+        "lucky_metal": "Silver",
+        "text": "Cancer lucky items ruled by the Moon. Lucky colours Silver, White, Sea Green. Lucky numbers 2, 7, 11. Lucky day Monday. Lucky direction North. Lucky gemstone Pearl or Moonstone. Lucky metal Silver. Pearl and Moonstone strengthen lunar energy for emotional wellbeing."
+      },
+      {
+        "id": "lky_005",
+        "category": "lucky_items",
+        "sign": "Leo",
+        "ruling_planet": "Sun",
+        "lucky_colours": [
+          "Gold",
+          "Orange",
+          "Yellow"
+        ],
+        "lucky_numbers": [
+          1,
+          5,
+          19
+        ],
+        "lucky_day": "Sunday",
+        "lucky_direction": "East",
+        "lucky_gemstone": "Ruby",
+        "lucky_metal": "Gold",
+        "text": "Leo lucky items ruled by the Sun. Lucky colours Gold, Orange, Yellow. Lucky numbers 1, 5, 19. Lucky day Sunday. Lucky direction East. Lucky gemstone Ruby. Lucky metal Gold. Ruby strengthens solar energy for confidence and natural vitality."
+      },
+      {
+        "id": "lky_006",
+        "category": "lucky_items",
+        "sign": "Virgo",
+        "ruling_planet": "Mercury",
+        "lucky_colours": [
+          "Navy",
+          "Green",
+          "Brown"
+        ],
+        "lucky_numbers": [
+          3,
+          5,
+          8
+        ],
+        "lucky_day": "Wednesday",
+        "lucky_direction": "South",
+        "lucky_gemstone": "Emerald / Sapphire",
+        "lucky_metal": "Gold / Mercury",
+        "text": "Virgo lucky items ruled by Mercury. Lucky colours Navy, Green, Brown. Lucky numbers 3, 5, 8. Lucky day Wednesday. Lucky direction South. Lucky gemstone Emerald or Sapphire. Lucky metal Gold and Mercury. Emerald sharpens Mercury energy for exceptional detail and health awareness."
+      },
+      {
+        "id": "lky_007",
+        "category": "lucky_items",
+        "sign": "Libra",
+        "ruling_planet": "Venus",
+        "lucky_colours": [
+          "Pink",
+          "Blue",
+          "Lavender"
+        ],
+        "lucky_numbers": [
+          2,
+          6,
+          9
+        ],
+        "lucky_day": "Friday",
+        "lucky_direction": "West",
+        "lucky_gemstone": "Diamond / Opal",
+        "lucky_metal": "Silver / Copper",
+        "text": "Libra lucky items ruled by Venus. Lucky colours Pink, Blue, Lavender. Lucky numbers 2, 6, 9. Lucky day Friday. Lucky direction West. Lucky gemstone Diamond or Opal. Lucky metal Silver and Copper. Diamond enhances Venus energy for harmonious relationships and balanced beauty."
+      },
+      {
+        "id": "lky_008",
+        "category": "lucky_items",
+        "sign": "Scorpio",
+        "ruling_planet": "Mars/Pluto",
+        "lucky_colours": [
+          "Crimson",
+          "Black",
+          "Deep Red"
+        ],
+        "lucky_numbers": [
+          1,
+          4,
+          8
+        ],
+        "lucky_day": "Tuesday",
+        "lucky_direction": "North",
+        "lucky_gemstone": "Red Coral / Garnet",
+        "lucky_metal": "Iron / Steel",
+        "text": "Scorpio lucky items ruled by Mars and Pluto. Lucky colours Crimson, Black, Deep Red. Lucky numbers 1, 4, 8. Lucky day Tuesday. Lucky direction North. Lucky gemstone Red Coral or Garnet. Lucky metal Iron and Steel. Red Coral and Garnet strengthen protective transformative energy."
+      },
+      {
+        "id": "lky_009",
+        "category": "lucky_items",
+        "sign": "Sagittarius",
+        "ruling_planet": "Jupiter",
+        "lucky_colours": [
+          "Purple",
+          "Dark Blue",
+          "Yellow"
+        ],
+        "lucky_numbers": [
+          3,
+          9,
+          12
+        ],
+        "lucky_day": "Thursday",
+        "lucky_direction": "East",
+        "lucky_gemstone": "Yellow Sapphire",
+        "lucky_metal": "Gold",
+        "text": "Sagittarius lucky items ruled by Jupiter. Lucky colours Purple, Dark Blue, Yellow. Lucky numbers 3, 9, 12. Lucky day Thursday. Lucky direction East. Lucky gemstone Yellow Sapphire. Lucky metal Gold. Yellow Sapphire is the most powerful stone for Jupiter blessings and good fortune."
+      },
+      {
+        "id": "lky_010",
+        "category": "lucky_items",
+        "sign": "Capricorn",
+        "ruling_planet": "Saturn",
+        "lucky_colours": [
+          "Black",
+          "Brown",
+          "Dark Grey"
+        ],
+        "lucky_numbers": [
+          4,
+          8,
+          13
+        ],
+        "lucky_day": "Saturday",
+        "lucky_direction": "South",
+        "lucky_gemstone": "Blue Sapphire",
+        "lucky_metal": "Iron / Lead",
+        "text": "Capricorn lucky items ruled by Saturn. Lucky colours Black, Brown, Dark Grey. Lucky numbers 4, 8, 13. Lucky day Saturday. Lucky direction South. Lucky gemstone Blue Sapphire. Lucky metal Iron and Lead. Blue Sapphire is Saturn's most powerful gemstone for career success and long-term achievement."
+      },
+      {
+        "id": "lky_011",
+        "category": "lucky_items",
+        "sign": "Aquarius",
+        "ruling_planet": "Saturn/Uranus",
+        "lucky_colours": [
+          "Electric Blue",
+          "Violet",
+          "Grey"
+        ],
+        "lucky_numbers": [
+          4,
+          7,
+          11
+        ],
+        "lucky_day": "Saturday",
+        "lucky_direction": "West",
+        "lucky_gemstone": "Blue Sapphire / Amethyst",
+        "lucky_metal": "Iron / Platinum",
+        "text": "Aquarius lucky items ruled by Saturn and Uranus. Lucky colours Electric Blue, Violet, Grey. Lucky numbers 4, 7, 11. Lucky day Saturday. Lucky direction West. Lucky gemstone Blue Sapphire or Amethyst. Lucky metal Iron and Platinum. Amethyst supports Uranian intuition and original innovative thinking."
+      },
+      {
+        "id": "lky_012",
+        "category": "lucky_items",
+        "sign": "Pisces",
+        "ruling_planet": "Jupiter/Neptune",
+        "lucky_colours": [
+          "Sea Green",
+          "Lavender",
+          "White"
+        ],
+        "lucky_numbers": [
+          3,
+          7,
+          12
+        ],
+        "lucky_day": "Thursday",
+        "lucky_direction": "North",
+        "lucky_gemstone": "Yellow Sapphire / Aquamarine",
+        "lucky_metal": "Gold / Silver",
+        "text": "Pisces lucky items ruled by Jupiter and Neptune. Lucky colours Sea Green, Lavender, White. Lucky numbers 3, 7, 12. Lucky day Thursday. Lucky direction North. Lucky gemstone Yellow Sapphire or Aquamarine. Lucky metal Gold and Silver. Aquamarine connects to Neptune's spiritual ocean energy for deep intuition."
+      }
+    ]
+  }
+}

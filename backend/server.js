@@ -1,14 +1,68 @@
-import express from 'express';
-import cors from 'cors';
+const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const { MongoClient } = require('mongodb');
+const axios = require('axios');
+const { connectDB, getHoroscopesCollection, getChatsCollection, getUsersCollection } from './db.js';
 
 const app = express();
 const PORT = 8000;
 
+// Connect to MongoDB
+await connectDB();
+
 app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.json());
 
-// Store user sessions
+// Store user sessions (in-memory for quick access, also saved to DB)
 const sessions = new Map();
+
+// RAG Server Integration
+const RAG_SERVER_URL = process.env.RAG_SERVER_URL || 'http://localhost:5001';
+
+async function askRAGServer(question, sign) {
+  try {
+    const response = await axios.post(`${RAG_SERVER_URL}/api/rag/question`, {
+      question,
+      sign
+    });
+    return response.data.answer;
+  } catch (error) {
+    console.error('RAG Server error:', error.message);
+    return null;
+  }
+}
+
+// Helper to save chat to MongoDB
+async function saveChat(sessionId, message, reply, sign) {
+  try {
+    const chats = getChatsCollection();
+    await chats.insertOne({
+      sessionId,
+      message,
+      reply,
+      sign,
+      timestamp: new Date()
+    });
+  } catch (error) {
+    console.error('Error saving chat:', error);
+  }
+}
+
+// Helper to save horoscope to MongoDB
+async function saveHoroscope(sign, data, userId = 'anonymous') {
+  try {
+    const horoscopes = getHoroscopesCollection();
+    await horoscopes.insertOne({
+      userId,
+      sign,
+      ...data,
+      createdAt: new Date()
+    });
+  } catch (error) {
+    console.error('Error saving horoscope:', error);
+  }
+}
 
 // Helper to get sign from birth date
 function getSignFromDate(dateStr) {
@@ -139,7 +193,7 @@ function getYesterdayData(sign) {
 }
 
 // Main chat endpoint
-app.post('/api/chat', (req, res) => {
+app.post('/api/chat', async (req, res) => {
   const { message, sessionId = 'default' } = req.body;
   const lowerMsg = message.toLowerCase();
   
@@ -281,20 +335,60 @@ app.post('/api/chat', (req, res) => {
     }
   }
   
-  // Default response if nothing detected
+  // If no specific topic detected, try RAG server for general questions
   if (!reply) {
-    reply = `👋 Welcome to Daily Horoscope Agent!\n\nI can provide you with:\n• **Full daily horoscope** (love, career, health, money)\n• **Lucky guide** (color, number, direction, time)\n• **Trend analysis** (compare today vs yesterday)\n• **Calendar rating** (good/bad day for planning)\n\n**How to start:**\n1. Send your zodiac sign (e.g., "Leo", "Scorpio")\n2. Or send your birth date (e.g., "2004-12-12")\n\nThen ask me about love, career, money, health, lucky, trends, or calendar!`;
+    const ragAnswer = await askRAGServer(message, session.sign);
+    if (ragAnswer) {
+      reply = ragAnswer;
+    } else {
+      reply = `👋 Welcome to Daily Horoscope Agent!\n\nI can provide you with:\n• **Full daily horoscope** (love, career, health, money)\n• **Lucky guide** (color, number, direction, time)\n• **Trend analysis** (compare today vs yesterday)\n• **Calendar rating** (good/bad day for planning)\n\n**How to start:**\n1. Send your zodiac sign (e.g., "Leo", "Scorpio")\n2. Or send your birth date (e.g., "2004-12-12")\n\nThen ask me about love, career, money, health, lucky, trends, or calendar!`;
+    }
   }
+  
+  // Save chat to database
+  await saveChat(sessionId, message, reply, session.sign);
   
   res.json({ reply, sign: session.sign });
 });
 
-app.get('/api/horoscope/:sign', (req, res) => {
+app.get('/api/horoscope/:sign', async (req, res) => {
   const sign = req.params.sign.toLowerCase();
   if (horoscopeData[sign]) {
+    // Save horoscope view to database
+    await saveHoroscope(sign, horoscopeData[sign], req.query.userId || 'anonymous');
     res.json(horoscopeData[sign]);
   } else {
     res.status(404).json({ error: 'Sign not found' });
+  }
+});
+
+// Get chat history for a session
+app.get('/api/chat/history/:sessionId', async (req, res) => {
+  try {
+    const chats = getChatsCollection();
+    const history = await chats
+      .find({ sessionId: req.params.sessionId })
+      .sort({ timestamp: -1 })
+      .limit(50)
+      .toArray();
+    res.json({ history: history.reverse() });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch chat history' });
+  }
+});
+
+// Get horoscope history for a user
+app.get('/api/horoscope/history/:userId', async (req, res) => {
+  try {
+    const horoscopes = getHoroscopesCollection();
+    const history = await horoscopes
+      .find({ userId: req.params.userId })
+      .sort({ createdAt: -1 })
+      .limit(30)
+      .toArray();
+    res.json({ history });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch horoscope history' });
   }
 });
 

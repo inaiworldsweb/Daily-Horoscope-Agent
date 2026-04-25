@@ -14,6 +14,16 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const messagesEndRef = useRef(null)
 
+  // Generate or retrieve unique sessionId
+  const getSessionId = () => {
+    let sessionId = localStorage.getItem('horoscope_session_id')
+    if (!sessionId) {
+      sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9)
+      localStorage.setItem('horoscope_session_id', sessionId)
+    }
+    return sessionId
+  }
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -31,10 +41,11 @@ function App() {
     setSidebarOpen(false)
 
     try {
+      const sessionId = getSessionId()
       const res = await fetch(`${API_URL}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text })
+        body: JSON.stringify({ message: text, sessionId })
       })
       const data = await res.json()
       setMessages(prev => [...prev, { sender: 'bot', text: data.reply }])

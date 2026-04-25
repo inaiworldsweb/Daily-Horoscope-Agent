@@ -590,6 +590,20 @@ class TransitCalculator:
         benefic_planets = ["Sun", "Moon", "Venus", "Jupiter"]
         malefic_planets = ["Saturn", "Mars", "Rahu", "Ketu"]
         
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         if aspect in ["trine", "sextile", "conjunction"]:
             return "positive" if planet in benefic_planets else "mixed"
         elif aspect == "square":
@@ -642,6 +656,67 @@ class RAGEngine:
     def __init__(self):
         self.knowledge_base = KNOWLEDGE_BASE
         self.dataset = ZODIAC_DATASET
+        self.rag_documents = []
+        self.load_rag_dataset()
+    
+    def load_rag_dataset(self):
+        """Load RAG dataset from JSON file"""
+        import json
+        import os
+        
+        dataset_path = os.path.join(os.path.dirname(__file__), 'rag_dataset.json')
+        try:
+            with open(dataset_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                self.rag_documents = data.get('rag_dataset', {}).get('documents', [])
+                print(f"Loaded {len(self.rag_documents)} RAG documents")
+        except FileNotFoundError:
+            print("RAG dataset file not found, using in-memory dataset")
+            self.rag_documents = []
+        except Exception as e:
+            print(f"Error loading RAG dataset: {e}")
+            self.rag_documents = []
+    
+    def search_documents(self, query: str, sign: str = None, limit: int = 5) -> List[Dict]:
+        """Search RAG documents based on query and optional sign filter"""
+        query_lower = query.lower()
+        results = []
+        
+        for doc in self.rag_documents:
+            # Filter by sign if provided
+            if sign and doc.get('sign', '').lower() != sign.lower():
+                continue
+            
+            # Calculate relevance score based on keyword matching
+            score = 0
+            text = doc.get('text', '').lower()
+            keywords = doc.get('keywords', [])
+            
+            # Check if query words appear in text
+            query_words = query_lower.split()
+            for word in query_words:
+                if word in text:
+                    score += 1
+                if word in [k.lower() for k in keywords]:
+                    score += 2
+            
+            # Category-specific boosts
+            category = doc.get('category', '')
+            if 'planet' in query_lower and 'planet' in category:
+                score += 3
+            elif 'aspect' in query_lower and 'aspect' in category:
+                score += 3
+            elif 'moon' in query_lower and 'moon' in category:
+                score += 3
+            elif 'lucky' in query_lower and 'lucky' in category:
+                score += 3
+            
+            if score > 0:
+                results.append((doc, score))
+        
+        # Sort by score and return top results
+        results.sort(key=lambda x: x[1], reverse=True)
+        return [doc for doc, score in results[:limit]]
     
     def retrieve_context(self, sign: str, transits: List[Transit]) -> Dict[str, str]:
         sign_data = self.knowledge_base.get(sign, {})
@@ -664,7 +739,7 @@ class RAGEngine:
     
     def answer_question(self, question: str, sign: Optional[str] = None) -> str:
         """
-        Answer questions about zodiac signs using the comprehensive dataset
+        Answer questions about zodiac signs using the comprehensive RAG dataset
         """
         question_lower = question.lower()
         
@@ -676,6 +751,14 @@ class RAGEngine:
                     detected_sign = zodiac
                     break
         
+        # Search RAG documents first
+        rag_results = self.search_documents(question, sign=detected_sign, limit=3)
+        
+        if rag_results:
+            # Use RAG results to build answer
+            return self._build_rag_answer(question, rag_results, detected_sign)
+        
+        # Fallback to in-memory dataset if no RAG results
         if not detected_sign:
             return "Please mention a zodiac sign so I can answer your question! (e.g., 'Tell me about Leo traits')"
         
@@ -771,6 +854,61 @@ class RAGEngine:
                f"**Love:** {data.get('love', '')}\n\n" \
                f"**Career:** {data.get('career', '')}\n\n" \
                f"Ask me about: traits, love, career, health, lucky, compatibility, element, ruling planet!"
+    
+    def _build_rag_answer(self, question: str, results: List[Dict], sign: Optional[str]) -> str:
+        """Build answer from RAG search results"""
+        if not results:
+            return "I couldn't find relevant information in my knowledge base. Please try rephrasing your question."
+        
+        answer_parts = []
+        sign_name = sign.title() if sign else ""
+        
+        for i, doc in enumerate(results[:3], 1):
+            category = doc.get('category', '')
+            text = doc.get('text', '')
+            doc_sign = doc.get('sign', '')
+            
+            if category == 'zodiac_sign':
+                if sign_name:
+                    answer_parts.append(f"**{sign_name} Information:**\n{text}")
+                else:
+                    answer_parts.append(f"**{doc_sign.title()} Information:**\n{text}")
+            
+            elif category == 'planet_sign_meaning':
+                planet = doc.get('planet', '')
+                doc_sign = doc.get('sign', '')
+                answer_parts.append(f"**{planet} in {doc_sign.title()}:**\n{text}")
+            
+            elif category == 'aspect_interpretation':
+                aspect = doc.get('aspect_type', '')
+                p1 = doc.get('planet_1', '')
+                p2 = doc.get('planet_2', '')
+                answer_parts.append(f"**{p1} {aspect} {p2}:**\n{text}")
+            
+            elif category == 'zodiac_daily_profile':
+                doc_sign = doc.get('sign', '')
+                best_time = doc.get('best_time_window', '')
+                avoid_time = doc.get('avoid_time_window', '')
+                answer_parts.append(f"**{doc_sign.title()} Daily Profile:**\n{text}\n\n⏰ Best time: {best_time}\n⚠️ Avoid: {avoid_time}")
+            
+            elif category == 'moon_phase_impact':
+                phase = doc.get('moon_phase', '')
+                energy = doc.get('energy_level', '')
+                answer_parts.append(f"**{phase} Moon:**\n{text}\n\nEnergy Level: {energy}")
+            
+            elif category == 'lucky_items':
+                doc_sign = doc.get('sign', '')
+                colors = doc.get('lucky_colours', [])
+                numbers = doc.get('lucky_numbers', [])
+                gemstone = doc.get('lucky_gemstone', '')
+                answer_parts.append(f"**{doc_sign.title()} Lucky Items:**\n{text}\n\n🎨 Colors: {', '.join(colors)}\n🔢 Numbers: {', '.join(map(str, numbers))}\n💎 Gemstone: {gemstone}")
+            
+            else:
+                answer_parts.append(f"**Information:**\n{text}")
+            
+            answer_parts.append("\n" + "-" * 50 + "\n")
+        
+        return "\n".join(answer_parts)
 
 # ============================================================================
 # STEP 5: LLM CORE (Rule-Based Generator)
