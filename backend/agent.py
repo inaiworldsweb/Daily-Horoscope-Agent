@@ -14,6 +14,15 @@ from dataclasses import dataclass, asdict
 # Import database manager for saving chat data
 from database import db_manager
 
+# Import live horoscope API
+from external_api import (
+    get_daily_horoscope,
+    get_weekly_horoscope,
+    get_monthly_horoscope,
+    format_horoscope_reply,
+    ZODIAC_SIGNS as API_ZODIAC_SIGNS
+)
+
 # Swiss Ephemeris for real planetary calculations
 try:
     import swisseph as swe
@@ -1398,54 +1407,55 @@ class ChatInterface:
                     requested_topic = topic
                     break
             
-            # If we have a sign, generate daily horoscope
+            # Determine period: daily, weekly, or monthly
+            period = "daily"
+            if any(w in msg_lower for w in ["weekly", "week", "this week"]):
+                period = "weekly"
+            elif any(w in msg_lower for w in ["monthly", "month", "this month"]):
+                period = "monthly"
+
+            # If we have a sign, fetch live horoscope from API
             if sign:
                 try:
-                    result = self.agent.generate_horoscope(sign)
-                    
-                    # If specific topic requested
-                    if requested_topic and requested_topic != "lucky":
-                        data = result["structured_data"][requested_topic]
-                        reply = f"**{requested_topic.title()} for {sign.title()}**\n\n" \
-                               f"Score: {data['score']}/10\n\n" \
-                               f"{data['prediction']}\n\n" \
-                               f"*Advice: {data['advice']}*"
-                        metadata["type"] = "topic"
-                        metadata["topic"] = requested_topic
-                    
-                    elif requested_topic == "lucky":
-                        d = result["structured_data"]
-                        reply = f"**🍀 Lucky Guide for {sign.title()}**\n\n" \
-                               f"Color: {d['lucky_colour']}\n" \
-                               f"Number: {d['lucky_number']}\n" \
-                               f"Direction: {d['lucky_direction']}\n" \
-                               f"Best Time: {d['best_time_window']}\n" \
-                               f"Avoid: {d['avoid_time_window']}" 
-                        metadata["type"] = "lucky"
-                    
+                    if period == "weekly":
+                        api_result = get_weekly_horoscope(sign)
+                        metadata["period"] = "weekly"
+                    elif period == "monthly":
+                        api_result = get_monthly_horoscope(sign)
+                        metadata["period"] = "monthly"
                     else:
-                        # Return full horoscope
+                        api_result = get_daily_horoscope(sign)
+                        metadata["period"] = "daily"
+
+                    if api_result:
+                        reply = format_horoscope_reply(api_result)
+                        metadata["type"] = f"{period}_horoscope"
+                        metadata["source"] = "freehoroscopeapi.com"
+                    else:
+                        # Fallback to local generator if API fails
+                        result = self.agent.generate_horoscope(sign)
                         reply = result["markdown_report"]
                         metadata["type"] = "full_horoscope"
-                    
-                    metadata["day_rating"] = result["structured_data"].get("day_rating")
+                        metadata["source"] = "local_fallback"
                 except Exception as e:
-                    reply = f"Error generating horoscope: {str(e)}"
+                    reply = f"Error fetching horoscope: {str(e)}"
                     metadata["type"] = "error"
                     metadata["error"] = str(e)
-            
+
             # If we have session sign and topic request
-            elif session["sign"] and requested_topic and reply is None:
+            elif session["sign"] and reply is None:
                 try:
-                    result = self.agent.generate_horoscope(session["sign"])
-                    data = result["structured_data"][requested_topic]
-                    reply = f"**{requested_topic.title()} for {session['sign'].title()}**\n\n" \
-                           f"Score: {data['score']}/10\n\n" \
-                           f"{data['prediction']}\n\n" \
-                           f"*Advice: {data['advice']}*"
                     sign = session["sign"]
-                    metadata["type"] = "topic"
-                    metadata["topic"] = requested_topic
+                    api_result = get_daily_horoscope(sign)
+                    if api_result:
+                        reply = format_horoscope_reply(api_result)
+                        metadata["type"] = "daily_horoscope"
+                        metadata["source"] = "freehoroscopeapi.com"
+                    else:
+                        result = self.agent.generate_horoscope(sign)
+                        reply = result["markdown_report"]
+                        metadata["type"] = "full_horoscope"
+                        metadata["source"] = "local_fallback"
                 except Exception as e:
                     reply = f"Error: {str(e)}"
                     metadata["type"] = "error"
