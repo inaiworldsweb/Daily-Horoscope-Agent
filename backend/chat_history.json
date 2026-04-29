@@ -1,0 +1,13 @@
+[
+  {
+    "session_id": "json_test_session",
+    "user_message": "I am Scorpio",
+    "bot_reply": "## 🌟 Scorpio Horoscope for 2026-04-29\n\n**Day Rating:** ⭐⭐⭐⭐⭐⭐⭐☆☆☆ (7/10)\n\n### Overall\nA balanced day for Scorpio. Mars influences steady progress. Focus on maintaining harmony between action and reflection.\n\n**Planetary Highlight:** Jupiter forms a harmonious trine to your sign, bringing supportive energy.\n\n---\n\n### 💕 Love (Score: 3.5/10)\nRelationship tensions may surface. Stay calm and communicate with compassion.\n\n*Advice: Deep emotional bonds strengthen.*\n\n### 💼 Career (Score: 3.5/10)\nReview your approach carefully. Attention to detail prevents errors.\n\n*Advice: Research and investigation succeed.*\n\n### 🏥 Health (Score: 3.5/10)\nEnergy is flowing today.\n\n*Advice: Detoxification supports wellness.*\n\n### 💰 Money (Score: 6.5/10)\nEnergy is flowing today.\n\n*Advice: Hidden opportunities emerge.*\n\n---\n\n### 🍀 Lucky Guide\n- **Color:** Black\n- **Number:** 4\n- **Direction:** North\n- **Best Time:** 18:00 - 20:00\n- **Avoid:** 21:00 - 22:30\n\n### 🌅 Morning Affirmation\n\"I embrace my ['Intense', 'Passionate', 'Mysterious'] nature and create my destiny today.\"\n",
+    "sign": "scorpio",
+    "timestamp": "2026-04-29T09:19:28.097077",
+    "metadata": {
+      "type": "full_horoscope",
+      "day_rating": 7
+    }
+  }
+]

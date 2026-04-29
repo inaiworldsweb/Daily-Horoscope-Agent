@@ -1,8 +1,10 @@
 """
-Database module for saving chat data to MongoDB
+Database module for saving chat data to MongoDB and JSON file
 """
 
 import os
+import json
+import threading
 from datetime import datetime
 from typing import Optional, List, Dict, Any
 try:
@@ -27,8 +29,62 @@ class DatabaseManager:
         self.sessions_collection = None
         self.connected = False
         
+        # JSON file storage path
+        self.json_file_path = os.path.join(os.path.dirname(__file__), 'chat_history.json')
+        self.json_lock = threading.Lock()
+        
         if MONGODB_AVAILABLE:
             self._connect()
+    
+    def _save_to_json(self, chat_document: Dict[str, Any]):
+        """Save chat data to local JSON file as backup"""
+        try:
+            # Make document JSON serializable
+            json_doc = dict(chat_document)
+            if 'timestamp' in json_doc and isinstance(json_doc['timestamp'], datetime):
+                json_doc['timestamp'] = json_doc['timestamp'].isoformat()
+            if '_id' in json_doc:
+                json_doc['_id'] = str(json_doc['_id'])
+            
+            with self.json_lock:
+                # Read existing data
+                data = []
+                if os.path.exists(self.json_file_path):
+                    try:
+                        with open(self.json_file_path, 'r', encoding='utf-8') as f:
+                            data = json.load(f)
+                    except (json.JSONDecodeError, IOError):
+                        data = []
+                
+                # Append new message
+                data.append(json_doc)
+                
+                # Write back
+                with open(self.json_file_path, 'w', encoding='utf-8') as f:
+                    json.dump(data, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"⚠️ Error saving to JSON file: {e}")
+    
+    def get_json_history(self, session_id: Optional[str] = None, limit: int = 100) -> List[Dict[str, Any]]:
+        """Get chat history from JSON file"""
+        try:
+            if not os.path.exists(self.json_file_path):
+                return []
+            
+            with self.json_lock:
+                with open(self.json_file_path, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+            
+            # Filter by session if provided
+            if session_id:
+                data = [d for d in data if d.get('session_id') == session_id]
+            
+            # Sort by timestamp (newest first) and limit
+            data.sort(key=lambda x: x.get('timestamp', ''), reverse=True)
+            return data[:limit]
+        except Exception as e:
+            print(f"⚠️ Error reading JSON file: {e}")
+            return []
     
     def _connect(self):
         """Establish connection to MongoDB"""
@@ -66,43 +122,44 @@ class DatabaseManager:
         except Exception as e:
             print(f"⚠️ Error creating indexes: {e}")
     
-    def save_chat_message(self, session_id: str, user_message: str, bot_reply: str, 
+    def save_chat_message(self, session_id: str, user_message: str, bot_reply: str,
                           sign: Optional[str] = None, metadata: Optional[Dict] = None) -> bool:
         """
-        Save a chat message exchange to the database
-        
+        Save a chat message exchange to MongoDB and JSON file
+
         Args:
             session_id: Unique session identifier
             user_message: The user's message
             bot_reply: The bot's response
             sign: Zodiac sign if detected
             metadata: Additional metadata about the chat
-        
+
         Returns:
-            bool: True if saved successfully, False otherwise
+            bool: True if saved to either storage, False otherwise
         """
-        if not self.connected:
-            return False
-        
-        try:
-            chat_document = {
-                "session_id": session_id,
-                "user_message": user_message,
-                "bot_reply": bot_reply,
-                "sign": sign,
-                "timestamp": datetime.utcnow(),
-                "metadata": metadata or {}
-            }
-            
-            result = self.chats_collection.insert_one(chat_document)
-            
-            # Update session info
-            self._update_session(session_id, sign)
-            
-            return bool(result.inserted_id)
-        except Exception as e:
-            print(f"⚠️ Error saving chat message: {e}")
-            return False
+        chat_document = {
+            "session_id": session_id,
+            "user_message": user_message,
+            "bot_reply": bot_reply,
+            "sign": sign,
+            "timestamp": datetime.utcnow(),
+            "metadata": metadata or {}
+        }
+
+        # Always save to JSON file (works even without MongoDB)
+        self._save_to_json(chat_document)
+
+        mongo_saved = False
+        if self.connected:
+            try:
+                result = self.chats_collection.insert_one(chat_document)
+                mongo_saved = bool(result.inserted_id)
+                # Update session info
+                self._update_session(session_id, sign)
+            except Exception as e:
+                print(f"⚠️ Error saving chat message to MongoDB: {e}")
+
+        return True  # JSON always saves, MongoDB is bonus
     
     def _update_session(self, session_id: str, sign: Optional[str] = None):
         """Update or create session record"""
