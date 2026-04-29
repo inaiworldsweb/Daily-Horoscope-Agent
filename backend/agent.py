@@ -1339,14 +1339,67 @@ class ChatInterface:
         """Process chat message and return response, saving to database"""
         msg_lower = message.lower().strip()
         
-        # Initialize session
+        # Initialize session with conversation state
         if session_id not in self.sessions:
-            self.sessions[session_id] = {"sign": None, "last_topic": None}
+            self.sessions[session_id] = {"sign": None, "last_topic": None, "pending_question": None}
         session = self.sessions[session_id]
         
         reply = None
         sign = None
         metadata = {}
+        
+        # Handle pending questions (user is answering a previous question)
+        if session.get("pending_question"):
+            pending = session["pending_question"]
+            # Try to extract sign from user reply
+            for zodiac in ZODIAC_SIGNS:
+                if zodiac in msg_lower:
+                    sign = zodiac
+                    session["sign"] = sign
+                    session["pending_question"] = None
+                    break
+            
+            # If still no sign, try birth date
+            if not sign:
+                date_match = re.search(r'(\d{1,2})[/-](\d{1,2})[/-](\d{4})', message)
+                if date_match:
+                    day, month, year = date_match.groups()
+                    birth_info = self.agent.validator.validate_birth_date(f"{day}/{month}/{year}")
+                    if birth_info:
+                        sign, _, _, _ = birth_info
+                        session["sign"] = sign
+                        session["pending_question"] = None
+            
+            # If sign was found from pending question, handle the original request
+            if sign and pending == "lucky_number":
+                result = self.agent.generate_horoscope(sign)
+                d = result["structured_data"]
+                reply = f"🍀 **Your Lucky Guide, {sign.title()}** 🍀\n\n" \
+                       f"**Lucky Color:** {d['lucky_colour']}\n" \
+                       f"**Lucky Number:** {d['lucky_number']}\n" \
+                       f"**Lucky Direction:** {d['lucky_direction']}\n" \
+                       f"**Best Time:** {d['best_time_window']}\n" \
+                       f"**Avoid:** {d['avoid_time_window']}\n\n" \
+                       f"*Your personal lucky charm for today! ✨*"
+                metadata["type"] = "lucky_answer"
+                metadata["source"] = "local"
+                
+            elif sign and pending == "birth_date_lucky":
+                result = self.agent.generate_horoscope(sign)
+                d = result["structured_data"]
+                reply = f"🍀 **Your Lucky Guide, {sign.title()}** 🍀\n\n" \
+                       f"**Lucky Color:** {d['lucky_colour']}\n" \
+                       f"**Lucky Number:** {d['lucky_number']}\n" \
+                       f"**Lucky Direction:** {d['lucky_direction']}\n" \
+                       f"**Best Time:** {d['best_time_window']}\n" \
+                       f"**Avoid:** {d['avoid_time_window']}\n\n" \
+                       f"*Your personal lucky charm for today! ✨*"
+                metadata["type"] = "lucky_answer"
+                metadata["source"] = "local"
+            
+            # Clear pending if we got a valid answer
+            if sign:
+                session["pending_question"] = None
         
         # Simple greetings and conversation
         greetings = ["hello", "hi", "hey", "howdy", "good morning", "good afternoon", "good evening"]
@@ -1471,6 +1524,15 @@ class ChatInterface:
                     reply = f"Error: {str(e)}"
                     metadata["type"] = "error"
                     metadata["error"] = str(e)
+            
+            # If user asks about lucky number/color but NO sign provided anywhere
+            elif requested_topic == "lucky" and not session["sign"] and not sign and reply is None:
+                session["pending_question"] = "lucky_number"
+                reply = "🍀 I'd love to tell you your lucky number and color!\n\n" \
+                       "**What is your zodiac sign?** (e.g., Leo, Scorpio, Aries)\n\n" \
+                       "Or tell me your **birth date** (e.g., 15/08/1990) and I'll find it for you!"
+                metadata["type"] = "question_asked"
+                metadata["question"] = "lucky_number"
         
         # Default welcome message
         if reply is None:

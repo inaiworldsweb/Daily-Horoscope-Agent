@@ -90,5 +90,69 @@
       "type": "daily_horoscope",
       "source": "freehoroscopeapi.com"
     }
+  },
+  {
+    "session_id": "session_1777445561295_henwlx9gn",
+    "user_message": "hello ",
+    "bot_reply": "## 🔮 Scorpio Daily Horoscope\n**Date:** 2026-04-29\n\nScorpio (October 23 - November 21) - You've been working hard on a project lately, and today is a great day to take a step back and evaluate your progress. Ask yourself if you're on track to meet your goals and make any necessary adjustments. Don't be afraid to seek feedback from others if you need an outside perspective. Your attention to detail will serve you well today. Focus on fine-tuning your plan and making it even more effective.\n\n---\n*Powered by [freehoroscopeapi.com](https://freehoroscopeapi.com)*\n",
+    "sign": "scorpio",
+    "timestamp": "2026-04-29T11:42:44.279534",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "freehoroscopeapi.com"
+    }
+  },
+  {
+    "session_id": "session_1777369994504_h7c3vdncr",
+    "user_message": "hello ",
+    "bot_reply": "👋 Welcome to the Daily Horoscope Agent! 🌟\n\nI provide professional astrology readings using:\n• Real planetary positions (Swiss Ephemeris)\n• Transit calculations\n• Vedic & Western astrology knowledge\n• Comprehensive zodiac database\n\n**How to use:**\n1. Tell me your zodiac sign (e.g., \"Leo\", \"Scorpio\")\n2. Or your birth date (e.g., \"15/08/1990\", \"2004-12-12\")\n\n**Daily Horoscope Topics:**\n• `love` - Romance prediction\n• `career` - Work & success\n• `health` - Wellness advice\n• `money` - Financial outlook\n• `lucky` - Lucky color, number, direction\n• `compare` - Yesterday vs Today comparison\n\n**Knowledge Questions (powered by RAG):**\n• \"What are Leo's traits?\" - Personality & characteristics\n• \"Tell me about Scorpio love\" - Relationship info & compatibility\n• \"What element is Taurus?\" - Element analysis\n• \"What's the ruling planet of Gemini?\" - Planetary influences\n• \"What dates for Aquarius?\" - Date ranges\n• \"Who is compatible with Cancer?\" - Best matches\n\n**Try:** \"I'm a Gemini, what's my career outlook?\" or \"What are Leo traits?\"\n",
+    "sign": null,
+    "timestamp": "2026-04-29T11:43:05.031198",
+    "metadata": {
+      "type": "welcome"
+    }
+  },
+  {
+    "session_id": "session_1777445561295_henwlx9gn",
+    "user_message": "hello ",
+    "bot_reply": "## 🔮 Scorpio Daily Horoscope\n**Date:** 2026-04-29\n\nScorpio (October 23 - November 21) - You've been working hard on a project lately, and today is a great day to take a step back and evaluate your progress. Ask yourself if you're on track to meet your goals and make any necessary adjustments. Don't be afraid to seek feedback from others if you need an outside perspective. Your attention to detail will serve you well today. Focus on fine-tuning your plan and making it even more effective.\n\n---\n*Powered by [freehoroscopeapi.com](https://freehoroscopeapi.com)*\n",
+    "sign": "scorpio",
+    "timestamp": "2026-04-29T11:44:22.322848",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "freehoroscopeapi.com"
+    }
+  },
+  {
+    "session_id": "session_1777369994504_h7c3vdncr",
+    "user_message": "hello ",
+    "bot_reply": "👋 Welcome to the Daily Horoscope Agent! 🌟\n\nI provide professional astrology readings using:\n• Real planetary positions (Swiss Ephemeris)\n• Transit calculations\n• Vedic & Western astrology knowledge\n• Comprehensive zodiac database\n\n**How to use:**\n1. Tell me your zodiac sign (e.g., \"Leo\", \"Scorpio\")\n2. Or your birth date (e.g., \"15/08/1990\", \"2004-12-12\")\n\n**Daily Horoscope Topics:**\n• `love` - Romance prediction\n• `career` - Work & success\n• `health` - Wellness advice\n• `money` - Financial outlook\n• `lucky` - Lucky color, number, direction\n• `compare` - Yesterday vs Today comparison\n\n**Knowledge Questions (powered by RAG):**\n• \"What are Leo's traits?\" - Personality & characteristics\n• \"Tell me about Scorpio love\" - Relationship info & compatibility\n• \"What element is Taurus?\" - Element analysis\n• \"What's the ruling planet of Gemini?\" - Planetary influences\n• \"What dates for Aquarius?\" - Date ranges\n• \"Who is compatible with Cancer?\" - Best matches\n\n**Try:** \"I'm a Gemini, what's my career outlook?\" or \"What are Leo traits?\"\n",
+    "sign": null,
+    "timestamp": "2026-04-29T11:45:08.865934",
+    "metadata": {
+      "type": "welcome"
+    }
+  },
+  {
+    "session_id": "session_1777369994504_h7c3vdncr",
+    "user_message": "hello ",
+    "bot_reply": "👋 Hello! I'm your Daily Horoscope Agent. Tell me your zodiac sign (like 'I'm Leo') and I'll share your horoscope!",
+    "sign": null,
+    "timestamp": "2026-04-29T12:08:59.792501",
+    "metadata": {
+      "type": "greeting"
+    }
+  },
+  {
+    "session_id": "session_1777369994504_h7c3vdncr",
+    "user_message": "leo ",
+    "bot_reply": "## 🔮 Leo Daily Horoscope\n**Date:** 2026-04-29\n\nHey Leo, today's a great day to tackle that project you've been putting off. Your confidence and charisma are in high gear, so use them to motivate yourself and others. Expect some interesting conversations with friends or colleagues, especially around lunchtime. Take a break and engage in a fun, creative activity to recharge. Your energy levels will be high, so make the most of it.\n\n---\n*Powered by [freehoroscopeapi.com](https://freehoroscopeapi.com)*\n",
+    "sign": "leo",
+    "timestamp": "2026-04-29T12:09:10.252833",
+    "metadata": {
+      "period": "daily",
+      "type": "daily_horoscope",
+      "source": "freehoroscopeapi.com"
+    }
   }
 ]
