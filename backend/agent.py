@@ -31,7 +31,7 @@ from response_formatter import (
     format_greeting,
     format_error,
     format_comparison,
-    format_full_details
+    format_sign_profile
 )
 
 # Swiss Ephemeris for real planetary calculations
@@ -1483,6 +1483,16 @@ class ChatInterface:
                 else:
                     reply = format_error("Please mention a zodiac sign so I can answer! (e.g., 'Tell me about Leo traits')")
                     metadata["type"] = "error"
+            # If user just mentioned their sign (no specific topic question), show comprehensive profile
+            elif sign and not is_knowledge_question:
+                try:
+                    result = self.agent.generate_horoscope(sign)
+                    reply = format_sign_profile(sign, result["structured_data"])
+                    metadata["type"] = "sign_profile"
+                    metadata["source"] = "local"
+                except Exception as e:
+                    reply = format_error(f"Error generating profile: {str(e)}")
+                    metadata["type"] = "error"
         
         # Check for specific topic requests (daily horoscope topics)
         if reply is None:
@@ -1524,24 +1534,21 @@ class ChatInterface:
                             reply = format_horoscope_reply(api_result)
                             metadata["type"] = "monthly_horoscope"
                             metadata["source"] = "freehoroscopeapi.com"
-                    elif requested_topic in ["love", "career", "health", "money"]:
-                        # Specific topic requested - return just that topic
-                        result = self.agent.generate_horoscope(sign)
-                        data = result["structured_data"]
-                        topic_data = data[requested_topic]
-                        reply = f"### {requested_topic.title()} for {sign.title()} (Score: {topic_data['score']}/10)\n\n" \
-                               f"{topic_data['prediction']}\n\n" \
-                               f"💡 *Advice: {topic_data['advice']}*"
-                        metadata["type"] = "topic"
-                        metadata["topic"] = requested_topic
-                        metadata["source"] = "local"
                     else:
-                        # Default: full unified horoscope with ALL details in one format
+                        # Default: daily horoscope from live API
+                        api_result = get_daily_horoscope(sign)
+                        metadata["period"] = "daily"
+                        if api_result:
+                            reply = format_horoscope_reply(api_result)
+                            metadata["type"] = "daily_horoscope"
+                            metadata["source"] = "freehoroscopeapi.com"
+                    
+                    # If API didn't return anything, fallback to local
+                    if reply is None:
                         result = self.agent.generate_horoscope(sign)
-                        data = result["structured_data"]
-                        reply = format_full_details(data, sign)
-                        metadata["type"] = "full_details"
-                        metadata["source"] = "local"
+                        reply = result["markdown_report"]
+                        metadata["type"] = "full_horoscope"
+                        metadata["source"] = "local_fallback"
                 except Exception as e:
                     reply = f"Error fetching horoscope: {str(e)}"
                     metadata["type"] = "error"
@@ -1551,30 +1558,24 @@ class ChatInterface:
             elif session["sign"] and reply is None:
                 try:
                     sign = session["sign"]
+                    # SPECIAL CASE: user asked for lucky info with known session sign
                     if requested_topic == "lucky":
                         result = self.agent.generate_horoscope(sign)
                         d = result["structured_data"]
                         reply = format_lucky_guide(d, sign)
                         metadata["type"] = "lucky"
                         metadata["source"] = "local"
-                    elif requested_topic in ["love", "career", "health", "money"]:
-                        # Specific topic requested
-                        result = self.agent.generate_horoscope(sign)
-                        data = result["structured_data"]
-                        topic_data = data[requested_topic]
-                        reply = f"### {requested_topic.title()} for {sign.title()} (Score: {topic_data['score']}/10)\n\n" \
-                               f"{topic_data['prediction']}\n\n" \
-                               f"💡 *Advice: {topic_data['advice']}*"
-                        metadata["type"] = "topic"
-                        metadata["topic"] = requested_topic
-                        metadata["source"] = "local"
                     else:
-                        # Default: full unified horoscope with ALL details
-                        result = self.agent.generate_horoscope(sign)
-                        data = result["structured_data"]
-                        reply = format_full_details(data, sign)
-                        metadata["type"] = "full_details"
-                        metadata["source"] = "local"
+                        api_result = get_daily_horoscope(sign)
+                        if api_result:
+                            reply = format_horoscope_reply(api_result)
+                            metadata["type"] = "daily_horoscope"
+                            metadata["source"] = "freehoroscopeapi.com"
+                        else:
+                            result = self.agent.generate_horoscope(sign)
+                            reply = result["markdown_report"]
+                            metadata["type"] = "full_horoscope"
+                            metadata["source"] = "local_fallback"
                 except Exception as e:
                     reply = f"Error: {str(e)}"
                     metadata["type"] = "error"

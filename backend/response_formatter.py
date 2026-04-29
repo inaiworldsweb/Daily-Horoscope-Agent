@@ -133,62 +133,79 @@ def format_comparison(yesterday_data: dict, today_data: dict, sign: str) -> str:
 **🍀 Today's Lucky:** {today_data.get('lucky_colour', 'N/A')} | **Number:** {today_data.get('lucky_number', 'N/A')}"""
 
 
-def format_full_details(data: dict, sign: str, api_text: str = None) -> str:
-    """Format ALL horoscope details into one unified clean response"""
-    date = data.get('date', 'Today')
-    day_rating = data.get('day_rating', 'N/A')
+def format_sign_profile(sign: str, horoscope_data: dict, rag_traits: str = "") -> str:
+    """Format comprehensive sign profile with all details in one format"""
+    d = horoscope_data
+    sign_title = sign.title()
     
-    love = data.get('love', {})
-    career = data.get('career', {})
-    health = data.get('health', {})
-    money = data.get('money', {})
+    # Sign details from zodiac knowledge
+    sign_details = {
+        "aries": {"element": "Fire", "planet": "Mars", "dates": "Mar 21 - Apr 19", "symbol": "♈"},
+        "taurus": {"element": "Earth", "planet": "Venus", "dates": "Apr 20 - May 20", "symbol": "♉"},
+        "gemini": {"element": "Air", "planet": "Mercury", "dates": "May 21 - Jun 20", "symbol": "♊"},
+        "cancer": {"element": "Water", "planet": "Moon", "dates": "Jun 21 - Jul 22", "symbol": "♋"},
+        "leo": {"element": "Fire", "planet": "Sun", "dates": "Jul 23 - Aug 22", "symbol": "♌"},
+        "virgo": {"element": "Earth", "planet": "Mercury", "dates": "Aug 23 - Sep 22", "symbol": "♍"},
+        "libra": {"element": "Air", "planet": "Venus", "dates": "Sep 23 - Oct 22", "symbol": "♎"},
+        "scorpio": {"element": "Water", "planet": "Pluto", "dates": "Oct 23 - Nov 21", "symbol": "♏"},
+        "sagittarius": {"element": "Fire", "planet": "Jupiter", "dates": "Nov 22 - Dec 21", "symbol": "♐"},
+        "capricorn": {"element": "Earth", "planet": "Saturn", "dates": "Dec 22 - Jan 19", "symbol": "♑"},
+        "aquarius": {"element": "Air", "planet": "Uranus", "dates": "Jan 20 - Feb 18", "symbol": "♒"},
+        "pisces": {"element": "Water", "planet": "Neptune", "dates": "Feb 19 - Mar 20", "symbol": "♓"}
+    }
     
-    # Build the unified response
-    result = f"""## 🔮 {sign.title()} Complete Horoscope - {date}
+    info = sign_details.get(sign.lower(), {"element": "Unknown", "planet": "Unknown", "dates": "Unknown", "symbol": "✨"})
+    
+    profile = f"""# {info['symbol']} {sign_title} Profile
 
-### ⭐ Overall Day Rating: {day_rating}/10
-
----
-
-### 💕 Love & Relationships (Score: {love.get('score', 'N/A')}/10)
-{love.get('prediction', 'N/A')}
-
-💡 *Advice: {love.get('advice', 'N/A')}*
-
----
-
-### 💼 Career & Work (Score: {career.get('score', 'N/A')}/10)
-{career.get('prediction', 'N/A')}
-
-💡 *Advice: {career.get('advice', 'N/A')}*
+## Basic Info
+| Attribute | Value |
+|-----------|-------|
+| 🔥 Element | {info['element']} |
+| 🪐 Ruling Planet | {info['planet']} |
+| 📅 Date Range | {info['dates']} |
+| 📅 Today | {d.get('date', 'Today')} |
 
 ---
 
-### 🏥 Health & Wellness (Score: {health.get('score', 'N/A')}/10)
-{health.get('prediction', 'N/A')}
-
-💡 *Advice: {health.get('advice', 'N/A')}*
+## Today's Horoscope Summary
+{d.get('overall_summary', 'Daily horoscope available.')}
 
 ---
 
-### 💰 Money & Finance (Score: {money.get('score', 'N/A')}/10)
-{money.get('prediction', 'N/A')}
-
-💡 *Advice: {money.get('advice', 'N/A')}*
+## Today's Ratings
+| Category | Score |
+|----------|-------|
+| 💕 Love | {d['love']['score']}/10 |
+| 💼 Career | {d['career']['score']}/10 |
+| 🏥 Health | {d['health']['score']}/10 |
+| 💰 Money | {d['money']['score']}/10 |
+| ⭐ Overall | {d.get('day_rating', 'N/A')}/10 |
 
 ---
 
-### 🍀 Lucky Guide for {sign.title()}
+## 🍀 Lucky Guide
 | Item | Value |
 |------|-------|
-| 🎨 **Color** | {data.get('lucky_colour', 'N/A')} |
-| 🔢 **Number** | {data.get('lucky_number', 'N/A')} |
-| 🧭 **Direction** | {data.get('lucky_direction', 'N/A')} |
-| ⏰ **Best Time** | {data.get('best_time_window', 'N/A')} |
-| ⚠️ **Avoid** | {data.get('avoid_time_window', 'N/A')} |
+| 🎨 Color | {d.get('lucky_colour', 'N/A')} |
+| 🔢 Number | {d.get('lucky_number', 'N/A')} |
+| 🧭 Direction | {d.get('lucky_direction', 'N/A')} |
+| ⏰ Best Time | {d.get('best_time_window', 'N/A')} |
+| ⚠️ Avoid | {d.get('avoid_time_window', 'N/A')} |
 
 ---
 
-✨ *Have a wonderful day, {sign.title()}!* 🌟"""
+## Key Predictions
+**Love:** {d['love']['prediction']}
+
+**Career:** {d['career']['prediction']}
+
+**Health:** {d['health']['prediction']}
+
+**Money:** {d['money']['prediction']}
+
+---
+
+*Your complete {sign_title} profile for today! ✨*"""
     
-    return result
+    return profile
