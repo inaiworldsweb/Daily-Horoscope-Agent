@@ -315,6 +315,220 @@ def get_database_stats():
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error retrieving database stats: {str(e)}")
 
+
+# ============================================================================
+# PUSH NOTIFICATION ENDPOINTS
+# ============================================================================
+
+class NotificationRequest(BaseModel):
+    sign: str
+    email: Optional[str] = None
+    time: str = "08:00"  # Default morning time
+    enabled: bool = True
+
+@app.post("/api/notification/subscribe")
+def subscribe_notification(request: NotificationRequest):
+    """
+    Subscribe to daily horoscope push notifications
+    
+    Simulates setting up a morning push notification.
+    In production, this would integrate with Firebase/OneSignal/etc.
+    """
+    try:
+        from database import db_manager
+        if db_manager.connected:
+            db_manager.db['notifications'].update_one(
+                {"sign": request.sign.lower(), "email": request.email},
+                {"$set": {
+                    "sign": request.sign.lower(),
+                    "email": request.email,
+                    "time": request.time,
+                    "enabled": request.enabled,
+                    "subscribed_at": datetime.utcnow()
+                }},
+                upsert=True
+            )
+        return {
+            "status": "subscribed",
+            "sign": request.sign,
+            "delivery_time": request.time,
+            "message": f"You'll receive daily horoscope for {request.sign.title()} at {request.time} every morning! 🌅"
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Subscription error: {str(e)}")
+
+@app.post("/api/notification/send")
+def send_notification(sign: str, test_mode: bool = False):
+    """
+    Send/Preview a daily horoscope notification
+    
+    Returns the notification content that would be sent.
+    """
+    try:
+        result = horoscope_agent.generate_horoscope(sign)
+        data = result["structured_data"]
+        
+        # Create a concise notification-style summary
+        notification = {
+            "title": f"🌟 {sign.title()} Daily Horoscope",
+            "body": f"Day Rating: {data['day_rating']}/10 | "
+                    f"Love: {data['love']['score']}/10 | "
+                    f"Career: {data['career']['score']}/10 | "
+                    f"💰 Money: {data['money']['score']}/10",
+            "lucky_color": data['lucky_colour'],
+            "lucky_number": data['lucky_number'],
+            "best_time": data['best_time_window'],
+            "preview": f"{data['overall_summary'][:100]}..." if len(data['overall_summary']) > 100 else data['overall_summary'],
+            "full_horoscope": result["markdown_report"]
+        }
+        
+        return {
+            "notification": notification,
+            "test_mode": test_mode,
+            "timestamp": datetime.utcnow().isoformat()
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Notification error: {str(e)}")
+
+
+# ============================================================================
+# CALENDAR INTEGRATION ENDPOINTS
+# ============================================================================
+
+@app.get("/api/calendar/rating")
+def get_calendar_rating(sign: str, date_str: Optional[str] = None):
+    """
+    Get a day rating for calendar integration.
+    
+    Tags the day as GOOD, MODERATE, or CHALLENGING based on horoscope scores.
+    
+    Use this to auto-tag days in your calendar app.
+    """
+    try:
+        result = horoscope_agent.generate_horoscope(sign, date_str)
+        data = result["structured_data"]
+        
+        # Calculate overall day rating
+        scores = [
+            data['love']['score'],
+            data['career']['score'],
+            data['health']['score'],
+            data['money']['score']
+        ]
+        avg_score = sum(scores) / len(scores)
+        
+        # Determine tag
+        if avg_score >= 7.5:
+            tag = "🟢 GOOD DAY"
+            color = "#4CAF50"
+            suggestion = "Great day for important decisions, new beginnings, and social events!"
+        elif avg_score >= 5.0:
+            tag = "🟡 MODERATE DAY"
+            color = "#FFC107"
+            suggestion = "Good for planning, organizing, and steady progress."
+        else:
+            tag = "🔴 CHALLENGING DAY"
+            color = "#F44336"
+            suggestion = "Take it easy, rest, reflect, and avoid major decisions."
+        
+        return {
+            "sign": sign,
+            "date": data['date'],
+            "tag": tag,
+            "color": color,
+            "average_score": round(avg_score, 1),
+            "scores": {
+                "love": data['love']['score'],
+                "career": data['career']['score'],
+                "health": data['health']['score'],
+                "money": data['money']['score']
+            },
+            "lucky_color": data['lucky_colour'],
+            "lucky_number": data['lucky_number'],
+            "best_time": data['best_time_window'],
+            "suggestion": suggestion,
+            "calendar_event_title": f"{sign.title()} Horoscope: {tag}",
+            "calendar_event_description": f"Day Rating: {round(avg_score, 1)}/10\n"
+                                           f"Love: {data['love']['score']}/10\n"
+                                           f"Career: {data['career']['score']}/10\n"
+                                           f"Health: {data['health']['score']}/10\n"
+                                           f"Money: {data['money']['score']}/10\n\n"
+                                           f"Lucky: {data['lucky_colour']} | Number: {data['lucky_number']}\n\n"
+                                           f"{suggestion}"
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Calendar rating error: {str(e)}")
+
+@app.get("/api/calendar/month")
+def get_month_calendar(sign: str):
+    """
+    Get a full month calendar with daily ratings for a sign.
+    
+    Returns 30 days of ratings for calendar tagging.
+    """
+    try:
+        from datetime import timedelta
+        ratings = []
+        base_date = datetime.now()
+        
+        for i in range(30):
+            date = base_date + timedelta(days=i)
+            date_str = date.strftime("%Y-%m-%d")
+            
+            try:
+                result = horoscope_agent.generate_horoscope(sign, date_str)
+                data = result["structured_data"]
+                
+                scores = [
+                    data['love']['score'],
+                    data['career']['score'],
+                    data['health']['score'],
+                    data['money']['score']
+                ]
+                avg = sum(scores) / len(scores)
+                
+                if avg >= 7.5:
+                    tag = "good"
+                    color = "#4CAF50"
+                elif avg >= 5.0:
+                    tag = "moderate"
+                    color = "#FFC107"
+                else:
+                    tag = "challenging"
+                    color = "#F44336"
+                
+                ratings.append({
+                    "date": date_str,
+                    "tag": tag,
+                    "color": color,
+                    "average_score": round(avg, 1),
+                    "lucky_color": data['lucky_colour'],
+                    "lucky_number": data['lucky_number']
+                })
+            except:
+                ratings.append({
+                    "date": date_str,
+                    "tag": "unknown",
+                    "color": "#9E9E9E",
+                    "average_score": None,
+                    "lucky_color": None,
+                    "lucky_number": None
+                })
+        
+        return {
+            "sign": sign,
+            "month": base_date.strftime("%B %Y"),
+            "days": ratings,
+            "summary": {
+                "good_days": len([r for r in ratings if r["tag"] == "good"]),
+                "moderate_days": len([r for r in ratings if r["tag"] == "moderate"]),
+                "challenging_days": len([r for r in ratings if r["tag"] == "challenging"])
+            }
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Month calendar error: {str(e)}")
+
+
 if __name__ == "__main__":
     import uvicorn
     print(f"🌟 Starting Daily Horoscope Agent...")
