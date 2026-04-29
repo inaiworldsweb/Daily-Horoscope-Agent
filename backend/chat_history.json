@@ -286,5 +286,25 @@
       "type": "daily_horoscope",
       "source": "freehoroscopeapi.com"
     }
+  },
+  {
+    "session_id": "session_1777454019997_kg2ya9mai",
+    "user_message": "hello ",
+    "bot_reply": "👋 Hello! I'm your Daily Horoscope Agent. Tell me your zodiac sign (like 'I'm Leo') and I'll share your horoscope!",
+    "sign": "leo",
+    "timestamp": "2026-04-29T13:16:09.675368",
+    "metadata": {
+      "type": "greeting"
+    }
+  },
+  {
+    "session_id": "session_1777454019997_kg2ya9mai",
+    "user_message": "hello ",
+    "bot_reply": "👋 Hello! I'm your Daily Horoscope Agent. Tell me your zodiac sign (like 'I'm Leo') and I'll share your horoscope!",
+    "sign": "leo",
+    "timestamp": "2026-04-29T13:17:17.048713",
+    "metadata": {
+      "type": "greeting"
+    }
   }
 ]
