@@ -9,5 +9,86 @@
       "type": "full_horoscope",
       "day_rating": 7
     }
+  },
+  {
+    "session_id": "session_1777445561295_henwlx9gn",
+    "user_message": "hello ",
+    "bot_reply": "👋 Welcome to the Daily Horoscope Agent! 🌟\n\nI provide professional astrology readings using:\n• Real planetary positions (Swiss Ephemeris)\n• Transit calculations\n• Vedic & Western astrology knowledge\n• Comprehensive zodiac database\n\n**How to use:**\n1. Tell me your zodiac sign (e.g., \"Leo\", \"Scorpio\")\n2. Or your birth date (e.g., \"15/08/1990\", \"2004-12-12\")\n\n**Daily Horoscope Topics:**\n• `love` - Romance prediction\n• `career` - Work & success\n• `health` - Wellness advice\n• `money` - Financial outlook\n• `lucky` - Lucky color, number, direction\n• `compare` - Yesterday vs Today comparison\n\n**Knowledge Questions (powered by RAG):**\n• \"What are Leo's traits?\" - Personality & characteristics\n• \"Tell me about Scorpio love\" - Relationship info & compatibility\n• \"What element is Taurus?\" - Element analysis\n• \"What's the ruling planet of Gemini?\" - Planetary influences\n• \"What dates for Aquarius?\" - Date ranges\n• \"Who is compatible with Cancer?\" - Best matches\n\n**Try:** \"I'm a Gemini, what's my career outlook?\" or \"What are Leo traits?\"\n",
+    "sign": null,
+    "timestamp": "2026-04-29T10:53:27.517010",
+    "metadata": {
+      "type": "welcome"
+    }
+  },
+  {
+    "session_id": "session_1777445561295_henwlx9gn",
+    "user_message": "Scorpio",
+    "bot_reply": "## 🔮 Scorpio Daily Horoscope\n**Date:** 2026-04-29\n\nScorpio (October 23 - November 21) - You've been working hard on a project lately, and today is a great day to take a step back and evaluate your progress. Ask yourself if you're on track to meet your goals and make any necessary adjustments. Don't be afraid to seek feedback from others if you need an outside perspective. Your attention to detail will serve you well today. Focus on fine-tuning your plan and making it even more effective.\n\n---\n*Powered by [freehoroscopeapi.com](https://freehoroscopeapi.com)*\n",
+    "sign": "scorpio",
+    "timestamp": "2026-04-29T10:57:31.049736",
+    "metadata": {
+      "period": "daily",
+      "type": "daily_horoscope",
+      "source": "freehoroscopeapi.com"
+    }
+  },
+  {
+    "session_id": "session_1777445561295_henwlx9gn",
+    "user_message": "12/12/2004",
+    "bot_reply": "## 🔮 Sagittarius Daily Horoscope\n**Date:** 2026-04-29\n\nHey Sagittarius! Today's your chance to take a break from the usual routine and do something completely spontaneous. Whether it's trying a new restaurant, taking a weekend trip, or trying a new hobby, make time for an adventure. Don't be afraid to step out of your comfort zone and see what excitement you can stir up. You never know where it might lead.\n\n---\n*Powered by [freehoroscopeapi.com](https://freehoroscopeapi.com)*\n",
+    "sign": "sagittarius",
+    "timestamp": "2026-04-29T11:00:03.234368",
+    "metadata": {
+      "period": "daily",
+      "type": "daily_horoscope",
+      "source": "freehoroscopeapi.com"
+    }
+  },
+  {
+    "session_id": "session_1777445561295_henwlx9gn",
+    "user_message": "11/11/1999",
+    "bot_reply": "## 🔮 Scorpio Daily Horoscope\n**Date:** 2026-04-29\n\nScorpio (October 23 - November 21) - You've been working hard on a project lately, and today is a great day to take a step back and evaluate your progress. Ask yourself if you're on track to meet your goals and make any necessary adjustments. Don't be afraid to seek feedback from others if you need an outside perspective. Your attention to detail will serve you well today. Focus on fine-tuning your plan and making it even more effective.\n\n---\n*Powered by [freehoroscopeapi.com](https://freehoroscopeapi.com)*\n",
+    "sign": "scorpio",
+    "timestamp": "2026-04-29T11:01:10.361257",
+    "metadata": {
+      "period": "daily",
+      "type": "daily_horoscope",
+      "source": "freehoroscopeapi.com"
+    }
+  },
+  {
+    "session_id": "session_1777445561295_henwlx9gn",
+    "user_message": "22/11/2024",
+    "bot_reply": "## 🔮 Sagittarius Daily Horoscope\n**Date:** 2026-04-29\n\nHey Sagittarius! Today's your chance to take a break from the usual routine and do something completely spontaneous. Whether it's trying a new restaurant, taking a weekend trip, or trying a new hobby, make time for an adventure. Don't be afraid to step out of your comfort zone and see what excitement you can stir up. You never know where it might lead.\n\n---\n*Powered by [freehoroscopeapi.com](https://freehoroscopeapi.com)*\n",
+    "sign": "sagittarius",
+    "timestamp": "2026-04-29T11:04:58.925336",
+    "metadata": {
+      "period": "daily",
+      "type": "daily_horoscope",
+      "source": "freehoroscopeapi.com"
+    }
+  },
+  {
+    "session_id": "session_1777445561295_henwlx9gn",
+    "user_message": "hello ",
+    "bot_reply": "## 🔮 Sagittarius Daily Horoscope\n**Date:** 2026-04-29\n\nHey Sagittarius! Today's your chance to take a break from the usual routine and do something completely spontaneous. Whether it's trying a new restaurant, taking a weekend trip, or trying a new hobby, make time for an adventure. Don't be afraid to step out of your comfort zone and see what excitement you can stir up. You never know where it might lead.\n\n---\n*Powered by [freehoroscopeapi.com](https://freehoroscopeapi.com)*\n",
+    "sign": "sagittarius",
+    "timestamp": "2026-04-29T11:16:57.567250",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "freehoroscopeapi.com"
+    }
+  },
+  {
+    "session_id": "session_1777445561295_henwlx9gn",
+    "user_message": "scorpio lucky numaber ",
+    "bot_reply": "## 🔮 Scorpio Daily Horoscope\n**Date:** 2026-04-29\n\nScorpio (October 23 - November 21) - You've been working hard on a project lately, and today is a great day to take a step back and evaluate your progress. Ask yourself if you're on track to meet your goals and make any necessary adjustments. Don't be afraid to seek feedback from others if you need an outside perspective. Your attention to detail will serve you well today. Focus on fine-tuning your plan and making it even more effective.\n\n---\n*Powered by [freehoroscopeapi.com](https://freehoroscopeapi.com)*\n",
+    "sign": "scorpio",
+    "timestamp": "2026-04-29T11:24:04.928056",
+    "metadata": {
+      "period": "daily",
+      "type": "daily_horoscope",
+      "source": "freehoroscopeapi.com"
+    }
   }
 ]

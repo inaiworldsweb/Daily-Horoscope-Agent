@@ -1348,6 +1348,17 @@ class ChatInterface:
         sign = None
         metadata = {}
         
+        # Simple greetings and conversation
+        greetings = ["hello", "hi", "hey", "howdy", "good morning", "good afternoon", "good evening"]
+        how_are_you = ["how are you", "how's it going", "what's up", "how are you doing"]
+        
+        if any(g in msg_lower for g in greetings):
+            reply = "👋 Hello! I'm your Daily Horoscope Agent. Tell me your zodiac sign (like 'I'm Leo') and I'll share your horoscope!"
+            metadata["type"] = "greeting"
+        elif any(h in msg_lower for h in how_are_you):
+            reply = "I'm doing great, ready to read the stars for you! ✨ What can I tell you about your horoscope today?"
+            metadata["type"] = "conversation"
+        
         # Check for comparison request
         if any(word in msg_lower for word in ["compare", "yesterday", "trend", "vs"]):
             if session["sign"]:
