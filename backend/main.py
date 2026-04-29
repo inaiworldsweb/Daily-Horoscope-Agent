@@ -1,12 +1,13 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional
 import json
 import os
 # Production Configuration for Render
 # Import our Daily Horoscope Agent
 from agent import DailyHoroscopeAgent, ChatInterface
+from database import db_manager
 
 # Production URLs
 PORT = 10000  # Render requires this port
@@ -27,6 +28,8 @@ app.add_middleware(
         FRONTEND_URL,
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "http://localhost:5174",
+        "http://127.0.0.1:5174",
         "https://daily-horoscope-agent-fronted.onrender.com"
     ],
     allow_credentials=True,
@@ -46,7 +49,10 @@ class HoroscopeRequest(BaseModel):
 
 class ChatRequest(BaseModel):
     message: str
-    session_id: str = "default"
+    session_id: str = Field(default="default", alias="sessionId")
+
+    class Config:
+        populate_by_name = True
 
 class BirthDateRequest(BaseModel):
     birth_date: str  # DD/MM/YYYY or YYYY-MM-DD
@@ -240,6 +246,74 @@ def get_config():
         "debug": DEBUG,
         "swisseph_available": horoscope_agent.ephemeris.swisseph_available
     }
+
+# ============================================================================
+# CHAT HISTORY ENDPOINTS
+# ============================================================================
+
+@app.get("/api/chat/history/{session_id}")
+def get_chat_history(session_id: str, limit: int = 50):
+    """
+    Get chat history for a specific session
+    """
+    try:
+        history = db_manager.get_chat_history(session_id, limit)
+        # Convert ObjectId to string for JSON serialization
+        for item in history:
+            item['_id'] = str(item['_id'])
+            if 'timestamp' in item:
+                item['timestamp'] = item['timestamp'].isoformat() if item['timestamp'] else None
+        return {
+            "session_id": session_id,
+            "messages": history,
+            "count": len(history)
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error retrieving chat history: {str(e)}")
+
+@app.get("/api/chat/sessions")
+def get_all_sessions(limit: int = 100):
+    """
+    Get all chat sessions
+    """
+    try:
+        sessions = db_manager.get_all_sessions(limit)
+        # Convert ObjectId to string for JSON serialization
+        for session in sessions:
+            session['_id'] = str(session['_id'])
+            if 'last_active' in session:
+                session['last_active'] = session['last_active'].isoformat() if session['last_active'] else None
+            if 'created_at' in session:
+                session['created_at'] = session['created_at'].isoformat() if session['created_at'] else None
+        return {
+            "sessions": sessions,
+            "count": len(sessions)
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error retrieving sessions: {str(e)}")
+
+@app.get("/api/chat/stats/{session_id}")
+def get_session_stats(session_id: str):
+    """
+    Get statistics for a specific session
+    """
+    try:
+        stats = db_manager.get_session_stats(session_id)
+        if stats.get('session_info') and stats['session_info'].get('_id'):
+            stats['session_info']['_id'] = str(stats['session_info']['_id'])
+        return stats
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error retrieving session stats: {str(e)}")
+
+@app.get("/api/chat/stats")
+def get_database_stats():
+    """
+    Get overall database statistics
+    """
+    try:
+        return db_manager.get_database_stats()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error retrieving database stats: {str(e)}")
 
 if __name__ == "__main__":
     import uvicorn

@@ -1,17 +1,17 @@
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const { MongoClient } = require('mongodb');
-const axios = require('axios');
-const { connectDB, getHoroscopesCollection, getChatsCollection, getUsersCollection } from './db.js';
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import axios from 'axios';
+import { connectDB, getHoroscopesCollection, getChatsCollection, getUsersCollection } from './db.js';
 
 const app = express();
-const PORT = 8000;
+dotenv.config();
+const PORT = process.env.PORT || 8000;
 
 // Connect to MongoDB
 await connectDB();
 
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:5173' }));
 app.use(express.json());
 
 // Store user sessions (in-memory for quick access, also saved to DB)

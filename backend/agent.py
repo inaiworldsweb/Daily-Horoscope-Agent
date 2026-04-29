@@ -11,6 +11,9 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass, asdict
 
+# Import database manager for saving chat data
+from database import db_manager
+
 # Swiss Ephemeris for real planetary calculations
 try:
     import swisseph as swe
@@ -1324,7 +1327,7 @@ class ChatInterface:
         self.sessions = {}
     
     def chat(self, message: str, session_id: str = "default") -> str:
-        """Process chat message and return response"""
+        """Process chat message and return response, saving to database"""
         msg_lower = message.lower().strip()
         
         # Initialize session
@@ -1332,100 +1335,125 @@ class ChatInterface:
             self.sessions[session_id] = {"sign": None, "last_topic": None}
         session = self.sessions[session_id]
         
+        reply = None
+        sign = None
+        metadata = {}
+        
         # Check for comparison request
         if any(word in msg_lower for word in ["compare", "yesterday", "trend", "vs"]):
             if session["sign"]:
                 result = self.agent.compare_with_yesterday(session["sign"], session_id)
-                return result["markdown"]
-            return "Please tell me your zodiac sign first (e.g., 'Leo', 'Scorpio')!"
+                reply = result["markdown"]
+                sign = session["sign"]
+                metadata["type"] = "comparison"
+            else:
+                reply = "Please tell me your zodiac sign first (e.g., 'Leo', 'Scorpio')!"
+                metadata["type"] = "error"
         
         # Check for knowledge-based questions (traits, compatibility, element, etc.)
-        knowledge_keywords = [
-            "trait", "personality", "characteristic", "like", "what is", "tell me about",
-            "compatible", "match", "compatibility", "best with", "worst with",
-            "element", "fire", "earth", "air", "water",
-            "ruling planet", "planet", "symbol", "represent", "icon",
-            "date", "birthday", "born", "range", "when is"
-        ]
-        is_knowledge_question = any(kw in msg_lower for kw in knowledge_keywords)
-        
-        # Try to get sign from message
-        sign = None
-        for zodiac in ZODIAC_SIGNS:
-            if zodiac in msg_lower:
-                sign = zodiac
-                session["sign"] = sign
-                break
-        
-        # Try birth date
-        if not sign:
-            date_match = re.search(r'(\d{1,2})[/-](\d{1,2})[/-](\d{4})', message)
-            if date_match:
-                day, month, year = date_match.groups()
-                birth_info = self.agent.validator.validate_birth_date(f"{day}/{month}/{year}")
-                if birth_info:
-                    sign, _, _, _ = birth_info
+        if reply is None:
+            knowledge_keywords = [
+                "trait", "personality", "characteristic", "like", "what is", "tell me about",
+                "compatible", "match", "compatibility", "best with", "worst with",
+                "element", "fire", "earth", "air", "water",
+                "ruling planet", "planet", "symbol", "represent", "icon",
+                "date", "birthday", "born", "range", "when is"
+            ]
+            is_knowledge_question = any(kw in msg_lower for kw in knowledge_keywords)
+            
+            # Try to get sign from message
+            for zodiac in ZODIAC_SIGNS:
+                if zodiac in msg_lower:
+                    sign = zodiac
                     session["sign"] = sign
-        
-        # If knowledge question with sign, use RAG to answer
-        if is_knowledge_question:
-            # If no sign in message but we have session sign
-            rag_sign = sign or session["sign"]
-            if rag_sign:
-                return self.rag.answer_question(message, rag_sign)
-            else:
-                return "Please mention a zodiac sign so I can answer! (e.g., 'Tell me about Leo traits')"
+                    break
+            
+            # Try birth date
+            if not sign:
+                date_match = re.search(r'(\d{1,2})[/-](\d{1,2})[/-](\d{4})', message)
+                if date_match:
+                    day, month, year = date_match.groups()
+                    birth_info = self.agent.validator.validate_birth_date(f"{day}/{month}/{year}")
+                    if birth_info:
+                        sign, _, _, _ = birth_info
+                        session["sign"] = sign
+            
+            # If knowledge question with sign, use RAG to answer
+            if is_knowledge_question:
+                rag_sign = sign or session["sign"]
+                if rag_sign:
+                    reply = self.rag.answer_question(message, rag_sign)
+                    metadata["type"] = "knowledge"
+                    metadata["rag_sign"] = rag_sign
+                else:
+                    reply = "Please mention a zodiac sign so I can answer! (e.g., 'Tell me about Leo traits')"
+                    metadata["type"] = "error"
         
         # Check for specific topic requests (daily horoscope topics)
-        topics = ["love", "career", "health", "money", "lucky"]
-        requested_topic = None
-        for topic in topics:
-            if topic in msg_lower:
-                requested_topic = topic
-                break
-        
-        # If we have a sign, generate daily horoscope
-        if sign:
-            try:
-                result = self.agent.generate_horoscope(sign)
-                
-                # If specific topic requested
-                if requested_topic and requested_topic != "lucky":
+        if reply is None:
+            topics = ["love", "career", "health", "money", "lucky"]
+            requested_topic = None
+            for topic in topics:
+                if topic in msg_lower:
+                    requested_topic = topic
+                    break
+            
+            # If we have a sign, generate daily horoscope
+            if sign:
+                try:
+                    result = self.agent.generate_horoscope(sign)
+                    
+                    # If specific topic requested
+                    if requested_topic and requested_topic != "lucky":
+                        data = result["structured_data"][requested_topic]
+                        reply = f"**{requested_topic.title()} for {sign.title()}**\n\n" \
+                               f"Score: {data['score']}/10\n\n" \
+                               f"{data['prediction']}\n\n" \
+                               f"*Advice: {data['advice']}*"
+                        metadata["type"] = "topic"
+                        metadata["topic"] = requested_topic
+                    
+                    elif requested_topic == "lucky":
+                        d = result["structured_data"]
+                        reply = f"**🍀 Lucky Guide for {sign.title()}**\n\n" \
+                               f"Color: {d['lucky_colour']}\n" \
+                               f"Number: {d['lucky_number']}\n" \
+                               f"Direction: {d['lucky_direction']}\n" \
+                               f"Best Time: {d['best_time_window']}\n" \
+                               f"Avoid: {d['avoid_time_window']}" 
+                        metadata["type"] = "lucky"
+                    
+                    else:
+                        # Return full horoscope
+                        reply = result["markdown_report"]
+                        metadata["type"] = "full_horoscope"
+                    
+                    metadata["day_rating"] = result["structured_data"].get("day_rating")
+                except Exception as e:
+                    reply = f"Error generating horoscope: {str(e)}"
+                    metadata["type"] = "error"
+                    metadata["error"] = str(e)
+            
+            # If we have session sign and topic request
+            elif session["sign"] and requested_topic and reply is None:
+                try:
+                    result = self.agent.generate_horoscope(session["sign"])
                     data = result["structured_data"][requested_topic]
-                    return f"**{requested_topic.title()} for {sign.title()}**\n\n" \
+                    reply = f"**{requested_topic.title()} for {session['sign'].title()}**\n\n" \
                            f"Score: {data['score']}/10\n\n" \
                            f"{data['prediction']}\n\n" \
                            f"*Advice: {data['advice']}*"
-                
-                elif requested_topic == "lucky":
-                    d = result["structured_data"]
-                    return f"**🍀 Lucky Guide for {sign.title()}**\n\n" \
-                           f"Color: {d['lucky_colour']}\n" \
-                           f"Number: {d['lucky_number']}\n" \
-                           f"Direction: {d['lucky_direction']}\n" \
-                           f"Best Time: {d['best_time_window']}\n" \
-                           f"Avoid: {d['avoid_time_window']}" 
-                
-                # Return full horoscope
-                return result["markdown_report"]
-                
-            except Exception as e:
-                return f"Error generating horoscope: {str(e)}"
-        
-        # If we have session sign and topic request
-        if session["sign"] and requested_topic:
-            try:
-                result = self.agent.generate_horoscope(session["sign"])
-                data = result["structured_data"][requested_topic]
-                return f"**{requested_topic.title()} for {session['sign'].title()}**\n\n" \
-                       f"Score: {data['score']}/10\n\n" \
-                       f"{data['prediction']}\n\n" \
-                       f"*Advice: {data['advice']}*"
-            except Exception as e:
-                return f"Error: {str(e)}"
+                    sign = session["sign"]
+                    metadata["type"] = "topic"
+                    metadata["topic"] = requested_topic
+                except Exception as e:
+                    reply = f"Error: {str(e)}"
+                    metadata["type"] = "error"
+                    metadata["error"] = str(e)
         
         # Default welcome message
-        return """👋 Welcome to the Daily Horoscope Agent! 🌟
+        if reply is None:
+            reply = """👋 Welcome to the Daily Horoscope Agent! 🌟
 
 I provide professional astrology readings using:
 • Real planetary positions (Swiss Ephemeris)
@@ -1455,3 +1483,15 @@ I provide professional astrology readings using:
 
 **Try:** "I'm a Gemini, what's my career outlook?" or "What are Leo traits?"
 """
+            metadata["type"] = "welcome"
+        
+        # Save chat to database
+        db_manager.save_chat_message(
+            session_id=session_id,
+            user_message=message,
+            bot_reply=reply,
+            sign=sign or session.get("sign"),
+            metadata=metadata
+        )
+        
+        return reply

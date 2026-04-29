@@ -1,13 +1,16 @@
 import { MongoClient } from 'mongodb';
 
-const MONGODB_URL = "mongodb+srv://web_db_user:nency2004@dailyhoroscope.buhj27w.mongodb.net/";
-const DB_NAME = "daily_horoscope";
+const MONGODB_URL = process.env.MONGODB_URI;
+const DB_NAME = process.env.MONGODB_DB_NAME || 'daily_horoscope';
 
 let client;
 let db;
 
 export async function connectDB() {
   try {
+    if (!MONGODB_URL) {
+      throw new Error('Missing MONGODB_URI in environment variables');
+    }
     client = new MongoClient(MONGODB_URL);
     await client.connect();
     db = client.db(DB_NAME);
