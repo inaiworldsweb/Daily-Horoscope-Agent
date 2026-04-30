@@ -151,18 +151,26 @@ class DatabaseManager:
             "metadata": metadata or {}
         }
 
+        print(f"💾 Saving chat: session={session_id}, sign={sign}, type={metadata.get('type', 'unknown')}")
+
         # Always save to JSON file (works even without MongoDB)
         self._save_to_json(chat_document)
+        print(f"✅ Saved to JSON file")
 
         mongo_saved = False
         if self.connected:
             try:
+                print(f"💾 Attempting MongoDB save...")
                 result = self.chats_collection.insert_one(chat_document)
                 mongo_saved = bool(result.inserted_id)
+                print(f"✅ MongoDB save successful: {result.inserted_id}")
                 # Update session info
                 self._update_session(session_id, sign)
             except Exception as e:
                 print(f"⚠️ Error saving chat message to MongoDB: {e}")
+                print(f"⚠️ Error type: {type(e).__name__}")
+        else:
+            print(f"⚠️ MongoDB not connected, skipping MongoDB save")
 
         return True  # JSON always saves, MongoDB is bonus
     
