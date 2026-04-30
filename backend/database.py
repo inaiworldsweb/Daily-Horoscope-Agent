@@ -89,6 +89,10 @@ class DatabaseManager:
     def _connect(self):
         """Establish connection to MongoDB"""
         try:
+            print(f"🔗 Attempting MongoDB connection...")
+            print(f"🔗 MongoDB URL: {MONGODB_URL[:30]}...")
+            print(f"🔗 Database Name: {DB_NAME}")
+            
             self.client = MongoClient(MONGODB_URL, serverSelectionTimeoutMS=5000)
             # Verify connection
             self.client.admin.command('ping')
@@ -102,7 +106,8 @@ class DatabaseManager:
             self._create_indexes()
         except Exception as e:
             print(f"⚠️ MongoDB connection failed: {e}")
-            print("Chat data will be stored in memory only.")
+            print(f"⚠️ Error type: {type(e).__name__}")
+            print("⚠️ Chat data will be stored in JSON file only.")
             self.connected = False
     
     def _create_indexes(self):
