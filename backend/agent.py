@@ -14,12 +14,8 @@ from dataclasses import dataclass, asdict
 # Import database manager for saving chat data
 from database import db_manager
 
-# Import live horoscope API
+# Import live horoscope API (legacy - ZODIAC_SIGNS only for reference)
 from external_api import (
-    get_daily_horoscope,
-    get_weekly_horoscope,
-    get_monthly_horoscope,
-    format_horoscope_reply,
     ZODIAC_SIGNS as API_ZODIAC_SIGNS
 )
 
@@ -32,6 +28,21 @@ from response_formatter import (
     format_error,
     format_comparison,
     format_sign_profile
+)
+
+# Prokerala API for daily horoscope (working ✅)
+from tools.prokerala_api import (
+    get_daily_horoscope_prokerala_sync,
+    get_panchang_prokerala_sync,
+    get_lucky_details_prokerala_sync,
+    format_prokerala_horoscope_reply,
+)
+
+# freehoroscopeapi.com for weekly/monthly (Prokerala doesn't have these)
+from external_api import (
+    get_weekly_horoscope,
+    get_monthly_horoscope,
+    format_horoscope_reply,
 )
 
 # Swiss Ephemeris for real planetary calculations
@@ -1444,7 +1455,86 @@ class ChatInterface:
             else:
                 reply = format_error("Please tell me your zodiac sign first so I can rate your day for the calendar!")
                 metadata["type"] = "error"
+
+        # ── Prokerala Panchang / Auspicious details ──
+        prokerala_triggers = [
+            "panchang", "prokerala", "auspicious", "tithi", "nakshatra",
+            "shubh", "muhurat", "muhurta", "rahukalam", "yamagandam",
+            "good time", "bad time", "favourable time"
+        ]
+        if reply is None and any(t in msg_lower for t in prokerala_triggers):
+            if session["sign"]:
+                sign = session["sign"]
+                try:
+                    result = get_lucky_details_prokerala_sync(sign)
+                    panchang = result.get("panchang", {})
+                    p_data = panchang.get("data", {})
+                    tithi = result.get("tithi", "N/A")
+                    nakshatra = result.get("nakshatra", "N/A")
+                    lines = [
+                        f"## 🕉️ Prokerala Panchang for {sign.title()}",
+                        f"**Date:** {result.get('date', 'Today')}",
+                        "",
+                        f"**Tithi:** {tithi}",
+                        f"**Nakshatra:** {nakshatra}",
+                        "",
+                    ]
+                    if isinstance(p_data, dict):
+                        for key in ["sunrise", "sunset", "rahukalam", "yamagandam", "gulikai"]:
+                            val = p_data.get(key)
+                            if val:
+                                lines.append(f"**{key.replace('_', ' ').title()}:** {val}")
+                    lines += [
+                        "",
+                        f"🎨 **Lucky Colour:** {result.get('lucky_colour', 'N/A')}",
+                        f"🔢 **Lucky Number:** {result.get('lucky_number', 'N/A')}",
+                        f"🧭 **Lucky Direction:** {result.get('lucky_direction', 'N/A')}",
+                        "",
+                        "_Powered by Prokerala API_",
+                    ]
+                    reply = "\n".join(lines)
+                    metadata["type"] = "prokerala_panchang"
+                    metadata["source"] = "prokerala"
+                except Exception as e:
+                    reply = f"⚠️ Could not fetch Prokerala data: {str(e)}\n\nFalling back to local lucky guide..."
+                    try:
+                        result = self.agent.generate_horoscope(sign)
+                        reply += "\n\n" + format_lucky_guide(result["structured_data"], sign)
+                    except Exception:
+                        pass
+                    metadata["type"] = "prokerala_error"
+            else:
+                reply = format_error("Please tell me your zodiac sign first so I can fetch Prokerala Panchang details!")
+                metadata["type"] = "error"
         
+        # Natural language triggers for a FULL daily horoscope (no specific topic)
+        full_horoscope_triggers = [
+            "my horoscope", "my daily", "what is my horoscope", "give me my horoscope",
+            "tell me my horoscope", "show my horoscope", "what about today", "today's horoscope",
+            "todays horoscope", "daily horoscope", "my reading", "my prediction",
+            "predict my day", "what will happen today", "how is my day", "how is today"
+        ]
+        wants_full_horoscope = any(t in msg_lower for t in full_horoscope_triggers)
+
+        # If user asks for full horoscope and we have a session sign, return it
+        if reply is None and wants_full_horoscope and session["sign"]:
+            sign = session["sign"]
+            try:
+                api_result = get_daily_horoscope_prokerala_sync(sign)
+                if api_result and "error" not in api_result:
+                    reply = format_prokerala_horoscope_reply(api_result)
+                    metadata["type"] = "daily_horoscope"
+                    metadata["source"] = "prokerala"
+                else:
+                    result = self.agent.generate_horoscope(sign)
+                    reply = result["markdown_report"]
+                    metadata["type"] = "full_horoscope"
+                    metadata["source"] = "local_fallback"
+            except Exception as e:
+                reply = f"Error fetching horoscope: {str(e)}"
+                metadata["type"] = "error"
+                metadata["error"] = str(e)
+
         # Check for knowledge-based questions (traits, compatibility, element, etc.)
         if reply is None:
             knowledge_keywords = [
@@ -1455,14 +1545,14 @@ class ChatInterface:
                 "date", "birthday", "born", "range", "when is"
             ]
             is_knowledge_question = any(kw in msg_lower for kw in knowledge_keywords)
-            
+
             # Try to get sign from message
             for zodiac in ZODIAC_SIGNS:
                 if zodiac in msg_lower:
                     sign = zodiac
                     session["sign"] = sign
                     break
-            
+
             # Try birth date
             if not sign:
                 date_match = re.search(r'(\d{1,2})[/-](\d{1,2})[/-](\d{4})', message)
@@ -1472,7 +1562,7 @@ class ChatInterface:
                     if birth_info:
                         sign, _, _, _ = birth_info
                         session["sign"] = sign
-            
+
             # If knowledge question with sign, use RAG to answer
             if is_knowledge_question:
                 rag_sign = sign or session["sign"]
@@ -1483,17 +1573,60 @@ class ChatInterface:
                 else:
                     reply = format_error("Please mention a zodiac sign so I can answer! (e.g., 'Tell me about Leo traits')")
                     metadata["type"] = "error"
-            # If user just mentioned their sign (no specific topic question), show comprehensive profile
+            # If user just mentioned their sign (no specific topic question), return LIVE daily horoscope
             elif sign and not is_knowledge_question:
+                # Check for topic keywords (lucky, love, career, health, money)
+                topics = ["love", "career", "health", "money", "lucky"]
+                requested_topic = None
+                for topic in topics:
+                    if topic in msg_lower:
+                        requested_topic = topic
+                        break
+
+                # Determine period: daily, weekly, or monthly
+                period = "daily"
+                if any(w in msg_lower for w in ["weekly", "week", "this week"]):
+                    period = "weekly"
+                elif any(w in msg_lower for w in ["monthly", "month", "this month"]):
+                    period = "monthly"
+
                 try:
-                    result = self.agent.generate_horoscope(sign)
-                    reply = format_sign_profile(sign, result["structured_data"])
-                    metadata["type"] = "sign_profile"
-                    metadata["source"] = "local"
+                    if requested_topic == "lucky":
+                        result = self.agent.generate_horoscope(sign)
+                        d = result["structured_data"]
+                        reply = format_lucky_guide(d, sign)
+                        metadata["type"] = "lucky"
+                        metadata["source"] = "local"
+                    elif period == "weekly":
+                        api_result = get_weekly_horoscope(sign)
+                        if api_result:
+                            reply = format_horoscope_reply(api_result)
+                            metadata["type"] = "weekly_horoscope"
+                            metadata["source"] = "freehoroscopeapi.com"
+                    elif period == "monthly":
+                        api_result = get_monthly_horoscope(sign)
+                        if api_result:
+                            reply = format_horoscope_reply(api_result)
+                            metadata["type"] = "monthly_horoscope"
+                            metadata["source"] = "freehoroscopeapi.com"
+                    else:
+                        # Default: daily horoscope from Prokerala API
+                        api_result = get_daily_horoscope_prokerala_sync(sign)
+                        if api_result and "error" not in api_result:
+                            reply = format_prokerala_horoscope_reply(api_result)
+                            metadata["type"] = "daily_horoscope"
+                            metadata["source"] = "prokerala"
+
+                    if reply is None:
+                        result = self.agent.generate_horoscope(sign)
+                        reply = result["markdown_report"]
+                        metadata["type"] = "full_horoscope"
+                        metadata["source"] = "local_fallback"
                 except Exception as e:
-                    reply = format_error(f"Error generating profile: {str(e)}")
+                    reply = f"Error fetching horoscope: {str(e)}"
                     metadata["type"] = "error"
-        
+                    metadata["error"] = str(e)
+
         # Check for specific topic requests (daily horoscope topics)
         if reply is None:
             topics = ["love", "career", "health", "money", "lucky"]
@@ -1502,7 +1635,7 @@ class ChatInterface:
                 if topic in msg_lower:
                     requested_topic = topic
                     break
-            
+
             # Determine period: daily, weekly, or monthly
             period = "daily"
             if any(w in msg_lower for w in ["weekly", "week", "this week"]):
@@ -1513,7 +1646,7 @@ class ChatInterface:
             # If we have a sign, fetch live horoscope from API
             if sign:
                 try:
-                    # SPECIAL CASE: user asked specifically for lucky info — return structured lucky guide
+                    # SPECIAL CASE: user asked specifically for lucky info
                     if requested_topic == "lucky":
                         result = self.agent.generate_horoscope(sign)
                         d = result["structured_data"]
@@ -1535,14 +1668,14 @@ class ChatInterface:
                             metadata["type"] = "monthly_horoscope"
                             metadata["source"] = "freehoroscopeapi.com"
                     else:
-                        # Default: daily horoscope from live API
-                        api_result = get_daily_horoscope(sign)
+                        # Default: daily horoscope from Prokerala API
+                        api_result = get_daily_horoscope_prokerala_sync(sign)
                         metadata["period"] = "daily"
-                        if api_result:
-                            reply = format_horoscope_reply(api_result)
+                        if api_result and "error" not in api_result:
+                            reply = format_prokerala_horoscope_reply(api_result)
                             metadata["type"] = "daily_horoscope"
-                            metadata["source"] = "freehoroscopeapi.com"
-                    
+                            metadata["source"] = "prokerala"
+
                     # If API didn't return anything, fallback to local
                     if reply is None:
                         result = self.agent.generate_horoscope(sign)
@@ -1566,11 +1699,11 @@ class ChatInterface:
                         metadata["type"] = "lucky"
                         metadata["source"] = "local"
                     else:
-                        api_result = get_daily_horoscope(sign)
-                        if api_result:
-                            reply = format_horoscope_reply(api_result)
+                        api_result = get_daily_horoscope_prokerala_sync(sign)
+                        if api_result and "error" not in api_result:
+                            reply = format_prokerala_horoscope_reply(api_result)
                             metadata["type"] = "daily_horoscope"
-                            metadata["source"] = "freehoroscopeapi.com"
+                            metadata["source"] = "prokerala"
                         else:
                             result = self.agent.generate_horoscope(sign)
                             reply = result["markdown_report"]
@@ -1580,7 +1713,7 @@ class ChatInterface:
                     reply = f"Error: {str(e)}"
                     metadata["type"] = "error"
                     metadata["error"] = str(e)
-            
+
             # If user asks about lucky number/color but NO sign provided anywhere
             elif requested_topic == "lucky" and not session["sign"] and not sign and reply is None:
                 session["pending_question"] = "lucky_number"

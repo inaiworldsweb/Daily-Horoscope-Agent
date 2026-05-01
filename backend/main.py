@@ -8,6 +8,7 @@ import os
 # Import our Daily Horoscope Agent
 from agent import DailyHoroscopeAgent, ChatInterface
 from database import db_manager
+from api.routes import router as horoscope_router
 
 # Production URLs
 PORT = 10000  # Render requires this port
@@ -36,6 +37,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Register new use-case routers
+app.include_router(horoscope_router)
 
 # Initialize agents
 horoscope_agent = DailyHoroscopeAgent()
@@ -102,7 +106,7 @@ def get_horoscope(request: HoroscopeRequest):
             language=request.language,
             user_id=request.user_id
         )
-        return result
+        return resultpel
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
@@ -155,13 +159,20 @@ def compare_horoscope(sign: str, user_id: str = "default"):
 def get_horoscope_simple(sign: str, date: Optional[str] = None):
     """
     Simple GET endpoint for horoscope by sign
+    Returns structured data plus the readable paragraph summary.
     """
     try:
         result = horoscope_agent.generate_horoscope(
             sign_or_date=sign,
             date_str=date
         )
-        return result["structured_data"]
+        data = result["structured_data"]
+        return {
+            "paragraph": data["overall_summary"],
+            "structured_data": data,
+            "markdown_report": result["markdown_report"],
+            "plain_text": result["plain_text_summary"]
+        }
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:

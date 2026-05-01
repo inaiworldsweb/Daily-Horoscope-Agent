@@ -306,7 +306,7 @@ app.post('/api/chat', async (req, res) => {
     } else {
       reply = 'Please tell me your zodiac sign or birth date first so I can show you trend comparisons!';
     }
-  } else if (lowerMsg.includes('calendar') || lowerMsg.includes('good day') || lowerMsg.includes('bad day')) {
+  } else if (lowerMsg.includes('calendar') || lowerMsg.includes('good day') || lowerMsg.includes('bad day') || lowerMsg.includes('rate my day') || lowerMsg.includes('is today good')) {
     if (session.sign) {
       const energy = parseInt(horoscopeData[session.sign].lucky.energy);
       let rating, color, suggestion;
@@ -334,7 +334,54 @@ app.post('/api/chat', async (req, res) => {
       reply = 'Please tell me your zodiac sign or birth date first so I can rate your day for the calendar!';
     }
   }
-  
+
+  // Natural language: full daily horoscope when session sign is known
+  if (!reply && session.sign) {
+    const fullHoroscopeTriggers = [
+      'my horoscope', 'my daily', 'what is my horoscope', 'give me my horoscope',
+      'tell me my horoscope', 'show my horoscope', 'what about today', "today's horoscope",
+      'todays horoscope', 'daily horoscope', 'my reading', 'my prediction',
+      'predict my day', 'what will happen today', 'how is my day', 'how is today',
+      'full horoscope', 'complete horoscope', 'overall horoscope', 'horoscope today'
+    ];
+    if (fullHoroscopeTriggers.some(t => lowerMsg.includes(t))) {
+      const data = horoscopeData[session.sign];
+      reply = `**${session.sign.charAt(0).toUpperCase() + session.sign.slice(1)} Horoscope for Today**\n\n` +
+              `**Overview:** ${data.overview}\n\n` +
+              `**Love:** ${data.love}\n` +
+              `**Career:** ${data.career}\n` +
+              `**Money:** ${data.money}\n` +
+              `**Health:** ${data.health}\n\n` +
+              `**Lucky Guide:**\n` +
+              `🎨 Color: ${data.lucky.color}\n` +
+              `🔢 Number: ${data.lucky.number}\n` +
+              `🧭 Direction: ${data.lucky.direction}\n` +
+              `⏰ Best Time: ${data.lucky.time}\n` +
+              `⚡ Energy: ${data.lucky.energy}/10\n` +
+              `🏷️ Tag: ${data.lucky.tag}\n\n` +
+              `Ask me about "trends" to compare with yesterday, or "calendar" for day ratings!`;
+    }
+  }
+
+  // Notification / push preview when session sign is known
+  if (!reply && session.sign) {
+    const notificationTriggers = [
+      'notification', 'push', 'morning alert', 'daily alert', 'send me daily',
+      'notify me', 'morning summary', 'daily summary'
+    ];
+    if (notificationTriggers.some(t => lowerMsg.includes(t))) {
+      const data = horoscopeData[session.sign];
+      reply = `**🌅 Daily Horoscope Notification Preview for ${session.sign.charAt(0).toUpperCase() + session.sign.slice(1)}**\n\n` +
+              `⚡ **Energy:** ${data.lucky.energy}/10 | 🏷️ **Tag:** ${data.lucky.tag}\n\n` +
+              `**Overview:** ${data.overview}\n\n` +
+              `🎨 **Lucky Color:** ${data.lucky.color}\n` +
+              `🔢 **Lucky Number:** ${data.lucky.number}\n` +
+              `⏰ **Best Time:** ${data.lucky.time}\n\n` +
+              `*This is how your morning notification would look!*\n` +
+              `*To subscribe: Use API /api/notification/subscribe with your sign and preferred time.*`;
+    }
+  }
+
   // If no specific topic detected, try RAG server for general questions
   if (!reply) {
     const ragAnswer = await askRAGServer(message, session.sign);

@@ -7,3 +7,6 @@ flask-cors
 pymongo
 motor
 requests
+httpx
+anthropic
+prokerala-api

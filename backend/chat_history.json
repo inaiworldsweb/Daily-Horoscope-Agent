@@ -316,5 +316,183 @@
     "metadata": {
       "type": "greeting"
     }
+  },
+  {
+    "session_id": "test-session",
+    "user_message": "Leo daily horoscope",
+    "bot_reply": "## 🔮 Leo Daily Horoscope\n**Date:** 2026-05-01\n\nLeo, you may find yourself feeling responsible and cautious. The Sun in Capricorn encourages productivity, while the Moon in Capricorn makes you a bit reserved. Your mood might be slow, but don't let that inhibit your naturally vibrant energy. With Sun sextile Saturn lending wisdom and structure, advice from elders can guide you through any suspicious feelings. Focus on work and profession, and let your cautious nature help you shine.\n\n---\n*Powered by [Prokerala Astrology API](https://www.prokerala.com)*\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T06:36:30.475501",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "prokerala"
+    }
+  },
+  {
+    "session_id": "test-session-weekly",
+    "user_message": "Leo weekly horoscope",
+    "bot_reply": "## 🔮 Leo Daily Horoscope\n**Date:** 2026-05-01\n\nLeo, you may find yourself feeling responsible and cautious. The Sun in Capricorn encourages productivity, while the Moon in Capricorn makes you a bit reserved. Your mood might be slow, but don't let that inhibit your naturally vibrant energy. With Sun sextile Saturn lending wisdom and structure, advice from elders can guide you through any suspicious feelings. Focus on work and profession, and let your cautious nature help you shine.\n\n---\n*Powered by [Prokerala Astrology API](https://www.prokerala.com)*\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T06:36:52.163937",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "prokerala"
+    }
+  },
+  {
+    "session_id": "fresh-weekly",
+    "user_message": "show me Leo weekly horoscope",
+    "bot_reply": "## 🔮 Leo Daily Horoscope\n**Date:** 2026-05-01\n\nLeo, you may find yourself feeling responsible and cautious. The Sun in Capricorn encourages productivity, while the Moon in Capricorn makes you a bit reserved. Your mood might be slow, but don't let that inhibit your naturally vibrant energy. With Sun sextile Saturn lending wisdom and structure, advice from elders can guide you through any suspicious feelings. Focus on work and profession, and let your cautious nature help you shine.\n\n---\n*Powered by [Prokerala Astrology API](https://www.prokerala.com)*\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T06:37:20.631940",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "prokerala"
+    }
+  },
+  {
+    "session_id": "fresh-weekly-2",
+    "user_message": "show me Leo weekly horoscope",
+    "bot_reply": "## 🔮 Leo Weekly Horoscope\n\nHey Leo, this week is all about taking care of the everyday stuff. You might feel a little overwhelmed by responsibilities at work or at home, but try to stay focused on one task at a time and you'll get through it. Don't be afraid to ask for help when you need it - your friends and family are there to support you. Expect a financial boost, maybe from a long-overdue payment or a successful sale of something you've been trying to get rid of. Use this extra cash wisely and put it towards something you've been putting off, like a home repair or a vacation. You'll also have a chance to reconnect with an old friend or acquaintance this week, which could lead to a new opportunity or a renewed connection. Keep your social calendar light and don't overcommit yourself.\n\n---\n*Powered by [freehoroscopeapi.com](https://freehoroscopeapi.com)*\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T06:38:29.941970",
+    "metadata": {
+      "type": "weekly_horoscope",
+      "source": "freehoroscopeapi.com"
+    }
+  },
+  {
+    "session_id": "fresh-monthly",
+    "user_message": "Leo monthly horoscope",
+    "bot_reply": "## 🔮 Leo Monthly Horoscope\n\nMay 2026 is looking like a great month for Leos, with a strong focus on personal growth and self-improvement. Expect to feel a renewed sense of confidence and motivation, which will help you tackle any challenges that come your way. Your creativity and problem-solving skills are on point, making you a valuable asset to your team or community. This is a good time to take on new projects or pursue a hobby you've been putting off. Be open to learning from others and trying new things - you might be surprised at how much you can learn. Romantic relationships are also looking up, with a chance to reconnect with a loved one or meet someone new. Just be sure to communicate openly and honestly to avoid any misunderstandings. Overall, May is a great time to shine your light and make progress on your goals.\n\n---\n*Powered by [freehoroscopeapi.com](https://freehoroscopeapi.com)*\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T06:38:57.803756",
+    "metadata": {
+      "type": "monthly_horoscope",
+      "source": "freehoroscopeapi.com"
+    }
+  },
+  {
+    "session_id": "t1",
+    "user_message": "Leo daily horoscope",
+    "bot_reply": "**Leo Daily Profile:**\nLeo daily energy is vibrant, creative, and charismatic. Self-expression and leadership dominate. Pride can be a downside. Best for presentations, creative projects, romance, and public appearances. Best time 11 AM to 1 PM. Avoid 4 PM to 5:30 PM.\n\n⏰ Best time: 11:00 AM - 1:00 PM\n⚠️ Avoid: 4:00 PM - 5:30 PM\n\n--------------------------------------------------\n\n**Leo Information:**\nLeo is the fifth sign of the zodiac, born July 23 to August 22. A Fire sign ruled by the Sun, symbolised by the Lion. Traits: Confident, Creative, Charismatic, Generous. Strengths: Leadership, Generosity, Warmth. Weaknesses: Ego, Stubbornness. In love: Loyal and passionate, loves grand gestures. Career: Best in leadership, acting, public roles. Health: Take care of heart health. Lucky color Gold, lucky number 1, lucky day Sunday. Most compatible with Aries, Sagittarius, Libra.\n\n--------------------------------------------------\n\n**Sun in Leo:**\nSun in Leo is its own sign — energy is at its most vibrant, creative, and charismatic. Career achievements shine. Love is dramatic and generous. Health is robust with good vitality.\n\n--------------------------------------------------\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T06:46:13.992667",
+    "metadata": {
+      "type": "rag_answer",
+      "rag_sign": "leo",
+      "source": "rag"
+    }
+  },
+  {
+    "session_id": "t2",
+    "user_message": "What are Leo traits?",
+    "bot_reply": "**Leo Information:**\nLeo is the fifth sign of the zodiac, born July 23 to August 22. A Fire sign ruled by the Sun, symbolised by the Lion. Traits: Confident, Creative, Charismatic, Generous. Strengths: Leadership, Generosity, Warmth. Weaknesses: Ego, Stubbornness. In love: Loyal and passionate, loves grand gestures. Career: Best in leadership, acting, public roles. Health: Take care of heart health. Lucky color Gold, lucky number 1, lucky day Sunday. Most compatible with Aries, Sagittarius, Libra.\n\n--------------------------------------------------\n\n**Sun in Leo:**\nSun in Leo is its own sign — energy is at its most vibrant, creative, and charismatic. Career achievements shine. Love is dramatic and generous. Health is robust with good vitality.\n\n--------------------------------------------------\n\n**Moon in Leo:**\nMoon in Leo brings warmth, generosity, and a desire for recognition. Creative expression is highlighted. Love is dramatic and affectionate. Career presentations go extremely well.\n\n--------------------------------------------------\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T06:46:14.036663",
+    "metadata": {
+      "type": "rag_answer",
+      "rag_sign": "leo",
+      "source": "rag"
+    }
+  },
+  {
+    "session_id": "t3",
+    "user_message": "Tell me about Leo love",
+    "bot_reply": "**Sun in Leo:**\nSun in Leo is its own sign — energy is at its most vibrant, creative, and charismatic. Career achievements shine. Love is dramatic and generous. Health is robust with good vitality.\n\n--------------------------------------------------\n\n**Moon in Leo:**\nMoon in Leo brings warmth, generosity, and a desire for recognition. Creative expression is highlighted. Love is dramatic and affectionate. Career presentations go extremely well.\n\n--------------------------------------------------\n\n**Leo Information:**\nLeo is the fifth sign of the zodiac, born July 23 to August 22. A Fire sign ruled by the Sun, symbolised by the Lion. Traits: Confident, Creative, Charismatic, Generous. Strengths: Leadership, Generosity, Warmth. Weaknesses: Ego, Stubbornness. In love: Loyal and passionate, loves grand gestures. Career: Best in leadership, acting, public roles. Health: Take care of heart health. Lucky color Gold, lucky number 1, lucky day Sunday. Most compatible with Aries, Sagittarius, Libra.\n\n--------------------------------------------------\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T06:46:14.093112",
+    "metadata": {
+      "type": "rag_answer",
+      "rag_sign": "leo",
+      "source": "rag"
+    }
+  },
+  {
+    "session_id": "t1",
+    "user_message": "Leo daily horoscope",
+    "bot_reply": "## 🔮 Leo Daily Horoscope\n**Date:** 2026-05-01\n\nLeo, you may find yourself feeling responsible and cautious. The Sun in Capricorn encourages productivity, while the Moon in Capricorn makes you a bit reserved. Your mood might be slow, but don't let that inhibit your naturally vibrant energy. With Sun sextile Saturn lending wisdom and structure, advice from elders can guide you through any suspicious feelings. Focus on work and profession, and let your cautious nature help you shine.\n\n---\n*Powered by [Prokerala Astrology API](https://www.prokerala.com)*\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T06:50:55.376171",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "prokerala"
+    }
+  },
+  {
+    "session_id": "t2",
+    "user_message": "What are Leo traits?",
+    "bot_reply": "**Leo Information:**\nLeo is the fifth sign of the zodiac, born July 23 to August 22. A Fire sign ruled by the Sun, symbolised by the Lion. Traits: Confident, Creative, Charismatic, Generous. Strengths: Leadership, Generosity, Warmth. Weaknesses: Ego, Stubbornness. In love: Loyal and passionate, loves grand gestures. Career: Best in leadership, acting, public roles. Health: Take care of heart health. Lucky color Gold, lucky number 1, lucky day Sunday. Most compatible with Aries, Sagittarius, Libra.\n\n--------------------------------------------------\n\n**Sun in Leo:**\nSun in Leo is its own sign — energy is at its most vibrant, creative, and charismatic. Career achievements shine. Love is dramatic and generous. Health is robust with good vitality.\n\n--------------------------------------------------\n\n**Moon in Leo:**\nMoon in Leo brings warmth, generosity, and a desire for recognition. Creative expression is highlighted. Love is dramatic and affectionate. Career presentations go extremely well.\n\n--------------------------------------------------\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T06:50:55.432331",
+    "metadata": {
+      "type": "knowledge",
+      "rag_sign": "leo"
+    }
+  },
+  {
+    "session_id": "t3",
+    "user_message": "Leo love",
+    "bot_reply": "## 🔮 Leo Daily Horoscope\n**Date:** 2026-05-01\n\nLeo, you may find yourself feeling responsible and cautious. The Sun in Capricorn encourages productivity, while the Moon in Capricorn makes you a bit reserved. Your mood might be slow, but don't let that inhibit your naturally vibrant energy. With Sun sextile Saturn lending wisdom and structure, advice from elders can guide you through any suspicious feelings. Focus on work and profession, and let your cautious nature help you shine.\n\n---\n*Powered by [Prokerala Astrology API](https://www.prokerala.com)*\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T06:50:56.118520",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "prokerala"
+    }
+  },
+  {
+    "session_id": "test-lucky-fix",
+    "user_message": "lucky number of leo",
+    "bot_reply": "## 🍀 Lucky Guide for Leo\n\n| Item | Value |\n|------|-------|\n| 🎨 **Color** | Gold |\n| 🔢 **Number** | 1 |\n| 🧭 **Direction** | East |\n| ⏰ **Best Time** | 20:00 - 22:00 |\n| ⚠️ **Avoid** | 21:00 - 22:30 |\n\n✨ *Your personal lucky charm for today!*",
+    "sign": "leo",
+    "timestamp": "2026-05-01T06:56:28.877358",
+    "metadata": {
+      "type": "lucky",
+      "source": "local"
+    }
+  },
+  {
+    "session_id": "debug-lucky",
+    "user_message": "leo lucky number",
+    "bot_reply": "## 🍀 Lucky Guide for Leo\n\n| Item | Value |\n|------|-------|\n| 🎨 **Color** | Gold |\n| 🔢 **Number** | 1 |\n| 🧭 **Direction** | East |\n| ⏰ **Best Time** | 20:00 - 22:00 |\n| ⚠️ **Avoid** | 21:00 - 22:30 |\n\n✨ *Your personal lucky charm for today!*",
+    "sign": "leo",
+    "timestamp": "2026-05-01T09:12:40.177616",
+    "metadata": {
+      "type": "lucky",
+      "source": "local"
+    }
+  },
+  {
+    "session_id": "session_1777445561295_henwlx9gn",
+    "user_message": "hello ",
+    "bot_reply": "👋 **Hello!** I'm your Daily Horoscope Agent.\n\nTell me your zodiac sign (like 'I'm Leo') and I'll share your horoscope!",
+    "sign": null,
+    "timestamp": "2026-05-01T09:28:49.148844",
+    "metadata": {
+      "type": "greeting"
+    }
+  },
+  {
+    "session_id": "session_1777445561295_henwlx9gn",
+    "user_message": "leo ",
+    "bot_reply": "## 🔮 Leo Daily Horoscope\n**Date:** 2026-05-01\n\nLeo, you may find yourself feeling responsible and cautious. The Sun in Capricorn encourages productivity, while the Moon in Capricorn makes you a bit reserved. Your mood might be slow, but don't let that inhibit your naturally vibrant energy. With Sun sextile Saturn lending wisdom and structure, advice from elders can guide you through any suspicious feelings. Focus on work and profession, and let your cautious nature help you shine.\n\n---\n*Powered by [Prokerala Astrology API](https://www.prokerala.com)*\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T09:28:55.920387",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "prokerala"
+    }
+  },
+  {
+    "session_id": "session_1777445561295_henwlx9gn",
+    "user_message": "leo lucky colour ",
+    "bot_reply": "## 🍀 Lucky Guide for Leo\n\n| Item | Value |\n|------|-------|\n| 🎨 **Color** | Gold |\n| 🔢 **Number** | 1 |\n| 🧭 **Direction** | East |\n| ⏰ **Best Time** | 20:00 - 22:00 |\n| ⚠️ **Avoid** | 21:00 - 22:30 |\n\n✨ *Your personal lucky charm for today!*",
+    "sign": "leo",
+    "timestamp": "2026-05-01T09:29:16.165902",
+    "metadata": {
+      "type": "lucky",
+      "source": "local"
+    }
   }
 ]
