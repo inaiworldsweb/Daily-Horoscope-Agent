@@ -494,5 +494,37 @@
       "type": "lucky",
       "source": "local"
     }
+  },
+  {
+    "session_id": "session_1777454019997_kg2ya9mai",
+    "user_message": "hello ",
+    "bot_reply": "👋 **Hello!** I'm your Daily Horoscope Agent.\n\nTell me your zodiac sign (like 'I'm Leo') and I'll share your horoscope!",
+    "sign": null,
+    "timestamp": "2026-05-01T09:33:05.981061",
+    "metadata": {
+      "type": "greeting"
+    }
+  },
+  {
+    "session_id": "session_1777454019997_kg2ya9mai",
+    "user_message": "leo lucky colour ",
+    "bot_reply": "## 🍀 Lucky Guide for Leo\n\n| Item | Value |\n|------|-------|\n| 🎨 **Color** | Gold |\n| 🔢 **Number** | 1 |\n| 🧭 **Direction** | East |\n| ⏰ **Best Time** | 20:00 - 22:00 |\n| ⚠️ **Avoid** | 21:00 - 22:30 |\n\n✨ *Your personal lucky charm for today!*",
+    "sign": "leo",
+    "timestamp": "2026-05-01T09:33:12.957494",
+    "metadata": {
+      "type": "lucky",
+      "source": "local"
+    }
+  },
+  {
+    "session_id": "session_1777454019997_kg2ya9mai",
+    "user_message": "leo ",
+    "bot_reply": "## 🔮 Leo Daily Horoscope\n**Date:** 2026-05-01\n\nLeo, you may find yourself feeling responsible and cautious. The Sun in Capricorn encourages productivity, while the Moon in Capricorn makes you a bit reserved. Your mood might be slow, but don't let that inhibit your naturally vibrant energy. With Sun sextile Saturn lending wisdom and structure, advice from elders can guide you through any suspicious feelings. Focus on work and profession, and let your cautious nature help you shine.\n\n---\n*Powered by [Prokerala Astrology API](https://www.prokerala.com)*\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T09:33:17.870251",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "prokerala"
+    }
   }
 ]

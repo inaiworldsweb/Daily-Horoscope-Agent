@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 // Deployed Backend URL
-const API_URL = 'http://localhost:10000'
+const API_URL = 'https://daily-horoscope-backend.onrender.com'
 
 function App() {
   const [messages, setMessages] = useState([
