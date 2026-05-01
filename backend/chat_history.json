@@ -526,5 +526,94 @@
       "type": "daily_horoscope",
       "source": "prokerala"
     }
+  },
+  {
+    "session_id": "test-love",
+    "user_message": "leo love life",
+    "bot_reply": "## 🔮 Leo Daily Horoscope\n**Date:** 2026-05-01\n**Topic:** Love\n\nLeo, you may find yourself feeling responsible and cautious. The Sun in Capricorn encourages productivity, while the Moon in Capricorn makes you a bit reserved. Your mood might be slow, but don't let that inhibit your naturally vibrant energy. With Sun sextile Saturn lending wisdom and structure, advice from elders can guide you through any suspicious feelings. Focus on work and profession, and let your cautious nature help you shine.\n\n---\n*Powered by [Prokerala Astrology API](https://www.prokerala.com)*\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T10:54:59.492111",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "prokerala",
+      "topic": "love"
+    }
+  },
+  {
+    "session_id": "test-love-2",
+    "user_message": "leo love life",
+    "bot_reply": "## 🔮 Leo Daily Horoscope\n**Date:** 2026-05-01\n**Topic:** Love\n\n**Love**: Leo, today your steady nature shines through, thanks to the Sun in Capricorn. This consistency in your actions enhances emotional expression, making your romantic interactions sincere and fulfilling. The Moon in Capricorn brings sincerity to your sexual expression, ensuring emotional satisfaction. The Sun's sextile with Saturn encourages regenerative change, fostering a healthy self-image. Embrace this self-confidence to deepen your connections and nurture love with heartfelt sincerity.\n\n✨ **Seek**: Embrace your steady nature to enhance emotional expression in relationships.\n\n⚡ **Challenge**: Balancing sincerity with emotional satisfaction might prove difficult.\n\n💡 **Insight**: Let your self-confidence foster regenerative change, deepening connections and nurturing love with heartfelt sincerity.\n\n---\n*Powered by [Prokerala Astrology API](https://www.prokerala.com)*\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T10:59:44.509769",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "prokerala",
+      "topic": "love"
+    }
+  },
+  {
+    "session_id": "session_1777369994504_h7c3vdncr",
+    "user_message": "hello ",
+    "bot_reply": "👋 **Hello!** I'm your Daily Horoscope Agent.\n\nTell me your zodiac sign (like 'I'm Leo') and I'll share your horoscope!",
+    "sign": null,
+    "timestamp": "2026-05-01T12:07:34.327120",
+    "metadata": {
+      "type": "greeting"
+    }
+  },
+  {
+    "session_id": "session_1777369994504_h7c3vdncr",
+    "user_message": "how are you ?",
+    "bot_reply": "✨ I'm doing great, ready to read the stars for you!\n\nWhat can I tell you about your horoscope today?",
+    "sign": null,
+    "timestamp": "2026-05-01T12:08:54.547186",
+    "metadata": {
+      "type": "conversation"
+    }
+  },
+  {
+    "session_id": "session_1777369994504_h7c3vdncr",
+    "user_message": "leo ",
+    "bot_reply": "## 🔮 Leo Daily Horoscope\n**Date:** 2026-05-01\n\nLeo, you may find yourself feeling responsible and cautious. The Sun in Capricorn encourages productivity, while the Moon in Capricorn makes you a bit reserved. Your mood might be slow, but don't let that inhibit your naturally vibrant energy. With Sun sextile Saturn lending wisdom and structure, advice from elders can guide you through any suspicious feelings. Focus on work and profession, and let your cautious nature help you shine.\n\n---\n*Powered by [Prokerala Astrology API](https://www.prokerala.com)*\n",
+    "sign": "leo",
+    "timestamp": "2026-05-01T12:09:18.399277",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "prokerala"
+    }
+  },
+  {
+    "session_id": "session_1777369994504_h7c3vdncr",
+    "user_message": "leo lucky ",
+    "bot_reply": "## 🍀 Lucky Guide for Leo\n\n| Item | Value |\n|------|-------|\n| 🎨 **Color** | Gold |\n| 🔢 **Number** | 1 |\n| 🧭 **Direction** | East |\n| ⏰ **Best Time** | 20:00 - 22:00 |\n| ⚠️ **Avoid** | 21:00 - 22:30 |\n\n✨ *Your personal lucky charm for today!*",
+    "sign": "leo",
+    "timestamp": "2026-05-01T12:09:28.782219",
+    "metadata": {
+      "type": "lucky",
+      "source": "local"
+    }
+  },
+  {
+    "session_id": "session_1777369994504_h7c3vdncr",
+    "user_message": "leo love life ",
+    "bot_reply": "## 💕 Love Guide for Leo\n\n| Item | Guidance |\n|------|----------|\n| 💕 **Love** | Leo, today your steady nature shines through, thanks to the Sun in Capricorn. This consistency in your actions enhances emotional expression, making your romantic interactions sincere and fulfilling. The Moon in Capricorn brings sincerity to your sexual expression, ensuring emotional satisfaction. The Sun&#039;s sextile with Saturn encourages regenerative change, fostering a healthy self-image. Embrace this self-confidence to deepen your connections and nurture love with heartfelt sincerity. |\n| ✨ **Seek** | Embrace your steady nature to enhance emotional expression in relationships. |\n| ⚡ **Challenge** | Balancing sincerity with emotional satisfaction might prove difficult. |\n| 💡 **Insight** | Let your self-confidence foster regenerative change, deepening connections and nurturing love with heartfelt sincerity. |\n\n✨ *Your love guide for today!*",
+    "sign": "leo",
+    "timestamp": "2026-05-01T12:10:01.907591",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "prokerala",
+      "topic": "love"
+    }
+  },
+  {
+    "session_id": "session_1777369994504_h7c3vdncr",
+    "user_message": "Scorpio",
+    "bot_reply": "## 🔮 Scorpio Daily Horoscope\n**Date:** 2026-05-01\n\nScorpio individuals, with the Sun in Capricorn will find themselves feeling a bit reserved and calculating, with a hint of inhibition influencing their decisions. With the Moon in Capricorn, their prudent approach might sometimes bring a sense of discontentment. The spiritual search encouraged by Mars trine Neptune may inspire charitable work. However, Scorpios should be cautious to secure their position and avoid any acts of violence or dangerous situations.\n\n---\n*Powered by [Prokerala Astrology API](https://www.prokerala.com)*\n",
+    "sign": "scorpio",
+    "timestamp": "2026-05-01T12:10:12.012470",
+    "metadata": {
+      "type": "daily_horoscope",
+      "source": "prokerala"
+    }
   }
 ]
