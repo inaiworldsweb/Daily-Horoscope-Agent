@@ -102,6 +102,44 @@ def format_greeting() -> str:
     return "👋 **Hello!** I'm your Daily Horoscope Agent.\n\nTell me your zodiac sign (like 'I'm Leo') and I'll share your horoscope!"
 
 
+def format_topic_guide(data: dict, sign: str, topic: str) -> str:
+    """Format topic-specific horoscope (love, career, health, money) into clean table output"""
+    topic_emojis = {
+        "love": "💕",
+        "career": "💼",
+        "health": "🏥",
+        "money": "💰",
+    }
+    emoji = topic_emojis.get(topic, "🔮")
+    title = topic.title()
+
+    pred = data.get("prediction", "").strip()
+    seek = data.get("seek", "").strip()
+    challenge = data.get("challenge", "").strip()
+    insight = data.get("insight", "").strip()
+
+    # Build table rows for available fields
+    rows = []
+    if pred:
+        rows.append(f"| {emoji} **{title}** | {pred} |")
+    if seek:
+        rows.append(f"| ✨ **Seek** | {seek} |")
+    if challenge:
+        rows.append(f"| ⚡ **Challenge** | {challenge} |")
+    if insight:
+        rows.append(f"| 💡 **Insight** | {insight} |")
+
+    table = "\n".join(rows)
+
+    return f"""## {emoji} {title} Guide for {sign.title()}
+
+| Item | Guidance |
+|------|----------|
+{table}
+
+✨ *Your {title.lower()} guide for today!*"""
+
+
 def format_error(message: str) -> str:
     return f"⚠️ **Oops!** {message}"
 

@@ -213,6 +213,7 @@ def format_prokerala_horoscope_reply(horoscope_result: Dict[str, Any], topic: Op
 
     # ── Extract prediction text ──
     horoscope_text = ""
+    topic_lower = topic.lower() if topic else None
 
     # Simple daily response: data.daily_prediction.prediction
     dp = raw.get("daily_prediction")
@@ -228,17 +229,21 @@ def format_prokerala_horoscope_reply(horoscope_result: Dict[str, Any], topic: Op
                 for pred in preds:
                     pred_type = pred.get("type", "").lower()
                     pred_text = pred.get("prediction", "")
-                    if pred_text:
-                        seek = pred.get("seek", "")
-                        challenge = pred.get("challenge", "")
-                        insight = pred.get("insight", "")
-                        horoscope_text += f"**{pred_type.title()}**: {pred_text}\n\n"
-                        if seek:
-                            horoscope_text += f"✨ **Seek**: {seek}\n\n"
-                        if challenge:
-                            horoscope_text += f"⚡ **Challenge**: {challenge}\n\n"
-                        if insight:
-                            horoscope_text += f"💡 **Insight**: {insight}\n\n"
+                    if not pred_text:
+                        continue
+                    # If topic requested, only show matching prediction
+                    if topic_lower and pred_type != topic_lower:
+                        continue
+                    seek = pred.get("seek", "")
+                    challenge = pred.get("challenge", "")
+                    insight = pred.get("insight", "")
+                    horoscope_text += f"**{pred_type.title()}**: {pred_text}\n\n"
+                    if seek:
+                        horoscope_text += f"✨ **Seek**: {seek}\n\n"
+                    if challenge:
+                        horoscope_text += f"⚡ **Challenge**: {challenge}\n\n"
+                    if insight:
+                        horoscope_text += f"💡 **Insight**: {insight}\n\n"
 
     # Generic fallback
     if not horoscope_text:
@@ -252,6 +257,52 @@ def format_prokerala_horoscope_reply(horoscope_result: Dict[str, Any], topic: Op
         horoscope_text = str(raw)
 
     horoscope_text = horoscope_text.replace("&#039;", "'").replace("&amp;", "&").strip()
+
+    # ── Clean table format for topic-specific requests ──
+    if topic_lower:
+        topic_emojis = {"love": "💕", "career": "💼", "health": "🏥", "money": "💰"}
+        emoji = topic_emojis.get(topic_lower, "🔮")
+        title = topic.title()
+
+        # Extract fields from the prediction text
+        rows = []
+        main_pred = ""
+        seek_val = ""
+        challenge_val = ""
+        insight_val = ""
+
+        # Re-extract from raw structure for cleaner formatting
+        dps_raw = raw.get("daily_predictions")
+        if isinstance(dps_raw, list) and dps_raw:
+            for dp_item in dps_raw:
+                preds = dp_item.get("predictions", [])
+                for pred in preds:
+                    if pred.get("type", "").lower() != topic_lower:
+                        continue
+                    main_pred = pred.get("prediction", "").strip()
+                    seek_val = pred.get("seek", "").strip()
+                    challenge_val = pred.get("challenge", "").strip()
+                    insight_val = pred.get("insight", "").strip()
+                    break
+
+        if main_pred:
+            rows.append(f"| {emoji} **{title}** | {main_pred} |")
+        if seek_val:
+            rows.append(f"| ✨ **Seek** | {seek_val} |")
+        if challenge_val:
+            rows.append(f"| ⚡ **Challenge** | {challenge_val} |")
+        if insight_val:
+            rows.append(f"| 💡 **Insight** | {insight_val} |")
+
+        if rows:
+            table = "\n".join(rows)
+            return f"""## {emoji} {title} Guide for {sign}
+
+| Item | Guidance |
+|------|----------|
+{table}
+
+✨ *Your {title.lower()} guide for today!*"""
 
     header = f"## 🔮 {sign} Daily Horoscope"
     if dt:

@@ -22,6 +22,7 @@ from external_api import (
 # Import response formatter for clean output
 from response_formatter import (
     format_lucky_guide,
+    format_topic_guide,
     format_day_rating,
     format_notification_preview,
     format_greeting,
@@ -33,6 +34,7 @@ from response_formatter import (
 # Prokerala API for daily horoscope (working ✅)
 from tools.prokerala_api import (
     get_daily_horoscope_prokerala_sync,
+    get_daily_horoscope_advanced_prokerala_sync,
     get_panchang_prokerala_sync,
     get_lucky_details_prokerala_sync,
     format_prokerala_horoscope_reply,
@@ -1611,11 +1613,16 @@ class ChatInterface:
                             metadata["source"] = "freehoroscopeapi.com"
                     else:
                         # Default: daily horoscope from Prokerala API
-                        api_result = get_daily_horoscope_prokerala_sync(sign)
+                        if requested_topic and requested_topic in ("love", "career", "health", "money"):
+                            api_result = get_daily_horoscope_advanced_prokerala_sync(sign, htype=requested_topic)
+                        else:
+                            api_result = get_daily_horoscope_prokerala_sync(sign)
                         if api_result and "error" not in api_result:
-                            reply = format_prokerala_horoscope_reply(api_result)
+                            reply = format_prokerala_horoscope_reply(api_result, topic=requested_topic)
                             metadata["type"] = "daily_horoscope"
                             metadata["source"] = "prokerala"
+                            if requested_topic:
+                                metadata["topic"] = requested_topic
 
                     if reply is None:
                         result = self.agent.generate_horoscope(sign)
@@ -1669,12 +1676,17 @@ class ChatInterface:
                             metadata["source"] = "freehoroscopeapi.com"
                     else:
                         # Default: daily horoscope from Prokerala API
-                        api_result = get_daily_horoscope_prokerala_sync(sign)
+                        if requested_topic and requested_topic in ("love", "career", "health", "money"):
+                            api_result = get_daily_horoscope_advanced_prokerala_sync(sign, htype=requested_topic)
+                        else:
+                            api_result = get_daily_horoscope_prokerala_sync(sign)
                         metadata["period"] = "daily"
                         if api_result and "error" not in api_result:
-                            reply = format_prokerala_horoscope_reply(api_result)
+                            reply = format_prokerala_horoscope_reply(api_result, topic=requested_topic)
                             metadata["type"] = "daily_horoscope"
                             metadata["source"] = "prokerala"
+                            if requested_topic:
+                                metadata["topic"] = requested_topic
 
                     # If API didn't return anything, fallback to local
                     if reply is None:
@@ -1699,11 +1711,16 @@ class ChatInterface:
                         metadata["type"] = "lucky"
                         metadata["source"] = "local"
                     else:
-                        api_result = get_daily_horoscope_prokerala_sync(sign)
+                        if requested_topic and requested_topic in ("love", "career", "health", "money"):
+                            api_result = get_daily_horoscope_advanced_prokerala_sync(sign, htype=requested_topic)
+                        else:
+                            api_result = get_daily_horoscope_prokerala_sync(sign)
                         if api_result and "error" not in api_result:
-                            reply = format_prokerala_horoscope_reply(api_result)
+                            reply = format_prokerala_horoscope_reply(api_result, topic=requested_topic)
                             metadata["type"] = "daily_horoscope"
                             metadata["source"] = "prokerala"
+                            if requested_topic:
+                                metadata["topic"] = requested_topic
                         else:
                             result = self.agent.generate_horoscope(sign)
                             reply = result["markdown_report"]
