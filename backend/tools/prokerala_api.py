@@ -232,7 +232,11 @@ def format_prokerala_horoscope_reply(horoscope_result: Dict[str, Any], topic: Op
                     if not pred_text:
                         continue
                     # If topic requested, only show matching prediction
-                    if topic_lower and pred_type != topic_lower:
+                    # Money maps to career (Prokerala combines Career & Money)
+                    matched = (pred_type == topic_lower)
+                    if topic_lower == "money" and pred_type == "career":
+                        matched = True
+                    if topic_lower and not matched:
                         continue
                     seek = pred.get("seek", "")
                     challenge = pred.get("challenge", "")
@@ -277,7 +281,12 @@ def format_prokerala_horoscope_reply(horoscope_result: Dict[str, Any], topic: Op
             for dp_item in dps_raw:
                 preds = dp_item.get("predictions", [])
                 for pred in preds:
-                    if pred.get("type", "").lower() != topic_lower:
+                    pred_type_raw = pred.get("type", "").lower()
+                    # Money maps to career (Prokerala combines Career & Money)
+                    matched = (pred_type_raw == topic_lower)
+                    if topic_lower == "money" and pred_type_raw == "career":
+                        matched = True
+                    if not matched:
                         continue
                     main_pred = pred.get("prediction", "").strip()
                     seek_val = pred.get("seek", "").strip()

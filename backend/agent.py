@@ -1613,8 +1613,10 @@ class ChatInterface:
                             metadata["source"] = "freehoroscopeapi.com"
                     else:
                         # Default: daily horoscope from Prokerala API
-                        if requested_topic and requested_topic in ("love", "career", "health", "money"):
+                        if requested_topic and requested_topic in ("love", "career", "health"):
                             api_result = get_daily_horoscope_advanced_prokerala_sync(sign, htype=requested_topic)
+                        elif requested_topic == "money":
+                            api_result = get_daily_horoscope_advanced_prokerala_sync(sign, htype="career")
                         else:
                             api_result = get_daily_horoscope_prokerala_sync(sign)
                         if api_result and "error" not in api_result:
@@ -1676,8 +1678,10 @@ class ChatInterface:
                             metadata["source"] = "freehoroscopeapi.com"
                     else:
                         # Default: daily horoscope from Prokerala API
-                        if requested_topic and requested_topic in ("love", "career", "health", "money"):
+                        if requested_topic and requested_topic in ("love", "career", "health"):
                             api_result = get_daily_horoscope_advanced_prokerala_sync(sign, htype=requested_topic)
+                        elif requested_topic == "money":
+                            api_result = get_daily_horoscope_advanced_prokerala_sync(sign, htype="career")
                         else:
                             api_result = get_daily_horoscope_prokerala_sync(sign)
                         metadata["period"] = "daily"
@@ -1711,8 +1715,10 @@ class ChatInterface:
                         metadata["type"] = "lucky"
                         metadata["source"] = "local"
                     else:
-                        if requested_topic and requested_topic in ("love", "career", "health", "money"):
+                        if requested_topic and requested_topic in ("love", "career", "health"):
                             api_result = get_daily_horoscope_advanced_prokerala_sync(sign, htype=requested_topic)
+                        elif requested_topic == "money":
+                            api_result = get_daily_horoscope_advanced_prokerala_sync(sign, htype="career")
                         else:
                             api_result = get_daily_horoscope_prokerala_sync(sign)
                         if api_result and "error" not in api_result:
